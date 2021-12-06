@@ -1,0 +1,95 @@
+/*! Place your custom styles here */
+hr.separator {
+  box-sizing: border-box;
+  border-top: 2px solid #2250fc;
+  border-radius: 5px;
+  position: absolute;
+  display: block;
+}
+
+/*! Place your custom styles here */
+hr.left {
+  left: 0%;
+}
+
+/*! Place your custom styles here */
+hr.right {
+  right: 50%;
+}
+
+/*! Place your custom styles here */
+hr.center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+hr.big {
+  width: 100%;
+}
+
+hr.medium {
+  width: 90%;
+}
+
+hr.small {
+  width: 80%;
+}
+
+hr.thick {
+  border-top: 2px solid #2250fc;
+}
+
+hr.slim {
+  border-top: 1px solid #2250fc;
+}
+
+div.highlight {
+  border-left: 1px solid #2250fc;
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  height: 90%;
+  transform: translateY(-50%);
+}
+
+h1.highlighted {
+  position: relative;
+}
+
+#values{
+
+}
+#values .container .card-deck .card {
+  border-radius: 0% !important;
+  box-shadow: none;
+  margin: 10px;
+  border-color: #2250fc;
+}
+#values .container .card-deck .card h4 {
+  color: #2250fc;
+}
+
+#portfolio .container {
+  position: relative !important;
+
+}
+#portfolio .container .center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+#contact .container .card-deck .card .card-icon {
+  display: inline-block;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px rgb(200, 200, 200);
+  max-width: 20%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#contact .container .card-deck .card .card-body {
+  display: inline-block;
+  max-width: 80%;
+}
+
