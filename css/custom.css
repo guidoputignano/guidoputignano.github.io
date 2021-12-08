@@ -43,7 +43,7 @@ hr.slim {
   border-top: 1px solid #2250fc;
 }
 
-div.highlight {
+div .highlight {
   border-left: 1px solid #2250fc;
   position: absolute;
   top: 50%;
@@ -56,29 +56,30 @@ h1.highlighted {
   position: relative;
 }
 
-#values{
+#values {}
 
-}
 #values .container .card-deck .card {
   border-radius: 0% !important;
   box-shadow: none;
   margin: 10px;
   border-color: #2250fc;
 }
+
 #values .container .card-deck .card h4 {
   color: #2250fc;
 }
 
-#portfolio .container {
+.container {
   position: relative !important;
-
 }
-#portfolio .container .center{
+
+.container .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
 }
+
 #contact .container .card-deck .card .card-icon {
   display: inline-block;
   border-radius: 5px;
@@ -87,9 +88,50 @@ h1.highlighted {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-}
-#contact .container .card-deck .card .card-body {
-  display: inline-block;
-  max-width: 80%;
+  right: 5%;
 }
 
+#contact .container .card-deck .card .card-body {
+  display: inline-block;
+}
+
+
+#awards .container .carousel .post-item .post-item-wrap {
+  border-radius: 0% !important;
+  border-width: 1px !important;
+  border-color: #2250fc !important;
+  margin: 10px;
+}
+
+#awards .container .carousel .post-item .post-item-wrap .post-item-description h2 a {
+  color: #2250fc !important;
+}
+
+#bar-mobile {
+  background-color: white;
+  position: relative;
+}
+
+#bar-mobile h4{
+  background-color: white;
+  color: #2250fc;
+}
+#bar-mobile i{
+  color: #2250fc;
+  font-size: 48px;
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+}
+
+#menu1 h1{
+  color: white;
+}
+
+#menu1 h4{
+  color: rgb(180, 200, 255);
+}
+#menu1 h4:hover{
+  color: black;
+}
