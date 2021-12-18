@@ -115,8 +115,9 @@ h1.highlighted {
 #bar-mobile h4{
   background-color: white;
   color: #2250fc;
+  white-space:nowrap;
 }
-#bar-mobile i{
+#bar-mobile span{
   color: #2250fc;
   font-size: 48px;
   position: absolute;
