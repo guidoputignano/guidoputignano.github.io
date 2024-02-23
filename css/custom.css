@@ -80,17 +80,9 @@ h1.highlighted {
   width: fit-content;
 }
 
-#contact .container .card-deck .card .card-icon {
-  display: inline-block;
-  border-radius: 5px;
-  box-shadow: 2px 2px 1px rgb(200, 200, 200);
-  max-width: 20%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 5%;
+.card {
+  border-radius: 0px !important;
 }
-
 #contact .container .card-deck .card .card-body {
   display: inline-block;
 }
