@@ -14,13 +14,16 @@
     <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <!-- Stylesheets & Fonts -->
     <link href="css/plugins.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="img/smalllogo.png" type="image/jpg">
+
 
 </head>
 
@@ -36,49 +39,134 @@
                             </a>
                         </div>
                         <div class="col-9 col-md-10 text-right">
-                            <a href="#" class="hamburger-toggle" data-toggle-class="#menu1; hidden-xs hidden-sm"> <span class="lines"></span> </a>
+                            <a href="#" class="hamburger-toggle" data-toggle-class="#menu1; hidden-xs hidden-sm"> <span
+                                    class="lines"></span> </a>
                         </div>
                     </div>
                 </div>
             </div>
             <hr class="separator center small slim">
             <nav id="menu1" class="bar bar-1 hidden-xs bar--absolute bar--transparent">
-                <div class="container">
+                <!-- container-fluid allows full-width elements -->
+                <div class="col-lg-11 container-fluid">
                     <div class="row">
-                        <div class="col-lg-1 col-md-2 hidden-xs">
+                        <div class="col-lg-3 col-md-4 hidden-xs text-left">
                             <div class="bar__module">
-                                <a href="index.html">
-                                    <h1>GUIDO PUTIGNANO</h1>
+                                <a href="index.html" class="text-nowrap pull-left">
+                                    <h1 class="text-nowrap">GUIDO PUTIGNANO</h1>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-11 col-md-12 text-right text-left-xs text-left-sm">
-                            <div class="bar__module">
-                                <ul class="menu-horizontal text-center">
-                                    <li> <a href="https://it.linkedin.com/in/guido-putignano" target="_blank">
-                                            <h4>
-                                                LinkedIn</h4>
-                                        </a> </li>
-                                    <li> <a href="https://twitter.com/guidoputignano" target="_blank">
-                                            <h4>
-                                                Twitter</h4>
-                                        </a> </li>
+                        <div class="col-lg-9 col-md-8 text-right">
+                            <div class="bar__module pull-right">
+                                <ul class="menu-horizontal text-right">
+                                    <li>
+                                        <a href="https://it.linkedin.com/in/guido-putignano" target="_blank">
+                                            <i class="fab fa-linkedin fa-2x"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/guidoputignano" target="_blank">
+                                            <i class="fab fa-x-twitter fa-2x"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
             </nav>
         </div>
     </div>
     <div class="main-container">
-        <section class="cover imagebg height-100 text-center" data-overlay="3">
-            <div class="background-image-holder"><img alt="background" src="img/guidotorre.jpg"></div>
+        <section class="cover imagebg height-100 text-left" data-overlay="3">
+            <div class="background-image-holder">
+                <img alt="background" src="img/guidotorre.jpg">
+            </div>
+
             <div class="container pos-vertical-center">
                 <div class="row">
                     <div class="col-md-9 col-lg-8">
-                        <h1>Synthetic biology<br>+<br>Computational Biology<br>for Drug Discovery</h1>
-                        <p class="lead"></p>
+
+                        <!-- Headline block with nice background and padding -->
+                        <div class="well">
+                            <h1>Control biology <br> like technology</h1>
+                            <p class="lead">I’m Guido: an engineer, computational biologist and entrepreneur</p>
+                        </div>
+
                     </div>
+        <!-- Row for email button -->
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-md-9 col-lg-8">
+                <div id="mailToHide" class="btn btn-light btn-lg" onclick="showMail()">
+                    Let's Talk
+                </div>
+                <div id="mailToShow" style="display: none; background-color: white !important;" class="btn btn-light btn-lg">
+                    <a href="mailto:guido.putignano@gmail.com"  class="customblue customhover" style="text-decoration: none; margin-right: 10px; text-transform: lowercase;">
+                        guido.putignano@gmail.com</a>
+                    <i id="copyBtn" class="fas fa-copy customblue customhover"></i>
+                    <span id="copyNotification" class="label label-default" style="display: none;">Copied!</span>
                 </div>
             </div>
+        </div>
+        <script>
+            // Show and hide email functions
+            function showMail() {
+                document.getElementById("mailToShow").style.display = "";
+                document.getElementById("mailToHide").style.display = "none";
+                
+                // Add event listener to close when clicking elsewhere
+                setTimeout(function() {
+                    document.addEventListener("click", hideMail);
+                }, 100);
+            }
+            
+            function hideMail(event) {
+                // Don't hide if clicking on the copy button or email element
+                if (event && (event.target.id === "mailToShow" || event.target.id === "copyBtn" || 
+                    event.target.classList.contains("fa-copy") || 
+                    event.target.closest("#copyBtn"))) {
+                    return;
+                }
+                
+                document.getElementById("mailToHide").style.display = "";
+                document.getElementById("mailToShow").style.display = "none";
+                document.removeEventListener("click", hideMail);
+            }
+            
+            // Copy to clipboard functionality
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("copyBtn").addEventListener("click", function(e) {
+                    e.stopPropagation(); // Prevent the click from closing the email
+                    
+                    // Get the email text
+                    var emailText = "guido.putignano@gmail.com";
+                    
+                    // Create a temporary input element to copy from
+                    var tempInput = document.createElement("input");
+                    tempInput.value = emailText;
+                    document.body.appendChild(tempInput);
+                    
+                    // Select and copy the text
+                    tempInput.select();
+                    document.execCommand("copy");
+                    
+                    // Remove the temporary element
+                    document.body.removeChild(tempInput);
+                    
+                    // Show confirmation message
+                    var notification = document.getElementById("copyNotification");
+                    notification.style.display = "inline";
+                    
+                    // Hide notification after 2 seconds
+                    setTimeout(function() {
+                        notification.style.display = "none";
+                    }, 2000);
+                });
+            });
+        </script>
+            </div>
+
             <div class="pos-absolute pos-bottom col-12">
                 <div class="container">
                     <div class="row">
@@ -93,28 +181,28 @@
         </section>
     </div>
 
-    <section >
+
+    <section>
         <div class="container">
-                    <div class="slider slider--inline-arrows slider--arrows-hover text-center">
-                        <ul class="slides">
-                            <li class="col-md-3 col-6"> <img alt="Image" class="image--xs"
-                                     src="img/worldeconomiclogo.jpg"> </li>
-                            <li class="col-md-3 col-6"> <img alt="Image" class="image--xs"
-                                     src="img/clintonfoundationlogo.jpg">
-                            </li>
-                            <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/tedxlogo.jpg">
-                            </li>
-                            <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/tkslogo.jpg"> </li>
-                            <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/safespro.jpg">
-                            </li>
-                            <!-- <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/yealthylogo.jpg">
+            <div class="slider slider--inline-arrows slider--arrows-hover text-center">
+                <ul class="slides">
+                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/worldeconomiclogo.jpg">
+                    </li>
+                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/clintonfoundationlogo.jpg">
+                    </li>
+                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/tedxlogo.jpg">
+                    </li>
+                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/tkslogo.jpg"> </li>
+                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/safespro.jpg">
+                    </li>
+                    <!-- <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/yealthylogo.jpg">
                             </li> -->
-                            <li class="col-md-3 col-6"> <img alt="Image" class="image--xxs" src="img/nucleatelogo.jpg">
-                            </li>
-                            <li class="col-md-3 col-6"> <img alt="Image" class="image--xxs" src="img/foresightlogo.jpg">
-                            </li>
-                        </ul>
-                    </div>
+                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xxs" src="img/nucleatelogo.jpg">
+                    </li>
+                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xxs" src="img/foresightlogo.jpg">
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -129,15 +217,24 @@
                     <h1 class="highlighted center">
                         <div class="highlight"></div>About Guido
                     </h1>
-                    <p>I'm Guido Putignano, a scientist and entrepreneur at the intersection of cell therapy, control theory and artificial intelligence. My mission is to revolutionize healthcare by developing novel therapeutic approaches that combine synthetic biology with advanced engineering principles.</br>
-                        I focus on addressing major challenges in chronic diseases including cancer, diabetes, and neurodegenerative conditions. Through my work in optimal control systems and cell biology, I aim to create scalable solutions that can impact millions of lives.</br>
-                        What drives me is the belief that breakthrough innovations come from bridging disciplines - from biomedical engineering to AI-powered predictions. I'm committed to both scientific excellence and building the communities and platforms that accelerate progress in biotech.</br>
-                        As the saying goes, 'The quality of your mind determines the quality of your life.' I'm dedicated to continuous learning and growth, both in scientific understanding and in building meaningful relationships that drive progress.
+                    <p>I'm Guido Putignano, a scientist and entrepreneur at the intersection of cell therapy, control
+                        theory and artificial intelligence. My mission is to revolutionize healthcare by developing
+                        novel therapeutic approaches that combine synthetic biology with advanced engineering
+                        principles.</br>
+                        I focus on addressing major challenges in chronic diseases including cancer, diabetes, and
+                        neurodegenerative conditions. Through my work in optimal control systems and cell biology, I aim
+                        to create scalable solutions that can impact millions of lives.</br>
+                        What drives me is the belief that breakthrough innovations come from bridging disciplines - from
+                        biomedical engineering to AI-powered predictions. I'm committed to both scientific excellence
+                        and building the communities and platforms that accelerate progress in biotech.</br>
+                        As the saying goes, 'The quality of your mind determines the quality of your life.' I'm
+                        dedicated to continuous learning and growth, both in scientific understanding and in building
+                        meaningful relationships that drive progress.
                         </br>
 
                 </div>
                 <div class="col-lg-3 col-md-4"> <img alt="Image" class="box-shadow-wide"
-                         src="img/profile_pic_low_res.png"> </div>
+                        src="img/profile_pic_low_res.png"> </div>
             </div>
         </div>
     </section>
@@ -157,13 +254,20 @@
                     </h1>
                     <h4>Analyzing Biology</h4>
                     <p>
-                        Let's reimagine aging as a treatable disease. My computational approaches decode biological processes at the molecular level, identifying intervention points to address the mother of all diseases. This paves the way for targeted age-related therapeutics.
+                        Let's reimagine aging as a treatable disease. My computational approaches decode biological
+                        processes at the molecular level, identifying intervention points to address the mother of all
+                        diseases. This paves the way for targeted age-related therapeutics.
                     </p>
                     <h4>Automate Experiment</h4>
-                    <p>I enhance research through intelligent automation. My systems design optimized experiments that minimize costs while maximizing insights. By applying AI to laboratory workflows, we can accelerate discovery timelines and improve reproducibility in biological research.</br>
+                    <p>I enhance research through intelligent automation. My systems design optimized experiments that
+                        minimize costs while maximizing insights. By applying AI to laboratory workflows, we can
+                        accelerate discovery timelines and improve reproducibility in biological research.</br>
                     </p>
                     <h4>Control Biology</h4>
-                    <p>My mission is developing next-generation cell therapies. By applying control theory to biological systems, I create technologies for precisely engineering therapeutic cells. This approach enables predictable behavior in CAR-T cells and other living systems, transforming treatment possibilities.
+                    <p>My mission is developing next-generation cell therapies. By applying control theory to biological
+                        systems, I create technologies for precisely engineering therapeutic cells. This approach
+                        enables predictable behavior in CAR-T cells and other living systems, transforming treatment
+                        possibilities.
                     </p>
                 </div>
             </div>
@@ -181,58 +285,64 @@
                     <h1 class="highlighted center">
                         <div class="highlight"></div>Skills and tools
                     </h1>
-                    <p>I work in the field of synthetic biology, with the focus on engineering mammalian cells to create new therapeutics for chronic diseases.</br>
+                    <p>I work in the field of synthetic biology, with the focus on engineering mammalian cells to create
+                        new therapeutics for chronic diseases.</br>
                         </br>
                 </div>
                 <div class="col-md-9">
                     <div class="d-flex flex-wrap justify-content-center align-items-center p-4">
                         <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/python.png" alt="Image 1" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
+                            <img src="img/python.png" alt="Image 1" class="img-fluid"
+                                style="width: 64px; height: 64px;">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
                             <img src="img/c.png" alt="Image 2" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
                             <img src="img/c++.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
                             <img src="img/jax.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/pytorch.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/matlab.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/command.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
+                            <img src="img/pytorch.png" alt="Image 3" class="img-fluid"
+                                style="width: 64px; height: 64px;">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
+                            <img src="img/matlab.png" alt="Image 3" class="img-fluid"
+                                style="width: 64px; height: 64px;">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
+                            <img src="img/command.png" alt="Image 3" class="img-fluid"
+                                style="width: 64px; height: 64px;">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
                             <img src="img/vsc.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/cython.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
+                            <img src="img/cython.png" alt="Image 3" class="img-fluid"
+                                style="width: 64px; height: 64px;">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
                             <img src="img/r.svg" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
                             <img src="img/git.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                          <div class="image-container m-3 p-2 shadow border">
+                        </div>
+                        <div class="image-container m-3 p-2 shadow border">
                             <img src="img/html5.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                          </div>
-                      <!-- Add more icons here -->
+                        </div>
+                        <!-- Add more icons here -->
                     </div>
+                </div>
             </div>
-        </div>
     </section>
 
 
     <section>
         <hr class="separator center small slim">
     </section>
-    
+
 
     <section id="values">
         <div class="container">
@@ -304,13 +414,15 @@
                         <li><a href="#" data-category=".bc-articles">Articles</a></li>
                         <li><a href="#" data-category=".bc-projects">Projects</a></li>
                         <li><a href="#" data-category=".bc-decks">Decks</a></li>
+                        <li><a href="#" data-category=".bc-companies">Companies</a></li>
                     </ul>
                 </nav>
                 <!-- end: Portfolio Filter -->
             </div>
             <!-- Blog -->
-            <div id="blog" class="grid-layout post-3-columns m-b-30" data-default-filter="bc-featured" data-item="post-item">
-                                <!-- Post item
+            <div id="blog" class="grid-layout post-3-columns m-b-30" data-default-filter="bc-featured"
+                data-item="post-item">
+                <!-- Post item
                                 <div class="post-item border bc-events">
                                     <div class="post-item-wrap">
                                         <div class="post-image">
@@ -328,23 +440,152 @@
                                 </div>
                                 <!-- end: Post item-->
                 <!-- Post item-->
-                <div class="post-item border bc-projects bc-featured">
+                <div class="post-item border bc-projects">
+                    <div class="post-item-wrap">
+                        <div class="post-image">
+                            <a href="https://github.com/Guido-at-ETHZ/Master-s-Thesis">
+                                <img alt="" src="">
+                            </a>
+                        </div>
+                        <div class="post-item-description">
+                            <h2><a href="https://github.com/Guido-at-ETHZ/Master-s-Thesis">
+                                    Optimising Endothelialisation in VADs through Mechanoengineering and Predictive
+                                    Control
+                                </a></h2>
+                            <p>This repository contains the code and documentation for optimizing endothelialisation in
+                                Ventricular Assist Devices (VADs) using Model Predictive Control (MPC).
+                            </p>
+                            <a href="https://github.com/Guido-at-ETHZ/Master-s-Thesis" class="item-link">Read More <i
+                                    class="icon-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Post item-->
+                <!-- Post item-->
+                <div class="post-item border bc-articles">
+                    <div class="post-item-wrap">
+                        <div class="post-image">
+                            <a href="https://github.com/guidoputignano/Academic-Path">
+                                <img alt="" src="">
+                            </a>
+                        </div>
+                        <div class="post-item-description">
+                            <h2><a href="https://github.com/guidoputignano/Academic-Path">
+                                    Academic Journey: From Biomedical Engineering to Computational Biology
+                                </a></h2>
+                            <p>Description of the courses I have taken and my comments on them
+                            </p>
+                            <a href="https://github.com/guidoputignano/Academic-Path" class="item-link">Read More <i
+                                    class="icon-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Post item-->
+                <!-- Post item-->
+                <div class="post-item border bc-articles">
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a
-                               href="https://github.com/guidoputignano/ethz-evolutionary-dynamics">
-                                <img alt="" src="img/evolutionary.jpeg">
+                                href="https://www.weforum.org/stories/2022/04/ai-ethics-children-protect-future-generations/">
+                                <img alt="" src="img/visors.jpg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://github.com/guidoputignano/ethz-evolutionary-dynamics">
-                                   Evolutionary Cancer Dynamics
+                                    href="https://www.weforum.org/stories/2022/04/ai-ethics-children-protect-future-generations/">
+                                    AI ethics for children: digital natives on how to protect future generations
                                 </a></h2>
-                            <p>Exercises in Game Theory, selection, diffusion, cooperation and much more to model cancer dynamics.
+                            <p>Children and young people are growing up in an increasingly digital age, where technology
+                                pervades every aspect of their lives. From robotic toys and social media to the
+                                classroom and home, artificial intelligence (AI) is a ubiquitous part of daily life.
+                                It's vital therefore that ethical guidelines protect them and ensure they get the best
+                                from this emerging technology.
+                            </p>
+                            <a href="https://www.weforum.org/stories/2022/04/ai-ethics-children-protect-future-generations/"
+                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Post item-->
+                <!-- Post item-->
+                <div class="post-item border bc-companies">
+                    <div class="post-item-wrap">
+                        <div class="post-image">
+                            <a href="">
+                                <img alt="" src="img/bioergotech.png">
+                            </a>
+                        </div>
+                        <div class="post-item-description">
+                            <h2><a href="">
+                                    bioERGOtech
+                                </a></h2>
+                            <p>Making research smarter, not just faster, by creating digital scientists that transform
+                                how biological breakthroughs are discovered and developed
+                            </p>
+                            <a href="" class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Post item-->
+                <!-- Post item-->
+                <div class="post-item border bc-companies">
+                    <div class="post-item-wrap">
+                        <div class="post-image">
+                            <a href="https://www.safespro.it/">
+                                <img alt="" src="img/safespro.jpg">
+                            </a>
+                        </div>
+                        <div class="post-item-description">
+                            <h2><a href="https://www.safespro.it/">
+                                    SafesPro
+                                </a></h2>
+                            <p>Empowering talent from disadvantaged backgrounds with cutting-edge skills and mentorship
+                                to become leaders in tomorrow's biotech revolution
+                            </p>
+                            <a href="https://www.safespro.it/" class="item-link">Read More <i
+                                    class="icon-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Post item-->
+                <!-- Post item-->
+                <div class="post-item border bc-companies">
+                    <div class="post-item-wrap">
+                        <div class="post-image">
+                            <a href="https://tarantobiotechdays.com/">
+                                <img alt="" src="img/tarantobiotech.jpg">
+                            </a>
+                        </div>
+                        <div class="post-item-description">
+                            <h2><a href="https://tarantobiotechdays.com/">
+                                    Taranto Biotech Days
+                                </a></h2>
+                            <p>Democratizing biotech innovation by building world-class research ecosystems in
+                                underserved regions, starting with Southern Italy
+                            </p>
+                            <a href="https://tarantobiotechdays.com/" class="item-link">Read More <i
+                                    class="icon-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end: Post item-->
+                <!-- Post item-->
+                <div class="post-item border bc-projects bc-featured">
+                    <div class="post-item-wrap">
+                        <div class="post-image">
+                            <a href="https://github.com/guidoputignano/ethz-evolutionary-dynamics">
+                                <img alt="" src="img/evolutionary.jpeg">
+                            </a>
+                        </div>
+                        <div class="post-item-description">
+                            <h2><a href="https://github.com/guidoputignano/ethz-evolutionary-dynamics">
+                                    Evolutionary Cancer Dynamics
+                                </a></h2>
+                            <p>Exercises in Game Theory, selection, diffusion, cooperation and much more to model cancer
+                                dynamics.
                             </p>
                             <a href="https://github.com/guidoputignano/ethz-evolutionary-dynamics"
-                               class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -354,19 +595,19 @@
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a
-                               href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data">
+                                href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data">
                                 <img alt="" src="img/stat.jpeg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data">
-                                   Statistical Analysis for High-throughput Screening
+                                    href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data">
+                                    Statistical Analysis for High-throughput Screening
                                 </a></h2>
                             <p>Several projects on ATACseq, RNAseq and statistical analysis.
                             </p>
                             <a href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data"
-                               class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -375,37 +616,35 @@
                 <div class="post-item border bc-projects bc-featured">
                     <div class="post-item-wrap">
                         <div class="post-image">
-                            <a
-                               href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems">
+                            <a href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems">
                                 <img alt="" src="img/biomolecules.jpeg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems">
-                                   Computational Simulation of Biomolecular Systems
+                                    href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems">
+                                    Computational Simulation of Biomolecular Systems
                                 </a></h2>
                             <p>6 Projects to study and simulate biomolecules
                             </p>
                             <a href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems"
-                               class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <!-- end: Post item-->
                 <!-- Post item-->
-                <div class="post-item border bc-featured bc-decks">
+                <div class="post-item border bc-decks">
                     <div class="post-item-wrap">
                         <div class="post-image">
-                            <a
-                               href="https://drive.google.com/file/d/1gjWvI2ihabyndFnecdtHiFYO2UdghFWB/view">
+                            <a href="https://drive.google.com/file/d/1gjWvI2ihabyndFnecdtHiFYO2UdghFWB/view">
                                 <img alt="" src="img/brain.jpeg">
                             </a>
                         </div>
                         <div class="post-item-description">
-                            <h2><a
-                                   href="https://drive.google.com/file/d/1gjWvI2ihabyndFnecdtHiFYO2UdghFWB/view">Understanding human brain development and diseases:
-                                   Lamin morphodynamics in brain organoids
+                            <h2><a href="https://drive.google.com/file/d/1gjWvI2ihabyndFnecdtHiFYO2UdghFWB/view">Understanding
+                                    human brain development and diseases:
+                                    Lamin morphodynamics in brain organoids
                                 </a></h2>
                             <p>Organoids are three-dimensional
                                 tissues grown from stem cells that can
@@ -423,24 +662,23 @@
                                 development is unclear.
                             </p>
                             <a href="https://drive.google.com/file/d/1gjWvI2ihabyndFnecdtHiFYO2UdghFWB/view"
-                               class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <!-- end: Post item-->
                 <!-- Post item-->
-                <div class="post-item border bc-featured bc-decks">
+                <div class="post-item border bc-decks">
                     <div class="post-item-wrap">
                         <div class="post-image">
-                            <a
-                               href="https://drive.google.com/file/d/12TgqwFVs3-iYsYYWm4B3LIFMSGRh73mG/view">
+                            <a href="https://drive.google.com/file/d/12TgqwFVs3-iYsYYWm4B3LIFMSGRh73mG/view">
                                 <img alt="" src="img/bioimage.jpeg">
                             </a>
                         </div>
                         <div class="post-item-description">
-                            <h2><a
-                                   href="https://drive.google.com/file/d/12TgqwFVs3-iYsYYWm4B3LIFMSGRh73mG/view">Bioimage analysis for
-                                   stem cell research
+                            <h2><a href="https://drive.google.com/file/d/12TgqwFVs3-iYsYYWm4B3LIFMSGRh73mG/view">Bioimage
+                                    analysis for
+                                    stem cell research
                                 </a></h2>
                             <p>A stem cell is a type of cell that has
                                 the unique ability to differentiate
@@ -452,96 +690,108 @@
                                 structure in the body like other
                             </p>
                             <a href="https://drive.google.com/file/d/12TgqwFVs3-iYsYYWm4B3LIFMSGRh73mG/view"
-                               class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <!-- end: Post item-->
                 <!-- Post item-->
-                <div class="post-item border bc-featured bc-articles">
+                <div class="post-item border bc-articles">
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a
-                               href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C">
+                                href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C">
                                 <img alt="" src="img/aidrivenlongevity.jpg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C">Towards AI-driven longevity research: An overview
+                                    href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C">Towards
+                                    AI-driven longevity research: An overview
                                 </a></h2>
-                            <p>The process of aging is known to be dependent upon the interaction of different factors,such as the genome content of an individual, lifestyle factors, environmental interaction, and health facilities available to the individual (Newman and Murabito, 2013; Partridge et al., 2018; Singh et al., 2019).
-                                Increased lifespan and age represent the exceptional survival, maintenance of good health as compared to peers, delayed onsets of age-dependent diseases, and extreme phenotype of individuals (Kaeberlein, 2018; Pignolo, 2019). Previous works have emphasized how modern Artificial Intelligence (AI)
-                                is already playing an important role in speeding up decision-making in medical sciences by means of advanced machine learning (ML) algorithms. For example, it is revolutionizing the drug discovery process, saving money and time (Kelemen et al., 2008), as it is already being used to create the structure
-                                of new drugs depending on the specific structure of the target diseasecausing compound [see (Santus et al., 2021) for an overview]. In life sciences, the generation of high-throughput data such as proteomics, genomics, chemoproteomics and phenomics</p>
+                            <p>The process of aging is known to be dependent upon the interaction of different
+                                factors,such as the genome content of an individual, lifestyle factors, environmental
+                                interaction, and health facilities available to the individual (Newman and Murabito,
+                                2013; Partridge et al., 2018; Singh et al., 2019).
+                                Increased lifespan and age represent the exceptional survival, maintenance of good
+                                health as compared to peers, delayed onsets of age-dependent diseases, and extreme
+                                phenotype of individuals (Kaeberlein, 2018; Pignolo, 2019). Previous works have
+                                emphasized how modern Artificial Intelligence (AI)
+                                is already playing an important role in speeding up decision-making in medical sciences
+                                by means of advanced machine learning (ML) algorithms. For example, it is
+                                revolutionizing the drug discovery process, saving money and time (Kelemen et al.,
+                                2008), as it is already being used to create the structure
+                                of new drugs depending on the specific structure of the target diseasecausing compound
+                                [see (Santus et al., 2021) for an overview]. In life sciences, the generation of
+                                high-throughput data such as proteomics, genomics, chemoproteomics and phenomics</p>
                             <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C"
-                               class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <!-- Post item-->
-                <div class="post-item border bc-featured bc-articles">
+                <div class="post-item border bc-articles">
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a
-                               href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24">
+                                href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24">
                                 <img alt="" src="img/syntheticbiology.jpeg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24">Synthetic
+                                    href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24">Synthetic
                                     biology for Entrepreneurs: Innovations in the Healthcare Sector
                                 </a></h2>
                             <p>Imagine if you can have a tree that can mine gold or be resistant to any kind of virus
                                 forever.</p>
                             <a href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24"
-                               class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <!-- end: Post item-->
                 <!-- Post item-->
-                <div class="post-item border bc-featured bc-articles">
+                <div class="post-item border bc-articles">
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a
-                               href="https://guido-putignano.medium.com/stem-cells-what-they-are-how-to-use-them-and-their-future-implications-f6b3c859b112">
+                                href="https://guido-putignano.medium.com/stem-cells-what-they-are-how-to-use-them-and-their-future-implications-f6b3c859b112">
                                 <img alt="" src="img/stemcells.jpeg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://guido-putignano.medium.com/stem-cells-what-they-are-how-to-use-them-and-their-future-implications-f6b3c859b112">Stem
+                                    href="https://guido-putignano.medium.com/stem-cells-what-they-are-how-to-use-them-and-their-future-implications-f6b3c859b112">Stem
                                     Cells, What they are, How to use them and their future implications
                                 </a></h2>
                             <p>Imagine if you could cure many diseases such as AIDS, Diabetes, Stroke and Alzheimer with
                                 just one element, would you be astonished by that?</p>
                             <a href="https://guido-putignano.medium.com/stem-cells-what-they-are-how-to-use-them-and-their-future-implications-f6b3c859b112"
-                               class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <!-- end: Post item-->
                 <!-- Post item-->
-                <div class="post-item border bc-featured bc-articles">
+                <div class="post-item border bc-articles">
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a
-                               href="https://guido-putignano.medium.com/what-is-human-enhancement-and-why-is-it-good-for-our-society-e22fe4105b15">
+                                href="https://guido-putignano.medium.com/what-is-human-enhancement-and-why-is-it-good-for-our-society-e22fe4105b15">
                                 <img alt="" src="img/humanenhancment.jpeg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://guido-putignano.medium.com/what-is-human-enhancement-and-why-is-it-good-for-our-society-e22fe4105b15">What
+                                    href="https://guido-putignano.medium.com/what-is-human-enhancement-and-why-is-it-good-for-our-society-e22fe4105b15">What
                                     is Human Enhancement, and why is it good for our society?
                                 </a></h2>
                             <p>It was one day like others when the 20th October 1890 Walter Yeo was born. He was a young
                                 guy like others who used to spend his days with his older sisters Adelaide and Elsie.
                             </p>
                             <a href="https://guido-putignano.medium.com/what-is-human-enhancement-and-why-is-it-good-for-our-society-e22fe4105b15"
-                               class="item-link">Read More <i class="icon-chevron-right"></i></a>
+                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -564,19 +814,19 @@
             </h1>
             <!-- Awards -->
             <div style="background-color: rgba(0,0,0,0)" class="carousel" data-items="3" data-margin="5"
-                 data-arrows="false" data-dots="false">
+                data-arrows="false" data-dots="false">
                 <!-- Post item-->
                 <div class="post-item border">
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a
-                               href="https://www.google.com/url?q=https://premioitaliagiovane.it/&sa=D&source=editors&ust=1638819525317000&usg=AOvVaw30ZdET2URrfIqMRhj8fENO">
+                                href="https://www.google.com/url?q=https://premioitaliagiovane.it/&sa=D&source=editors&ust=1638819525317000&usg=AOvVaw30ZdET2URrfIqMRhj8fENO">
                                 <img alt="" src="img/premioitaliagiovane.jpg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://www.google.com/url?q=https://premioitaliagiovane.it/&sa=D&source=editors&ust=1638819525317000&usg=AOvVaw30ZdET2URrfIqMRhj8fENO">Premio
+                                    href="https://www.google.com/url?q=https://premioitaliagiovane.it/&sa=D&source=editors&ust=1638819525317000&usg=AOvVaw30ZdET2URrfIqMRhj8fENO">Premio
                                     Italia Giovane
                                 </a></h2>
                         </div>
@@ -588,13 +838,13 @@
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a
-                               href="https://www.google.com/url?q=https://www.clintonfoundation.org/programs/leadership-public-service/clinton-global-initiative-university/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw0sgINFRlofuads0T44vqeE">
+                                href="https://www.google.com/url?q=https://www.clintonfoundation.org/programs/leadership-public-service/clinton-global-initiative-university/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw0sgINFRlofuads0T44vqeE">
                                 <img alt="" src="img/clinton.jpeg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://www.google.com/url?q=https://www.clintonfoundation.org/programs/leadership-public-service/clinton-global-initiative-university/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw0sgINFRlofuads0T44vqeE">Clinton
+                                    href="https://www.google.com/url?q=https://www.clintonfoundation.org/programs/leadership-public-service/clinton-global-initiative-university/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw0sgINFRlofuads0T44vqeE">Clinton
                                     Foundation Fellowship
                                 </a></h2>
                         </div>
@@ -606,13 +856,13 @@
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a
-                               href="https://www.google.com/url?q=https://www.fondazionerui.it/en/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw2FXqVoOyjar_f4xFHa8BQd">
+                                href="https://www.google.com/url?q=https://www.fondazionerui.it/en/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw2FXqVoOyjar_f4xFHa8BQd">
                                 <img alt="" src="img/torrescalla.jpg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://www.google.com/url?q=https://www.fondazionerui.it/en/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw2FXqVoOyjar_f4xFHa8BQd">Your
+                                    href="https://www.google.com/url?q=https://www.fondazionerui.it/en/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw2FXqVoOyjar_f4xFHa8BQd">Your
                                     Free Year Award
                                 </a></h2>
                         </div>
@@ -657,14 +907,12 @@
                 <div class="post-item border">
                     <div class="post-item-wrap">
                         <div class="post-image">
-                            <a
-                               href="https://foresight.org/">
+                            <a href="https://foresight.org/">
                                 <img alt="" src="img/foresight.jpg">
                             </a>
                         </div>
                         <div class="post-item-description">
-                            <h2><a
-                                   href="https://foresight.org/">Foresight Fellowship
+                            <h2><a href="https://foresight.org/">Foresight Fellowship
                                 </a></h2>
                         </div>
                     </div>
@@ -675,13 +923,14 @@
                     <div class="post-item-wrap">
                         <div class="post-image">
                             <a
-                               href="https://marginalrevolution.com/marginalrevolution/2023/03/new-emergent-ventures-winners-25th-cohort.html">
+                                href="https://marginalrevolution.com/marginalrevolution/2023/03/new-emergent-ventures-winners-25th-cohort.html">
                                 <img alt="" src="img/mr.jpg">
                             </a>
                         </div>
                         <div class="post-item-description">
                             <h2><a
-                                   href="https://marginalrevolution.com/marginalrevolution/2023/03/new-emergent-ventures-winners-25th-cohort.html">Emergent Ventures
+                                    href="https://marginalrevolution.com/marginalrevolution/2023/03/new-emergent-ventures-winners-25th-cohort.html">Emergent
+                                    Ventures
                                 </a></h2>
                         </div>
                     </div>
@@ -695,70 +944,140 @@
         <hr class="separator center small slim">
     </section>
 
-    <section id="contact">
+    <section class="py-5 bg-light">
         <div class="container">
-          <h1 class="highlighted center">
-            <div class="highlight"></div>Contact Me
-          </h1>
-          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex flex-wrap justify-content-center align-items-center">
-            <div class="col">
-              <div class="card text-center border shadow-sm">
-                <a href="https://www.linkedin.com/in/guido-putignano/">
-                  <div class="card-body">
-                    <i class="fab fa-linkedin fa-2x mb-2"></i>
-                    <h5 class="card-title">Message Me</h5>
-                    <p class="card-text">On Linkedin.</p>
-                  </div>
-                </a>
+            <h1 class="highlighted center">
+                <div class="highlight"></div>Services
+            </h1>
+          <div class="text-center mb-5">
+            <p class="text-muted">
+              Leveraging expertise in AI, biotech, and automation to help researchers and organizations innovate and grow.
+            </p>
+          </div>
+      
+          <div class="row g-4">
+            
+            <!-- Consulting -->
+            <div class="col-md-4">
+              <div class="p-4 bg-white shadow rounded h-100 text-center">
+                <i class="fas fa-lightbulb fa-5x customblue"></i> 
+                <h4 class="fw-bold mb-2">Consulting</h4>
+                <p class="text-muted mb-3">Tailored solutions for complex research & innovation challenges</p>
+                <ul class="text-start">
+                  <li><i class="fas fa-check customblue"></i> &nbsp Research Strategy</li>
+                  <li><i class="fas fa-check customblue"></i> &nbsp Process Workflow Optimization</li>
+                  <li><i class="fas fa-check customblue"></i> &nbsp Custom Team Development</li>
+                  <li><i class="fas fa-check customblue"></i> &nbsp Business Roadmapping</li>
+                </ul>
               </div>
             </div>
-            <div class="col">
-              <div class="card text-center border shadow-sm">
-                <a href="https://www.instagram.com/guidoputignano/?hl=en">
-                  <div class="card-body">
-                    <i class="fab fa-instagram fa-2x mb-2"></i>
-                    <h5 class="card-title">Find Me</h5>
-                    <p class="card-text">On Instagram.</p>
-                  </div>
-                </a>
+      
+            <!-- Teaching -->
+            <div class="col-md-4">
+              <div class="p-4 bg-white shadow rounded h-100 text-center">
+                <i class="fas fa-chalkboard-teacher fa-5x customblue"></i>
+                <h4 class="fw-bold mb-2">Teaching</h4>
+                <p class="text-muted mb-3">Workshops & training to upskill teams in data, AI & innovation</p>
+                <ul class="text-start">
+                  <li><i class="fas fa-check customblue"></i> &nbsp Data Innovation Programs</li>
+                  <li><i class="fas fa-check customblue"></i> &nbsp AI Integration Workshops</li>
+                  <li><i class="fas fa-check customblue"></i> &nbsp Innovation Bootcamps</li>
+                </ul>
               </div>
             </div>
-            <div class="col">
-              <div class="card text-center border shadow-sm">
-                <a href="https://twitter.com/guidoputignano">
-                  <div class="card-body">
-                    <i class="fab fa-twitter fa-2x mb-2"></i>
-                    <h5 class="card-title">Follow Me</h5>
-                    <p class="card-text">On Twitter.</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card text-center border shadow-sm">
-                <a href="https://scholar.google.com/citations?user=ym2VggEAAAAJ&hl=en&oi=ao">
-                  <div class="card-body">
-                    <i class="fas fa-graduation-cap fa-2x mb-2"></i>
-                    <h5 class="card-title">Follow Me</h5>
-                    <p class="card-text">On Google Scholar.</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card text-center border shadow-sm">
-                <a href="mailto: guido.putignano@gmail.com">
-                  <div class="card-body">
-                    <i class="fas fa-envelope fa-2x mb-2"></i>
-                    <h5 class="card-title">Mail Me</h5>
-                    <p class="card-text">guido.putignano@gmail.com</p>
-                  </div>
-                </a>
+      
+            <!-- Advisorship -->
+            <div class="col-md-4">
+              <div class="p-4 bg-white shadow rounded h-100 text-center">
+                <i class="fas fa-hands-helping fa-5x customblue"></i>
+                <h4 class="fw-bold mb-2">Advisorship</h4>
+                <p class="text-muted mb-3">Guidance for biotech startups and research initiatives</p>
+                <ul class="text-start">
+                    <li>
+                      <i class="fas fa-check customblue"></i> &nbsp Startup Mentoring
+                    </li>
+                    <li>
+                      <i class="fas fa-check customblue"></i> &nbsp Technical Advisory
+                    </li>
+                    <li>
+                      <i class="fas fa-check customblue"></i> &nbsp Ongoing Strategic Guidance
+                    </li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
       </section>
+      
+    <section>
+        <hr class="separator center small slim">
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h1 class="highlighted center">
+                <div class="highlight"></div>Contact Me
+            </h1>
+            <div
+                class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex flex-wrap justify-content-center align-items-center">
+                <div class="col">
+                    <div class="card text-center border shadow-sm">
+                        <a href="https://www.linkedin.com/in/guido-putignano/">
+                            <div class="card-body">
+                                <i class="fab fa-linkedin fa-2x mb-2"></i>
+                                <h5 class="card-title">Message Me</h5>
+                                <p class="card-text">On Linkedin.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center border shadow-sm">
+                        <a href="https://www.instagram.com/guidoputignano/?hl=en">
+                            <div class="card-body">
+                                <i class="fab fa-instagram fa-2x mb-2"></i>
+                                <h5 class="card-title">Find Me</h5>
+                                <p class="card-text">On Instagram.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center border shadow-sm">
+                        <a href="https://twitter.com/guidoputignano">
+                            <div class="card-body">
+                                <i class="fab fa-twitter fa-2x mb-2"></i>
+                                <h5 class="card-title">Follow Me</h5>
+                                <p class="card-text">On Twitter.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center border shadow-sm">
+                        <a href="https://scholar.google.com/citations?user=ym2VggEAAAAJ&hl=en&oi=ao">
+                            <div class="card-body">
+                                <i class="fas fa-graduation-cap fa-2x mb-2"></i>
+                                <h5 class="card-title">Follow Me</h5>
+                                <p class="card-text">On Google Scholar.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center border shadow-sm">
+                        <a href="mailto: guido.putignano@gmail.com">
+                            <div class="card-body">
+                                <i class="fas fa-envelope fa-2x mb-2"></i>
+                                <h5 class="card-title">Mail Me</h5>
+                                <p class="card-text">guido.putignano@gmail.com</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/flickity.min.js"></script>

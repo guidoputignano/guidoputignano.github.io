@@ -128,3 +128,15 @@ h1.highlighted {
 #menu1 h4:hover{
   color: black;
 }
+
+.customblue {
+  color: #2250fc !important;
+}
+.customhover {
+  padding: 5px;
+  padding-inline: 10px;
+  border-radius: 5px;
+}
+.customhover:hover {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
