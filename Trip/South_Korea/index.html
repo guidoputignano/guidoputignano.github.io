@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>South Korea Biotech Trip</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1517154421773-0529f29ea451?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .city-card {
+            transition: transform 0.3s ease;
+        }
+        .city-card:hover {
+            transform: translateY(-5px);
+        }
+        .timeline-container {
+            border-left: 3px solid #4F46E5;
+            padding-left: 20px;
+            margin-left: 20px;
+        }
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background-color: #4F46E5;
+            border-radius: 50%;
+            position: absolute;
+            left: -32px;
+            top: 0;
+        }
+        .map-container {
+            height: 400px;
+            width: 100%;
+            border-radius: 0.5rem;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="hero-bg text-white text-center py-20 px-4 relative">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">South Korea Biotech Ecosystem Exploration</h1>
+            <p class="text-xl md:text-2xl mb-6">A 10-Day Journey Through Korea's Innovation Centers</p>
+            <div class="flex justify-center space-x-4">
+                <span class="bg-indigo-700 text-white px-4 py-2 rounded-full text-sm font-semibold"><i class="fas fa-calendar-alt mr-2"></i>10 Days</span>
+                <span class="bg-indigo-700 text-white px-4 py-2 rounded-full text-sm font-semibold"><i class="fas fa-map-marker-alt mr-2"></i>6 Cities</span>
+                <span class="bg-indigo-700 text-white px-4 py-2 rounded-full text-sm font-semibold"><i class="fas fa-flask mr-2"></i>1000+ Biotech Companies</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-4">
+                    <div class="flex items-center py-4 px-2">
+                        <span class="font-bold text-xl text-indigo-600">SK Biotech Trip</span>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="#overview" class="py-4 px-3 text-gray-700 hover:text-indigo-600 font-medium">Overview</a>
+                        <a href="#hubs" class="py-4 px-3 text-gray-700 hover:text-indigo-600 font-medium">Biotech Hubs</a>
+                        <a href="#itinerary" class="py-4 px-3 text-gray-700 hover:text-indigo-600 font-medium">Itinerary</a>
+                        <a href="#travel-info" class="py-4 px-3 text-gray-700 hover:text-indigo-600 font-medium">Travel Info</a>
+                        <a href="#maps" class="py-4 px-3 text-gray-700 hover:text-indigo-600 font-medium">Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Overview Section -->
+        <section id="overview" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-4">South Korea's Biotech Landscape</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Discover how South Korea has positioned itself as a global leader in biotechnology innovation and development.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-600">Industry Overview</h3>
+                    <p class="mb-4">South Korea has emerged as a significant global biotech hub with more than 1,000 biotech companies, many of which are startups. The nation's strategic focus on biotechnology has positioned it as a leader in biopharmaceuticals, medical devices, and healthcare technology.</p>
+                    <ul class="list-disc ml-6 text-gray-700">
+                        <li class="mb-2">Home to more than 1,000 biotech companies</li>
+                        <li class="mb-2">Seoul ranks as the world's top clinical trial city</li>
+                        <li class="mb-2">Major investments in R&D infrastructure</li>
+                        <li class="mb-2">Strong government support through initiatives and funding</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-600">Strategic Goals</h3>
+                    <p class="mb-4">The Korean government has set ambitious goals for the biotechnology sector as part of its economic development strategy:</p>
+                    <ul class="list-disc ml-6 text-gray-700">
+                        <li class="mb-2">Capture 6% of global pharmaceutical and medical device manufacturing by 2030</li>
+                        <li class="mb-2">Export $50B of biotech products by 2030</li>
+                        <li class="mb-2">Create a self-sustaining biotech ecosystem with global reach</li>
+                        <li class="mb-2">Foster innovation through industry-academia collaboration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-indigo-50 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-microscope text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Research Strengths</h3>
+                    <p>World-class research in biologics, stem cells, gene therapy, and precision medicine</p>
+                </div>
+                <div class="bg-indigo-50 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-industry text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Manufacturing Excellence</h3>
+                    <p>Leading capabilities in biopharmaceutical manufacturing and contract development</p>
+                </div>
+                <div class="bg-indigo-50 rounded-lg p-6 text-center">
+                    <div class="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Global Partnerships</h3>
+                    <p>Strong international collaborations with pharmaceutical giants and research institutions</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Biotech Hubs Section -->
+        <section id="hubs" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-4">Key Biotech Hubs</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Explore the six major biotech innovation centers across South Korea that form the backbone of the country's life science ecosystem.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Seoul -->
+                <div class="city-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1538485399081-7c6b560e95e6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Seoul Skyline" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-indigo-600">Seoul</h3>
+                            <span class="text-sm text-white bg-indigo-600 rounded-full px-3 py-1">Capital Hub</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Seoul serves as the primary center for biotech innovation in South Korea, hosting Seoul Biohub, a biomed startup innovation platform managed by the Korea Institute of Science and Technology.</p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold mb-2">Key Organizations:</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li>Seoul Biohub</li>
+                                <li>Korea Institute of Science and Technology</li>
+                                <li>Multiple university research centers</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Focus Areas:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Pharmaceutical R&D</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Medical Devices</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Healthcare IT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Incheon/Songdo -->
+                <div class="city-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1619789538910-8a6a0707b689?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Incheon" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-indigo-600">Incheon/Songdo</h3>
+                            <span class="text-sm text-white bg-indigo-600 rounded-full px-3 py-1">Bio Cluster</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Incheon's Songdo district is a purpose-built international bio cluster housing major biologics manufacturers and research facilities.</p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold mb-2">Key Organizations:</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li>Samsung Biologics ($40B+ valuation)</li>
+                                <li>Cytiva's Innovation Hub</li>
+                                <li>International research institutions</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Focus Areas:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Contract Drug Development</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Biologics Manufacturing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daejeon -->
+                <div class="city-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1601459131139-ac6e48e23072?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Daejeon" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-indigo-600">Daejeon</h3>
+                            <span class="text-sm text-white bg-indigo-600 rounded-full px-3 py-1">R&D Powerhouse</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Daejeon is South Korea's largest R&D hub, serving as a center for basic scientific research and biotechnology development with over 70 biotech companies.</p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold mb-2">Key Organizations:</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li>Korea Research Institute of Bioscience and Biotechnology (KRIBB)</li>
+                                <li>Merck's Bioprocessing Production Center</li>
+                                <li>Multiple new drug development companies</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Focus Areas:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">New Drug Development</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Basic Bioscience Research</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pangyo -->
+                <div class="city-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1594146032116-70e4578dd4f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pangyo" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-indigo-600">Pangyo</h3>
+                            <span class="text-sm text-white bg-indigo-600 rounded-full px-3 py-1">Tech Valley</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Known as the "Silicon Valley of Korea," Pangyo Techno Valley is rapidly emerging as a biotechnology hub with excellent transport links to Seoul.</p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold mb-2">Key Organizations:</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li>Various IT-biotech convergence startups</li>
+                                <li>Biotech R&D centers</li>
+                                <li>Technology incubators</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Focus Areas:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">IT-Biotech Convergence</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Medical Technology</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Fusion Technology</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Osong -->
+                <div class="city-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1584556812952-905ffd0c611a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Osong" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-indigo-600">Osong</h3>
+                            <span class="text-sm text-white bg-indigo-600 rounded-full px-3 py-1">National Bio Cluster</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Osong Bio Valley is Korea's only biotech complex initiated by the government and is projected to become the country's largest bio research town.</p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold mb-2">Key Organizations:</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li>Four major government research facilities</li>
+                                <li>Osong Bio Promotion Foundation</li>
+                                <li>National health institutions</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Focus Areas:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Bio-Health Sciences</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">K-Bio Industry</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">K-Beauty Industry</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Busan -->
+                <div class="city-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524360526339-9ad59a9f7f8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Busan" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xl font-bold text-indigo-600">Busan</h3>
+                            <span class="text-sm text-white bg-indigo-600 rounded-full px-3 py-1">Southern Hub</span>
+                        </div>
+                        <p class="text-gray-700 mb-4">Busan is an emerging biotech hub in southern Korea with strong educational institutions and growing R&D facilities.</p>
+                        <div class="mb-4">
+                            <h4 class="font-semibold mb-2">Key Organizations:</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li>Pusan National University</li>
+                                <li>Prestige BioPharma's Innovative Discovery Centre</li>
+                                <li>Busan-based biotech startups</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Focus Areas:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Innovative Drug Discovery</span>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">Biotechnology Education</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Itinerary Section -->
+        <section id="itinerary" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-4">10-Day Itinerary</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Your day-by-day guide to exploring South Korea's biotech ecosystem, optimized for connectivity and efficiency.</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                <div class="flex flex-col md:flex-row mb-6">
+                    <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                        <div class="flex items-center justify-center md:justify-start">
+                            <div class="bg-indigo-600 rounded-full p-2 text-white mr-4">
+                                <i class="fas fa-map-marked-alt text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">Route Overview</h3>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-3/4">
+                        <div class="flex flex-wrap">
+                            <div class="w-full md:w-1/2 mb-4">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white mr-3">
+                                        <i class="fas fa-plane-arrival"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-sm">Starting Point</p>
+                                        <p class="font-semibold">Seoul (from Japan)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-1/2 mb-4">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white mr-3">
+                                        <i class="fas fa-plane-departure"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-sm">End Point</p>
+                                        <p class="font-semibold">Busan (to Philippines/China)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-1/2 mb-4">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white mr-3">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-sm">Duration</p>
+                                        <p class="font-semibold">10 Days</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full md:w-1/2 mb-4">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white mr-3">
+                                        <i class="fas fa-map-signs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-sm">Cities Covered</p>
+                                        <p class="font-semibold">6 Biotech Hubs</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-indigo-50 p-4 rounded-lg mb-8">
+                    <div class="flex items-center mb-3">
+                        <i class="fas fa-lightbulb text-indigo-600 mr-2"></i>
+                        <h4 class="font-bold text-indigo-600">Trip Highlight</h4>
+                    </div>
+                    <p>This itinerary flows logically from Seoul to Busan, allowing you to experience all major biotech hubs while minimizing travel time. The route is ideal if you're arriving from Japan and departing to the Philippines or China afterward.</p>
+                </div>
+
+                <div class="timeline-container relative">
+                    <!-- Day 1 -->
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-indigo-600">Day 1: Seoul Arrival & Orientation</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full mt-2 md:mt-0">Seoul</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">Arrive in Seoul and begin your exploration of South Korea's biotech capital.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Morning</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Arrival at Incheon International Airport</li>
+                                        <li>Transfer to accommodation in Seoul</li>
+                                        <li>Check-in and refresh</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Afternoon</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Visit Seoul Biohub</li>
+                                        <li>Introduction to Korea's biotech ecosystem</li>
+                                        <li>Welcome dinner with industry contacts (optional)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-semibold mb-2 text-indigo-600">Key Visits</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Seoul Biohub</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Korea Institute of Science and Technology (KIST)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-indigo-600">Day 2: Seoul Biotech Research Centers</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full mt-2 md:mt-0">Seoul</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">Delve deeper into Seoul's biotech research landscape, visiting key facilities and meeting with researchers.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Morning</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Visit university research centers</li>
+                                        <li>Tours of laboratory facilities</li>
+                                        <li>Discussions with research teams</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Afternoon</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Visit Seoul-based biotech startups</li>
+                                        <li>Networking with entrepreneurs</li>
+                                        <li>Evening cultural experience in Seoul</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-semibold mb-2 text-indigo-600">Key Visits</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Seoul National University Biotech Centers</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Local Biotech Startups</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-indigo-600">Day 3: Pangyo "Korean Silicon Valley" Trip</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full mt-2 md:mt-0">Pangyo</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">Take a day trip to Pangyo Techno Valley, often called the "Silicon Valley of Korea," to explore biotech-IT convergence.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Morning</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Travel to Pangyo (30 minutes from Seoul)</li>
+                                        <li>Visit Pangyo Techno Valley</li>
+                                        <li>Tour of startup campus</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Afternoon</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Meetings with biotech-IT convergence companies</li>
+                                        <li>Experience cutting-edge fusion technologies</li>
+                                        <li>Return to Seoul in the evening</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-semibold mb-2 text-indigo-600">Key Visits</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Pangyo Startup Campus</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">IT-Biotech Convergence Companies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 4 -->
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-indigo-600">Day 4: Travel to Incheon/Songdo</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full mt-2 md:mt-0">Incheon</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">Head to Incheon and explore the Songdo Bio-cluster, a purpose-built international biotech district.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Morning</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Check out of Seoul accommodation</li>
+                                        <li>Travel to Incheon (1 hour from Seoul)</li>
+                                        <li>Check into Songdo accommodation</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Afternoon</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Introduction to Songdo Bio-cluster</li>
+                                        <li>Visit smaller biotech facilities</li>
+                                        <li>Evening walk around Songdo Central Park</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-semibold mb-2 text-indigo-600">Key Visits</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Songdo Bio-cluster Overview</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Biotechnology Incubators</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 5 -->
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-indigo-600">Day 5: Incheon Biotech Manufacturing</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full mt-2 md:mt-0">Incheon</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">Focus on Incheon's biologics manufacturing capabilities, including world-class facilities.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Morning</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Visit Samsung Biologics facilities</li>
+                                        <li>Tour of manufacturing capabilities</li>
+                                        <li>Discussion with industry experts</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Afternoon</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Visit Cytiva's Innovation Hub</li>
+                                        <li>Exploration of latest bioprocessing technologies</li>
+                                        <li>Evening free time in Songdo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-semibold mb-2 text-indigo-600">Key Visits</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Samsung Biologics</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Cytiva's Innovation Hub</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 6 -->
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-indigo-600">Day 6: Travel to Daejeon</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full mt-2 md:mt-0">Daejeon</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">Travel to Daejeon, Korea's R&D powerhouse, and begin exploring its extensive research facilities.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Morning</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Check out of Incheon accommodation</li>
+                                        <li>Travel to Daejeon (1.5 hours by KTX high-speed train)</li>
+                                        <li>Check into Daejeon accommodation</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Afternoon</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Visit Korea Research Institute of Bioscience and Biotechnology (KRIBB)</li>
+                                        <li>Introduction to Daejeon's biotech ecosystem</li>
+                                        <li>Evening exploration of Daejeon</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-semibold mb-2 text-indigo-600">Key Visits</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">KRIBB Main Campus</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Daejeon Bio Venture Town</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 7 -->
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-indigo-600">Day 7: Daejeon R&D Centers</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full mt-2 md:mt-0">Daejeon</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">Full day exploring Daejeon's rich ecosystem of biotech R&D centers and new drug development companies.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Morning</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Visit Merck's Bioprocessing Production Center</li>
+                                        <li>Tour of state-of-the-art facilities</li>
+                                        <li>Discussion with research leadership</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Afternoon</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Meetings with biotech startups focused on new drug development</li>
+                                        <li>Visit to Daejeon Techno Valley</li>
+                                        <li>Evening networking event (optional)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-semibold mb-2 text-indigo-600">Key Visits</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Merck's Bioprocessing Production Center</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">New Drug Development Companies</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 8 -->
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-indigo-600">Day 8: Osong Bio Valley</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full mt-2 md:mt-0">Osong</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">Day trip to Osong Bio Valley, Korea's government-initiated biotech complex focused on bio-health sciences.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Morning</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Travel to Osong (20 minutes from Daejeon by train)</li>
+                                        <li>Visit Osong Bio Promotion Foundation</li>
+                                        <li>Introduction to K-bio and K-beauty industries</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Afternoon</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Visit government research facilities</li>
+                                        <li>Tour of Osong Biovalley project</li>
+                                        <li>Return to Daejeon in the evening</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-semibold mb-2 text-indigo-600">Key Visits</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Osong Bio Promotion Foundation</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Government Research Facilities</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Osong Biovalley Project</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 9 -->
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-indigo-600">Day 9: Travel to Busan</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full mt-2 md:mt-0">Busan</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">Travel to Busan, South Korea's second-largest city and an emerging biotech hub in the southern region.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Morning</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Check out of Daejeon accommodation</li>
+                                        <li>Travel to Busan (2 hours by KTX)</li>
+                                        <li>Check into Busan accommodation</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Afternoon</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Visit Pusan National University's biotechnology department</li>
+                                        <li>Introduction to Busan's biotech ecosystem</li>
+                                        <li>Evening at Haeundae Beach (famous Busan landmark)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-semibold mb-2 text-indigo-600">Key Visits</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Pusan National University</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Busan Biotech Forum (if available)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Day 10 -->
+                    <div class="mb-8 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="bg-white rounded-lg border border-gray-200 p-6">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                                <h3 class="text-xl font-bold text-indigo-600">Day 10: Busan Biotech & Departure</h3>
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full mt-2 md:mt-0">Busan</span>
+                            </div>
+                            <p class="text-gray-700 mb-4">Final day exploring Busan's biotech facilities before departure to your next destination.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Morning</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Visit Prestige BioPharma's Innovative Discovery Centre</li>
+                                        <li>Tour of state-of-the-art R&D facilities</li>
+                                        <li>Meeting with research teams</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2 text-indigo-600">Afternoon</h4>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Check out of Busan accommodation</li>
+                                        <li>Brief city tour if time permits</li>
+                                        <li>Departure from Busan to Philippines or China</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h4 class="font-semibold mb-2 text-indigo-600">Key Visits</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Prestige BioPharma's Innovative Discovery Centre</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Busan Biotech Startups</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Travel Information Section -->
+        <section id="travel-info" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-4">Practical Travel Information</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Essential information to ensure a smooth and productive biotech exploration trip in South Korea.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-indigo-600 p-4">
+                        <h3 class="text-xl font-bold text-white flex items-center">
+                            <i class="fas fa-plane-departure mr-3"></i> Transportation
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-2 text-indigo-600">Getting Around</h4>
+                            <p class="text-gray-700 mb-3">South Korea has an excellent public transportation system that makes traveling between cities efficient and convenient.</p>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li class="mb-2"><span class="font-medium">KTX High-Speed Train:</span> The fastest way to travel between major cities. Seoul to Busan takes just 2.5 hours.</li>
+                                <li class="mb-2"><span class="font-medium">Subway Systems:</span> Major cities have extensive subway networks that are clean, efficient, and have English signage.</li>
+                                <li class="mb-2"><span class="font-medium">Taxis:</span> Readily available and relatively affordable. Most drivers in major cities understand basic English.</li>
+                                <li class="mb-2"><span class="font-medium">Buses:</span> Extensive intercity and intracity bus networks provide comprehensive coverage.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold mb-2 text-indigo-600">International Connections</h4>
+                            <p class="text-gray-700 mb-3">South Korea is well-connected to neighboring countries:</p>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li class="mb-2"><span class="font-medium">From Japan:</span> Multiple daily flights from Tokyo, Osaka, and other major Japanese cities to Seoul and Busan.</li>
+                                <li class="mb-2"><span class="font-medium">To Philippines:</span> Direct flights from Busan to Manila and other Philippine cities.</li>
+                                <li class="mb-2"><span class="font-medium">To China:</span> Numerous direct flights from Busan to Beijing, Shanghai, and other Chinese destinations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-indigo-600 p-4">
+                        <h3 class="text-xl font-bold text-white flex items-center">
+                            <i class="fas fa-bed mr-3"></i> Accommodation
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-2 text-indigo-600">Recommended Areas</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li class="mb-2"><span class="font-medium">Seoul:</span> Gangnam (business district), Jongno (central area), or Mapo (convenient access)</li>
+                                <li class="mb-2"><span class="font-medium">Incheon/Songdo:</span> Songdo International Business District</li>
+                                <li class="mb-2"><span class="font-medium">Daejeon:</span> Near Daejeon Convention Center or Yuseong Hot Springs area</li>
+                                <li class="mb-2"><span class="font-medium">Busan:</span> Haeundae Beach area or Seomyeon (central district)</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold mb-2 text-indigo-600">Accommodation Types</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li class="mb-2"><span class="font-medium">Business Hotels:</span> Numerous international and local chains cater to business travelers</li>
+                                <li class="mb-2"><span class="font-medium">Serviced Apartments:</span> Good option for longer stays in each location</li>
+                                <li class="mb-2"><span class="font-medium">Boutique Hotels:</span> Available in major cities for a more unique experience</li>
+                                <li class="mb-2"><span class="font-medium">Traditional Hanok:</span> Experience Korean heritage in traditional hanok accommodations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-indigo-600 p-4">
+                        <h3 class="text-xl font-bold text-white flex items-center">
+                            <i class="fas fa-briefcase mr-3"></i> Business Culture
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-2 text-indigo-600">Business Etiquette</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li class="mb-2"><span class="font-medium">Business Cards:</span> Essential for introductions. Present and receive with both hands.</li>
+                                <li class="mb-2"><span class="font-medium">Greetings:</span> A slight bow is customary. Handshakes are also common in business settings.</li>
+                                <li class="mb-2"><span class="font-medium">Formality:</span> South Korean business culture is relatively formal. Address people using their titles.</li>
+                                <li class="mb-2"><span class="font-medium">Punctuality:</span> Being on time is important and demonstrates respect.</li>
+                                <li class="mb-2"><span class="font-medium">Relationships:</span> Building personal relationships is important in Korean business culture.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold mb-2 text-indigo-600">Meeting Preparation</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li class="mb-2"><span class="font-medium">Materials:</span> Have business cards and any presentation materials ready in advance.</li>
+                                <li class="mb-2"><span class="font-medium">Language:</span> While English is common in the biotech sector, having a translator for detailed discussions can be helpful.</li>
+                                <li class="mb-2"><span class="font-medium">Follow-up:</span> Send thank you emails after meetings and promptly follow up on any commitments.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="bg-indigo-600 p-4">
+                        <h3 class="text-xl font-bold text-white flex items-center">
+                            <i class="fas fa-mobile-alt mr-3"></i> Practical Tips
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-2 text-indigo-600">Technology & Connectivity</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li class="mb-2"><span class="font-medium">Internet:</span> South Korea has the world's fastest internet. Wi-Fi is widely available.</li>
+                                <li class="mb-2"><span class="font-medium">Mobile Data:</span> Consider renting a pocket Wi-Fi or purchasing a local SIM card upon arrival.</li>
+                                <li class="mb-2"><span class="font-medium">Adapters:</span> South Korea uses the same type of electrical outlets as the United States (Type A and Type C).</li>
+                                <li class="mb-2"><span class="font-medium">Translation Apps:</span> Download apps like Papago or Google Translate to assist with communication.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold mb-2 text-indigo-600">Health & Safety</h4>
+                            <ul class="list-disc ml-5 text-gray-600">
+                                <li class="mb-2"><span class="font-medium">Safety:</span> South Korea is one of the safest countries in the world with very low crime rates.</li>
+                                <li class="mb-2"><span class="font-medium">Healthcare:</span> Excellent medical facilities are available in major cities.</li>
+                                <li class="mb-2"><span class="font-medium">Insurance:</span> Consider travel health insurance that covers business activities.</li>
+                                <li class="mb-2"><span class="font-medium">Emergencies:</span> The emergency number in South Korea is 112 for police and 119 for fire/medical emergencies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 mt-8">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 rounded-full p-2 text-white mr-4">
+                        <i class="fas fa-lightbulb text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-indigo-600">Networking Opportunities</h3>
+                </div>
+                <p class="text-gray-700 mb-4">To maximize the value of your biotech ecosystem exploration, consider these networking opportunities:</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold mb-2 text-indigo-600">Events & Conferences</h4>
+                        <ul class="list-disc ml-5 text-gray-600">
+                            <li class="mb-2">Check for biotech conferences happening during your visit</li>
+                            <li class="mb-2">Industry networking events at major innovation hubs</li>
+                            <li class="mb-2">University-hosted seminars and presentations</li>
+                            <li class="mb-2">Government-sponsored biotech promotion events</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-indigo-600">Key Organizations</h4>
+                        <ul class="list-disc ml-5 text-gray-600">
+                            <li class="mb-2">Korea Health Industry Development Institute (KHIDI)</li>
+                            <li class="mb-2">Korea Biotechnology Industry Organization (KoreaBIO)</li>
+                            <li class="mb-2">Korea Pharmaceutical and Bio-Pharma Manufacturers Association</li>
+                            <li class="mb-2">Local chambers of commerce and industry associations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Maps Section -->
+        <section id="maps" class="mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-4">Interactive Maps</h2>
+                <div class="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Navigate South Korea's biotech ecosystem with detailed maps of key hubs and facilities.</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                <div class="mb-6">
+                    <h3 class="text-xl font-bold text-indigo-600 mb-4">South Korea Biotech Hub Overview</h3>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1lyQXTXZipqBV6LVHDVxKZ83L9BU&hl=en&ehbc=2E312F" width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-200 pt-6">
+                    <h3 class="text-xl font-bold text-indigo-600 mb-4">City-Specific Biotech Maps</h3>
+
+                    <div class="mb-4">
+                        <div class="flex border-b border-gray-200">
+                            <button class="tab-button py-2 px-4 font-medium text-indigo-600 border-b-2 border-indigo-600" data-tab="seoul">Seoul</button>
+                            <button class="tab-button py-2 px-4 font-medium text-gray-500 hover:text-indigo-600" data-tab="incheon">Incheon/Songdo</button>
+                            <button class="tab-button py-2 px-4 font-medium text-gray-500 hover:text-indigo-600" data-tab="daejeon">Daejeon</button>
+                            <button class="tab-button py-2 px-4 font-medium text-gray-500 hover:text-indigo-600" data-tab="busan">Busan</button>
+                        </div>
+
+                        <div id="seoul" class="tab-content active">
+                            <div class="p-4">
+                                <h4 class="font-semibold mb-2">Seoul Biotech Innovation Centers</h4>
+                                <p class="mb-4 text-gray-700">Explore Seoul's key biotech facilities, including Seoul Biohub and major research institutions.</p>
+                                <div class="map-container">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d202405.41233593677!2d126.85928865229244!3d37.56360230820175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2012d5c39cf%3A0x7e11eca1405bf29b!2sSeoul%2C%20South%20Korea!5e0!3m2!1sen!2sus!4v1650356342018!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                                <div class="mt-4">
+                                    <h5 class="font-medium mb-2">Key Locations:</h5>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Seoul Biohub</li>
+                                        <li>Korea Institute of Science and Technology (KIST)</li>
+                                        <li>Seoul National University Biotech Centers</li>
+                                        <li>Biotech & Research Startups</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="incheon" class="tab-content">
+                            <div class="p-4">
+                                <h4 class="font-semibold mb-2">Incheon/Songdo Bio Cluster</h4>
+                                <p class="mb-4 text-gray-700">Discover Songdo's purpose-built international bio cluster and major biologics manufacturing facilities.</p>
+                                <div class="map-container">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101103.97281582158!2d126.5537390872811!3d37.45644241661228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35796f2596138247%3A0x7d37fd902cb76142!2sIncheon%2C%20South%20Korea!5e0!3m2!1sen!2sus!4v1650356417160!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                                <div class="mt-4">
+                                    <h5 class="font-medium mb-2">Key Locations:</h5>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Songdo Bio Cluster</li>
+                                        <li>Samsung Biologics</li>
+                                        <li>Cytiva's Innovation Hub</li>
+                                        <li>Biotechnology Incubators</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="daejeon" class="tab-content">
+                            <div class="p-4">
+                                <h4 class="font-semibold mb-2">Daejeon R&D Powerhouse</h4>
+                                <p class="mb-4 text-gray-700">Explore Daejeon's extensive R&D facilities and biotech research centers.</p>
+                                <div class="map-container">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101833.56098546192!2d127.30555432646283!3d36.35054511022988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356548d7ba4a6601%3A0xd196d69d988ad3b5!2sDaejeon%2C%20South%20Korea!5e0!3m2!1sen!2sus!4v1650356471444!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                                <div class="mt-4">
+                                    <h5 class="font-medium mb-2">Key Locations:</h5>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Korea Research Institute of Bioscience and Biotechnology (KRIBB)</li>
+                                        <li>Merck's Bioprocessing Production Center</li>
+                                        <li>Daejeon Bio Venture Town</li>
+                                        <li>New Drug Development Companies</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="busan" class="tab-content">
+                            <div class="p-4">
+                                <h4 class="font-semibold mb-2">Busan Biotech Hub</h4>
+                                <p class="mb-4 text-gray-700">Discover Busan's emerging biotech ecosystem and research facilities.</p>
+                                <div class="map-container">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d208534.1594563199!2d128.90224089552303!3d35.17959834177372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568eb6de823cd35%3A0x35d8cb74247108a7!2sBusan%2C%20South%20Korea!5e0!3m2!1sen!2sus!4v1650356520608!5m2!1sen!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                                <div class="mt-4">
+                                    <h5 class="font-medium mb-2">Key Locations:</h5>
+                                    <ul class="list-disc ml-5 text-gray-600">
+                                        <li>Pusan National University</li>
+                                        <li>Prestige BioPharma's Innovative Discovery Centre</li>
+                                        <li>Busan Biotech Startups</li>
+                                        <li>Busan Biotech Forum</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 rounded-full p-2 text-white mr-4">
+                        <i class="fas fa-route text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-indigo-600">Transportation Routes</h3>
+                </div>
+                <p class="text-gray-700 mb-6">Key transportation connections between South Korea's biotech hubs for efficient travel planning.</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold mb-2 text-indigo-600">KTX High-Speed Train Routes</h4>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Route</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Frequency</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Seoul → Daejeon</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">50 min</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Every 30 min</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Daejeon → Busan</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1 hr 40 min</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Every hour</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Seoul → Busan</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2 hr 30 min</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Every 30 min</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Seoul → Osong</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">40 min</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Every hour</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2 text-indigo-600">Other Transportation</h4>
+                        <ul class="list-disc ml-5 text-gray-600">
+                            <li class="mb-3">
+                                <span class="font-medium">Seoul to Incheon/Songdo:</span>
+                                <ul class="list-circle ml-5 mt-1">
+                                    <li>Airport Railroad Express (AREX): 45 min</li>
+                                    <li>Subway Line 1 + Incheon Line 1: 90 min</li>
+                                    <li>Bus: 60-90 min depending on traffic</li>
+                                </ul>
+                            </li>
+                            <li class="mb-3">
+                                <span class="font-medium">Seoul to Pangyo:</span>
+                                <ul class="list-circle ml-5 mt-1">
+                                    <li>Subway Line Shinbundang: 30 min from Gangnam</li>
+                                    <li>Taxi: 30-45 min depending on traffic</li>
+                                </ul>
+                            </li>
+                            <li class="mb-3">
+                                <span class="font-medium">Daejeon to Osong:</span>
+                                <ul class="list-circle ml-5 mt-1">
+                                    <li>Local train: 20 min</li>
+                                    <li>Bus: 30 min</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-indigo-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">South Korea Biotech Trip</h3>
+                    <p class="text-indigo-200">A comprehensive 10-day journey exploring South Korea's innovative biotech ecosystem, from Seoul to Busan.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Key Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="https://www.invest.go.kr/en/" target="_blank" class="text-indigo-200 hover:text-white">Invest Korea</a></li>
+                        <li><a href="https://www.khidi.or.kr/eps" target="_blank" class="text-indigo-200 hover:text-white">Korea Health Industry Development Institute</a></li>
+                        <li><a href="https://www.kribb.re.kr/eng/" target="_blank" class="text-indigo-200 hover:text-white">Korea Research Institute of Bioscience & Biotechnology</a></li>
+                        <li><a href="https://www.seoulbiohub.kr/front/user/engmain.do" target="_blank" class="text-indigo-200 hover:text-white">Seoul Biohub</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Disclaimer</h3>
+                    <p class="text-indigo-200">This itinerary is customizable based on specific interests, available time, and scheduling requirements. Contact facilities in advance to arrange visits.</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-indigo-800 text-center">
+                <p class="text-indigo-300">&copy; 2025 South Korea Biotech Trip Planner. All information is up-to-date as of April 2025.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    document.querySelectorAll('.tab-content').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+
+                    // Remove active styling from all buttons
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('border-indigo-600', 'text-indigo-600');
+                        btn.classList.add('text-gray-500');
+                    });
+
+                    // Add active class to current tab
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+
+                    // Add active styling to current button
+                    this.classList.remove('text-gray-500');
+                    this.classList.add('border-b-2', 'border-indigo-600', 'text-indigo-600');
+                });
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
