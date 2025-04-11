@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Biotech Ecosystem Trip Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .japan-gradient {
+            background: linear-gradient(135deg, #f2f2f2 0%, #e6e6e6 100%);
+        }
+        .header-bg {
+            background-image: url('https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.14.0/flags/4x3/jp.svg');
+            background-position: right 20px center;
+            background-repeat: no-repeat;
+            background-size: 80px;
+        }
+        .accent-border {
+            border-left: 4px solid #e60012;
+        }
+        .japanese-pattern {
+            background-color: #f8f8f8;
+            background-image: radial-gradient(#e60012 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.1;
+        }
+        .btn-primary {
+            background-color: #e60012;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #c50010;
+        }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .timeline-container {
+            border-left: 3px solid #e60012;
+        }
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background-color: #e60012;
+            border-radius: 50%;
+            position: absolute;
+            left: -9px;
+            top: 0;
+        }
+        .contact-card-highlight:hover {
+            border-color: #e60012;
+        }
+        .section-divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent 0%, #e60012 50%, transparent 100%);
+            width: 30%;
+            margin: 2rem auto;
+        }
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #e60012;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Hero Section -->
+    <header class="japan-gradient header-bg py-12 px-4 sm:px-6 lg:px-8 shadow-md mb-8">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Japan Biotech Ecosystem</h1>
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-700">Two-Week Trip Planner</h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-3xl">A comprehensive guide to exploring Japan's vibrant biotech landscape while connecting with key organizations in Tokyo, Tsukuba, and the Kansai region.</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="sticky-nav py-4 mb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center space-x-8">
+                <a href="#overview" class="nav-link text-gray-700 hover:text-gray-900 font-medium">Overview</a>
+                <a href="#itinerary" class="nav-link text-gray-700 hover:text-gray-900 font-medium">Itinerary</a>
+                <a href="#organizations" class="nav-link text-gray-700 hover:text-gray-900 font-medium">Organizations</a>
+                <a href="#travel-tips" class="nav-link text-gray-700 hover:text-gray-900 font-medium">Travel Tips</a>
+                <a href="#preparation" class="nav-link text-gray-700 hover:text-gray-900 font-medium">Preparation</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <!-- Overview Section -->
+        <section id="overview" class="mb-16">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="relative h-64 overflow-hidden">
+                    <div class="absolute inset-0 japanese-pattern"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent"></div>
+                    <div class="relative z-10 p-8">
+                        <h2 class="text-3xl font-bold text-gray-900 mb-4">Japan's Biotech Ecosystem</h2>
+                        <p class="text-lg text-gray-700 max-w-3xl">Japan has one of the most developed biotechnology sectors in the world, with several distinct regional hubs specializing in different aspects of biotech research and development.</p>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="card bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-semibold mb-3 text-gray-900">Greater Tokyo Area</h3>
+                            <p class="text-gray-700 mb-4">Japan's largest biotech hub, hosting the Greater Tokyo Biocommunity (GTB) with a network of over 45 organizations promoting collaborative innovation.</p>
+                            <p class="text-gray-700"><strong>Key Highlights:</strong> Nihonbashi biotech district, LINK-J innovation network, BioLabs Tokyo, and numerous pharmaceutical headquarters.</p>
+                        </div>
+                        <div class="card bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-semibold mb-3 text-gray-900">Kansai Region</h3>
+                            <p class="text-gray-700 mb-4">Heart of Japan's biotech industry, encompassing Osaka, Kyoto and Kobe. Home to top biomedical clusters open to international cooperation.</p>
+                            <p class="text-gray-700"><strong>Key Highlights:</strong> Kyoto University's renowned research, Osaka Bio Headquarters, Biocommunity Kansai, and Kobe Biomedical Innovation Cluster.</p>
+                        </div>
+                        <div class="card bg-gray-50 p-6 rounded-lg shadow-sm">
+                            <h3 class="text-xl font-semibold mb-3 text-gray-900">Tsukuba Science City</h3>
+                            <p class="text-gray-700 mb-4">A government-planned "science city" located 56 km northeast of Tokyo, hosting over 60 public and 200 private research organizations.</p>
+                            <p class="text-gray-700"><strong>Key Highlights:</strong> University of Tsukuba, Astellas research facility, and numerous national research institutes.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-10">
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-900">Biotech Landscape</h3>
+                        <p class="text-gray-700 mb-4">Japan has historically been a global biopharma leader, responsible for almost 30% of all newly approved chemical entities in the 1980s. While foreign investment has traditionally been limited, the field is becoming more dynamic with new initiatives to strengthen international collaboration.</p>
+                        <p class="text-gray-700 mb-4">The country excels in several biotech specialties:</p>
+                        <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                            <li>Regenerative medicine (pioneered by Nobel Prize winner Shinya Yamanaka's iPS cell technology at Kyoto University)</li>
+                            <li>Pharmaceuticals development</li>
+                            <li>Agricultural biotechnology</li>
+                            <li>Monoclonal antibody production</li>
+                            <li>Preclinical-stage drug discovery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Itinerary Section -->
+        <section id="itinerary" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Two-Week Itinerary</h2>
+            <p class="text-lg text-gray-700 mb-8">A day-by-day plan covering the three major biotech regions in Japan, with a balance of professional engagement and cultural exploration.</p>
+
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <h3 class="text-2xl font-semibold text-gray-900 mb-6">Week 1: Tokyo & Tsukuba</h3>
+
+                <div class="timeline-container relative pl-8 pb-6">
+                    <div class="timeline-dot"></div>
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Days 1-2: Tokyo Arrival & Orientation</h4>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <ul class="text-gray-700 space-y-2">
+                                <li><i class="fas fa-plane-arrival text-red-600 mr-2"></i> Arrive in Tokyo from Milan</li>
+                                <li><i class="fas fa-bed text-red-600 mr-2"></i> Check in to accommodation in central Tokyo</li>
+                                <li><i class="fas fa-clock text-red-600 mr-2"></i> Adjust to time difference</li>
+                                <li><i class="fas fa-map-marked-alt text-red-600 mr-2"></i> Explore central Tokyo and Nihonbashi area</li>
+                                <li><i class="fas fa-utensils text-red-600 mr-2"></i> Experience local cuisine and culture</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-dot"></div>
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Days 3-5: Tokyo Biotech Engagements</h4>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="text-gray-700 mb-3"><strong>Focus:</strong> Connect with key biotech organizations and companies in Tokyo.</p>
+                            <ul class="text-gray-700 space-y-2">
+                                <li><i class="fas fa-building text-red-600 mr-2"></i> Greater Tokyo Biocommunity (GTB) - Industry-academia-government network</li>
+                                <li><i class="fas fa-users text-red-600 mr-2"></i> Japan Bioindustry Association (JBA)</li>
+                                <li><i class="fas fa-network-wired text-red-600 mr-2"></i> LINK-J (Life Science Innovation Network Japan) at GLOBAL LIFESCIENCE HUB</li>
+                                <li><i class="fas fa-flask text-red-600 mr-2"></i> BioLabs Tokyo - Biotech incubator offering co-working lab space</li>
+                                <li><i class="fas fa-lightbulb text-red-600 mr-2"></i> Tokyo Innovation Base - Major networking hub</li>
+                                <li><i class="fas fa-industry text-red-600 mr-2"></i> Visits to leading biotech/pharma companies such as Takeda, Daiichi Sankyo, or innovative startups</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-dot"></div>
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Day 6: Tsukuba Science City Day Trip</h4>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="text-gray-700 mb-3"><strong>Note:</strong> Located approximately 45 minutes by train from Tokyo.</p>
+                            <ul class="text-gray-700 space-y-2">
+                                <li><i class="fas fa-train text-red-600 mr-2"></i> Morning train from Tokyo to Tsukuba</li>
+                                <li><i class="fas fa-university text-red-600 mr-2"></i> University of Tsukuba - Top institution for biotechnology</li>
+                                <li><i class="fas fa-microscope text-red-600 mr-2"></i> Astellas facility in Tsukuba</li>
+                                <li><i class="fas fa-vials text-red-600 mr-2"></i> National research institutes</li>
+                                <li><i class="fas fa-train text-red-600 mr-2"></i> Evening return to Tokyo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold text-gray-900 mb-6 mt-10">Week 2: Kansai Region (Osaka, Kyoto, Kobe)</h3>
+
+                <div class="timeline-container relative pl-8 pb-6">
+                    <div class="timeline-dot"></div>
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Days 7-8: Travel to Osaka & Initial Meetings</h4>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <ul class="text-gray-700 space-y-2">
+                                <li><i class="fas fa-train text-red-600 mr-2"></i> Take Shinkansen (bullet train) from Tokyo to Osaka</li>
+                                <li><i class="fas fa-hotel text-red-600 mr-2"></i> Check in to accommodation in Osaka</li>
+                                <li><i class="fas fa-building text-red-600 mr-2"></i> Visit Osaka Bio Headquarters - Hub for life science industry</li>
+                                <li><i class="fas fa-lightbulb text-red-600 mr-2"></i> Osaka Innovation Hub (OIH) - Startup community</li>
+                                <li><i class="fas fa-city text-red-600 mr-2"></i> Evening exploration of Osaka</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-dot"></div>
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Days 9-10: Kyoto</h4>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <p class="text-gray-700 mb-3"><strong>Note:</strong> Kyoto is approximately 30 minutes by train from Osaka.</p>
+                            <ul class="text-gray-700 space-y-2">
+                                <li><i class="fas fa-train text-red-600 mr-2"></i> Train from Osaka to Kyoto</li>
+                                <li><i class="fas fa-university text-red-600 mr-2"></i> Kyoto University - Top institution for biotech research (iPS cell technology)</li>
+                                <li><i class="fas fa-building text-red-600 mr-2"></i> Kyoto Research Park (KRP) - Hosts over 510 tenant companies including biotech</li>
+                                <li><i class="fas fa-users text-red-600 mr-2"></i> Kansai Startup Academia Coalition (KSAC)</li>
+                                <li><i class="fas fa-torii-gate text-red-600 mr-2"></i> Cultural exploration of historical Kyoto sites</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-dot"></div>
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Days 11-12: Kobe</h4>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <ul class="text-gray-700 space-y-2">
+                                <li><i class="fas fa-train text-red-600 mr-2"></i> Train from Kyoto/Osaka to Kobe</li>
+                                <li><i class="fas fa-microscope text-red-600 mr-2"></i> Kobe Biomedical Innovation Cluster - Leading biomedical research center</li>
+                                <li><i class="fas fa-flask text-red-600 mr-2"></i> Biocommunity Kansai (BiocK) - Industry-academia-government collaboration</li>
+                                <li><i class="fas fa-dna text-red-600 mr-2"></i> Protein Mall Kansai (PMK) - Biotech industry hub</li>
+                                <li><i class="fas fa-mountain text-red-600 mr-2"></i> Explore Kobe's unique culture and landscape</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-dot"></div>
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-900 mb-2">Days 13-14: Final Day in Osaka & Departure</h4>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <ul class="text-gray-700 space-y-2">
+                                <li><i class="fas fa-handshake text-red-600 mr-2"></i> Final meetings in Osaka</li>
+                                <li><i class="fas fa-shopping-bag text-red-600 mr-2"></i> Time for any remaining cultural experiences or shopping</li>
+                                <li><i class="fas fa-suitcase text-red-600 mr-2"></i> Preparation for departure</li>
+                                <li><i class="fas fa-plane-departure text-red-600 mr-2"></i> Departure to South Korea</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-4 bg-gray-100 rounded-lg border-l-4 border-yellow-500">
+                    <p class="text-gray-700"><i class="fas fa-info-circle text-yellow-500 mr-2"></i> <strong>Note:</strong> This itinerary can be adjusted based on meeting availability and personal preferences. Consider extending your stay in regions that align most with your specific biotech interests.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Key Organizations Section -->
+        <section id="organizations" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Key Organizations to Contact</h2>
+            <p class="text-lg text-gray-700 mb-8">Important biotech organizations in each region that can provide valuable connections and insights.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tokyo Region -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 accent-border pl-3">Tokyo Region</h3>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">Greater Tokyo Biocommunity (GTB)</h4>
+                        <p class="text-sm text-gray-500 mb-2">Industry-academia-government network</p>
+                        <p class="text-sm mb-2"><i class="fas fa-globe text-blue-600 mr-1"></i> <a href="https://gtb.jba.or.jp/en/" class="text-blue-600 hover:underline" target="_blank">https://gtb.jba.or.jp/en/</a></p>
+                        <p class="text-sm text-gray-700">Network of 45+ organizations promoting Tokyo as a global biocommunity hub</p>
+                    </div>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">LINK-J</h4>
+                        <p class="text-sm text-gray-500 mb-2">Life Science Innovation Network Japan</p>
+                        <p class="text-sm text-gray-700">Located at GLOBAL LIFESCIENCE HUB in Nihonbashi, Tokyo. Key innovation hub connecting companies, research institutions, and startups.</p>
+                    </div>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">BioLabs Tokyo</h4>
+                        <p class="text-sm text-gray-500 mb-2">Biotech incubator</p>
+                        <p class="text-sm text-gray-700">Co-working lab space for biotech entrepreneurs in Nihonbashi district</p>
+                    </div>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">Leading Biotech Companies</h4>
+                        <ul class="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                            <li>Takeda Pharmaceutical Co Ltd</li>
+                            <li>Daiichi Sankyo Co Ltd</li>
+                            <li>Chugai Pharmaceutical Co Ltd</li>
+                            <li>Astellas Pharma Inc</li>
+                            <li>PeptiDream</li>
+                            <li>Modulus Discovery</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kansai Region -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 accent-border pl-3">Kansai Region</h3>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">Osaka Bio Headquarters</h4>
+                        <p class="text-sm text-gray-500 mb-2">Hub for life science industry in Osaka</p>
+                        <p class="text-sm mb-2"><i class="fas fa-globe text-blue-600 mr-1"></i> <a href="https://osaka-bio.jp/en/" class="text-blue-600 hover:underline" target="_blank">https://osaka-bio.jp/en/</a></p>
+                        <p class="text-sm text-gray-700">Research and industry support organization</p>
+                    </div>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">Kyoto University</h4>
+                        <p class="text-sm text-gray-500 mb-2">Office of Society-Academia Collaboration</p>
+                        <p class="text-sm text-gray-700">Connect with researchers and potential spin-off companies. Home to iPS cell technology developed by Nobel Prize winner Shinya Yamanaka.</p>
+                    </div>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">Biocommunity Kansai (BiocK)</h4>
+                        <p class="text-sm text-gray-500 mb-2">Collaborative biotech organization</p>
+                        <p class="text-sm mb-2"><i class="fas fa-globe text-blue-600 mr-1"></i> <a href="https://biock.jp/en/" class="text-blue-600 hover:underline" target="_blank">https://biock.jp/en/</a></p>
+                        <p class="text-sm text-gray-700">Collaboration between industry, academia, and government in the Kansai region</p>
+                    </div>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">Kobe Biomedical Innovation Cluster</h4>
+                        <p class="text-sm text-gray-500 mb-2">Leading biomedical cluster</p>
+                        <p class="text-sm text-gray-700">Established as an earthquake disaster reconstruction project, now one of Japan's leading biomedical research centers</p>
+                    </div>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">Protein Mall Kansai (PMK)</h4>
+                        <p class="text-sm text-gray-500 mb-2">Biotech industry hub</p>
+                        <p class="text-sm text-gray-700">Open to international cooperation across the Kansai region (Osaka, Kobe, Kyoto)</p>
+                    </div>
+                </div>
+
+                <!-- Tsukuba Region -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 accent-border pl-3">Tsukuba Region</h3>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">University of Tsukuba</h4>
+                        <p class="text-sm text-gray-500 mb-2">Top institution for biotechnology</p>
+                        <p class="text-sm text-gray-700">Leading research in biotechnology and life sciences in Japan</p>
+                    </div>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">Tsukuba Science City Network</h4>
+                        <p class="text-sm text-gray-500 mb-2">Research institution network</p>
+                        <p class="text-sm mb-2"><i class="fas fa-globe text-blue-600 mr-1"></i> <a href="https://www.tsukuba-network.jp/english/" class="text-blue-600 hover:underline" target="_blank">https://www.tsukuba-network.jp/english/</a></p>
+                        <p class="text-sm text-gray-700">Network connecting over 60 public and 200 private research organizations</p>
+                    </div>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 mb-4 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">Astellas Research Facility</h4>
+                        <p class="text-sm text-gray-500 mb-2">Pharmaceutical research</p>
+                        <p class="text-sm text-gray-700">Major research facility of one of Japan's leading pharmaceutical companies</p>
+                    </div>
+
+                    <div class="contact-card-highlight bg-white rounded-lg shadow-sm p-5 border-2 border-transparent hover:border-red-600 transition-all">
+                        <h4 class="font-semibold text-gray-900">National Research Institutes</h4>
+                        <p class="text-sm text-gray-500 mb-2">Government research centers</p>
+                        <p class="text-sm text-gray-700">Tsukuba hosts numerous national research institutes focusing on various scientific disciplines</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Travel Tips Section -->
+        <section id="travel-tips" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Travel Tips</h2>
+            <p class="text-lg text-gray-700 mb-8">Essential information to help you navigate Japan efficiently during your biotech exploration.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-gray-800 p-4">
+                        <h3 class="text-xl font-semibold text-white"><i class="fas fa-train mr-2"></i>Transportation</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-gray-700">
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Japan Rail Pass:</strong> Consider purchasing before arrival if planning to use the Shinkansen frequently between cities</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Greater Tokyo Pass:</strong> Useful for local transportation within the Tokyo metropolitan area</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>IC Cards:</strong> Get a Suica, PASMO, or ICOCA card for convenient travel on trains, buses, and subways</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Shinkansen (Bullet Train):</strong> Most efficient way to travel between Tokyo and Osaka (~2.5 hours)</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Metro Apps:</strong> Download Japan Transit Planner or Google Maps for navigation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-gray-800 p-4">
+                        <h3 class="text-xl font-semibold text-white"><i class="fas fa-bed mr-2"></i>Accommodation</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-gray-700">
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Tokyo:</strong> Consider staying in Nihonbashi area which has many biotech organizations</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Osaka/Kyoto:</strong> Stay near main stations for easy commuting between cities</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Business Hotels:</strong> Efficient and comfortable options for business travelers</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Advance Booking:</strong> Reserve accommodations well in advance, especially in popular areas</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Location Priority:</strong> Prioritize proximity to train stations for convenience</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-gray-800 p-4">
+                        <h3 class="text-xl font-semibold text-white"><i class="fas fa-handshake mr-2"></i>Business Culture</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-gray-700">
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Business Cards:</strong> Bring plenty of business cards (meishi) and exchange with proper etiquette (use both hands)</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Punctuality:</strong> Be extremely punctual for meetings (arrive 5-10 minutes early)</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Formal Attire:</strong> Conservative business attire is appropriate for professional meetings</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Advance Scheduling:</strong> Schedule meetings well in advance (2-3 weeks minimum)</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Interpreters:</strong> Consider hiring an interpreter for important meetings if language might be a barrier</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Business Gifts:</strong> Small, quality gifts from your home country are appreciated</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="bg-gray-800 p-4">
+                        <h3 class="text-xl font-semibold text-white"><i class="fas fa-globe mr-2"></i>Practical Information</h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-gray-700">
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Internet Access:</strong> Consider portable WiFi or SIM card rental at airport</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Language:</strong> English proficiency varies; translation apps can be helpful</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Payment:</strong> Japan still relies heavily on cash; carry sufficient yen</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Weather:</strong> Check seasonal conditions and pack accordingly</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Power Adapters:</strong> Japan uses Type A/B plugs (100V)</li>
+                            <li><i class="fas fa-check-circle text-green-600 mr-2"></i> <strong>Exploration Time:</strong> Build in buffer time between meetings for travel and unexpected delays</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Preparation Section -->
+        <section id="preparation" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Recommended Preparation</h2>
+            <p class="text-lg text-gray-700 mb-8">Steps to take before your trip to maximize the value of your biotech ecosystem exploration.</p>
+
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Professional Preparation</h3>
+                        <ul class="space-y-4">
+                            <li class="flex">
+                                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                                    <span class="text-red-600 font-semibold">1</span>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700"><strong>Contact Organizations in Advance</strong> - Reach out to the Greater Tokyo Biocommunity and Biocommunity Kansai to inform them of your visit and request meetings.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                                    <span class="text-red-600 font-semibold">2</span>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700"><strong>Leverage Local Connections</strong> - Contact Japanese biotech associations or chambers of commerce in Italy for potential introductions.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                                    <span class="text-red-600 font-semibold">3</span>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700"><strong>Prepare Presentation Materials</strong> - Create a clear presentation about your interests and what you're looking to achieve from connecting with the Japanese biotech ecosystem.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                                    <span class="text-red-600 font-semibold">4</span>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700"><strong>Embassy Support</strong> - Consider reaching out to the Italian Embassy in Japan for assistance with high-level introductions.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Practical Preparation</h3>
+                        <ul class="space-y-4">
+                            <li class="flex">
+                                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                                    <span class="text-red-600 font-semibold">1</span>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700"><strong>Research Key Organizations</strong> - Review the websites and recent publications of organizations you plan to visit.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                                    <span class="text-red-600 font-semibold">2</span>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700"><strong>Travel Documentation</strong> - Ensure your passport, visa requirements, and travel insurance are in order.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                                    <span class="text-red-600 font-semibold">3</span>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700"><strong>Japan Rail Pass</strong> - Purchase in advance if planning extensive train travel (must be bought outside Japan).</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                                    <span class="text-red-600 font-semibold">4</span>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700"><strong>Business Cards</strong> - Print bilingual business cards (English/Japanese) if possible.</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 flex items-center justify-center">
+                                    <span class="text-red-600 font-semibold">5</span>
+                                </div>
+                                <div class="ml-4">
+                                    <p class="text-gray-700"><strong>Language Preparation</strong> - Learn basic Japanese greetings and business etiquette.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-5 bg-blue-50 rounded-lg border border-blue-200">
+                    <h4 class="font-semibold text-gray-900 mb-2"><i class="fas fa-bookmark text-blue-600 mr-2"></i>Additional Resources</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><i class="fas fa-external-link-alt text-blue-600 mr-2"></i> Japan External Trade Organization (JETRO): <a href="https://www.jetro.go.jp/en/" class="text-blue-600 hover:underline" target="_blank">https://www.jetro.go.jp/en/</a></li>
+                        <li><i class="fas fa-external-link-alt text-blue-600 mr-2"></i> EU-Japan Centre for Industrial Cooperation: <a href="https://www.eu-japan.eu/" class="text-blue-600 hover:underline" target="_blank">https://www.eu-japan.eu/</a></li>
+                        <li><i class="fas fa-external-link-alt text-blue-600 mr-2"></i> Japan National Tourism Organization: <a href="https://www.japan.travel/en/" class="text-blue-600 hover:underline" target="_blank">https://www.japan.travel/en/</a></li>
+                        <li><i class="fas fa-external-link-alt text-blue-600 mr-2"></i> Japan Bioindustry Association: <a href="https://www.jba.or.jp/en/" class="text-blue-600 hover:underline" target="_blank">https://www.jba.or.jp/en/</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold">Japan Biotech Ecosystem Trip Planner</h2>
+                    <p class="text-gray-400 mt-2">A comprehensive guide to exploring Japan's biotech landscape</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#overview" class="text-gray-300 hover:text-white transition-colors">Overview</a>
+                    <a href="#itinerary" class="text-gray-300 hover:text-white transition-colors">Itinerary</a>
+                    <a href="#organizations" class="text-gray-300 hover:text-white transition-colors">Organizations</a>
+                    <a href="#travel-tips" class="text-gray-300 hover:text-white transition-colors">Travel Tips</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+                <p>Created for planning a two-week biotech ecosystem exploration trip from Milan to Japan and onward to South Korea.</p>
+                <p class="mt-2">Information compiled from various sources including industry websites, research papers, and government resources.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
