@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guido Putignano | Engineering Biology Like Technology</title>
+    <link rel="icon" href="img/smalllogo.png" type="image/jpg">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --secondary: #0f172a;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --accent: #7c3aed;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .highlight-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight-text::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background-color: rgba(124, 58, 237, 0.2);
+            z-index: -1;
+            transform: skew(-12deg);
+        }
+
+        .navbar-fixed {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.85);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .section-heading {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+
+        .section-heading-center::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .interest-card {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-5px);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .value-card {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-bottom: 3px solid var(--primary);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            transition: bottom 0.3s ease-in-out;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            bottom: 0;
+        }
+
+        .skill-icon {
+            transition: all 0.3s ease;
+        }
+
+        .skill-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+
+        .contact-icon:hover {
+            transform: translateY(-5px);
+            color: var(--accent);
+        }
+
+        .typing-animation::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .service-card {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .floating-email {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .floating-email:hover {
+            transform: scale(1.05);
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            height: 45px;
+            width: 45px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 998;
+        }
+
+        .show-scroll {
+            opacity: 1;
+        }
+
+        .animated-gradient {
+            background: linear-gradient(-45deg, #3b82f6, #7c3aed, #ec4899, #8b5cf6);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Filter styling */
+        .filter-btn {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .filter-btn.active {
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-btn:hover:not(.active) {
+            color: var(--primary);
+        }
+
+        /* Custom tooltip */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 5px 10px;
+            border-radius: 6px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Timeline styling */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .award-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .award-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .award-card img {
+            transition: all 0.5s ease;
+        }
+
+        /* Custom animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* For the email button */
+        .email-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .email-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s;
+        }
+
+        .email-btn:hover:before {
+            left: 100%;
+        }
+
+        /* Hide initial transition */
+        .no-animation {
+            -webkit-transition: none !important;
+            -moz-transition: none !important;
+            -o-transition: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 no-animation">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex justify-between items-center">
+                <a href="#hero" class="text-xl md:text-2xl font-bold text-white transition-colors duration-300">GUIDO PUTIGNANO</a>
+
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-white hover:text-purple-300 transition-colors duration-300">About</a>
+                    <a href="#interests" class="text-white hover:text-purple-300 transition-colors duration-300">Interests</a>
+                    <a href="#skills" class="text-white hover:text-purple-300 transition-colors duration-300">Skills</a>
+                    <a href="#values" class="text-white hover:text-purple-300 transition-colors duration-300">Values</a>
+                    <a href="#portfolio" class="text-white hover:text-purple-300 transition-colors duration-300">Portfolio</a>
+                    <a href="#services" class="text-white hover:text-purple-300 transition-colors duration-300">Services</a>
+                    <a href="#contact" class="text-white hover:text-purple-300 transition-colors duration-300">Contact</a>
+                </div>
+
+                <div class="flex space-x-4 items-center">
+                    <a href="https://www.linkedin.com/in/guido-putignano" target="_blank" class="text-white hover:text-purple-300 transition-colors duration-300">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://twitter.com/guidoputignano" target="_blank" class="text-white hover:text-purple-300 transition-colors duration-300">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <button id="mobile-menu-btn" class="md:hidden text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden px-4 py-6 bg-white shadow-lg rounded-b-lg absolute w-full">
+            <div class="flex flex-col space-y-4">
+                <a href="#about" class="text-gray-800 hover:text-purple-600 transition-colors duration-300">About</a>
+                <a href="#interests" class="text-gray-800 hover:text-purple-600 transition-colors duration-300">Interests</a>
+                <a href="#skills" class="text-gray-800 hover:text-purple-600 transition-colors duration-300">Skills</a>
+                <a href="#values" class="text-gray-800 hover:text-purple-600 transition-colors duration-300">Values</a>
+                <a href="#portfolio" class="text-gray-800 hover:text-purple-600 transition-colors duration-300">Portfolio</a>
+                <a href="#services" class="text-gray-800 hover:text-purple-600 transition-colors duration-300">Services</a>
+                <a href="#contact" class="text-gray-800 hover:text-purple-600 transition-colors duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen flex items-center justify-start" style="background: url('img/guidotorre.jpg') center/cover no-repeat;">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-4 md:px-6 z-10">
+            <div class="max-w-2xl bg-black bg-opacity-50 p-8 rounded-lg backdrop-filter backdrop-blur-sm">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
+                    <span id="typing-text" class="typing-animation">Control biology</span><br>
+                    <span class="highlight-text">like technology</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 mb-8">
+                    I'm Guido: an engineer, computational biologist and entrepreneur
+                </p>
+                <div id="emailButton" class="email-btn inline-block bg-white text-blue-600 hover:bg-blue-600 hover:text-white transition-colors duration-300 rounded-full px-6 py-3 font-semibold shadow-lg cursor-pointer">
+                    Let's Talk
+                </div>
+                <div id="emailDisplay" class="hidden bg-white rounded-full px-6 py-3 shadow-lg">
+                    <span id="emailText" class="text-blue-600 mr-3">guido.putignano@gmail.com</span>
+                    <i id="copyBtn" class="fas fa-copy text-blue-600 cursor-pointer"></i>
+                    <span id="copyNotification" class="hidden ml-2 text-green-500">Copied!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+            <p class="text-white mb-2">Scroll Down</p>
+            <i class="fas fa-chevron-down text-white text-xl"></i>
+        </div>
+    </section>
+
+    <!-- Affiliations Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16" data-aos="fade-up">
+                <img src="img/worldeconomiclogo.jpg" alt="World Economic Forum" class="h-12 sm:h-16 grayscale hover:grayscale-0 transition-all duration-300">
+                <img src="img/clintonfoundationlogo.jpg" alt="Clinton Foundation" class="h-12 sm:h-16 grayscale hover:grayscale-0 transition-all duration-300">
+                <img src="img/tedxlogo.jpg" alt="TEDx" class="h-12 sm:h-16 grayscale hover:grayscale-0 transition-all duration-300">
+                <img src="img/tkslogo.jpg" alt="TKS" class="h-12 sm:h-16 grayscale hover:grayscale-0 transition-all duration-300">
+                <img src="img/safespro.jpg" alt="Safe Pro" class="h-12 sm:h-16 grayscale hover:grayscale-0 transition-all duration-300">
+                <img src="img/nucleatelogo.jpg" alt="Nucleate" class="h-12 sm:h-16 grayscale hover:grayscale-0 transition-all duration-300">
+                <img src="img/foresightlogo.jpg" alt="Foresight" class="h-12 sm:h-16 grayscale hover:grayscale-0 transition-all duration-300">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
+                <div class="md:w-1/3" data-aos="fade-right">
+                    <img src="img/profile_pic_low_res.png" alt="Guido Putignano" class="rounded-lg shadow-xl w-full max-w-md mx-auto transform hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="md:w-2/3" data-aos="fade-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 section-heading">About Guido</h2>
+                    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                        I'm Guido Putignano, a scientist and entrepreneur at the intersection of cell therapy, control
+                        theory and artificial intelligence. My mission is to revolutionize healthcare by developing
+                        novel therapeutic approaches that combine synthetic biology with advanced engineering
+                        principles.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                        I focus on addressing major challenges in chronic diseases including cancer, diabetes, and
+                        neurodegenerative conditions. Through my work in optimal control systems and cell biology, I aim
+                        to create scalable solutions that can impact millions of lives.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        What drives me is the belief that breakthrough innovations come from bridging disciplines - from
+                        biomedical engineering to AI-powered predictions. I'm committed to both scientific excellence
+                        and building the communities and platforms that accelerate progress in biotech.
+                    </p>
+                    <p class="text-lg italic text-gray-600">
+                        "The quality of your mind determines the quality of your life." I'm
+                        dedicated to continuous learning and growth, both in scientific understanding and in building
+                        meaningful relationships that drive progress.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests Section -->
+    <section id="interests" class="py-20 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-heading section-heading-center" data-aos="fade-up">My Interests</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="interest-card bg-white rounded-lg shadow-lg p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-dna text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Analyzing Biology</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Let's reimagine aging as a treatable disease. My computational approaches decode biological
+                        processes at the molecular level, identifying intervention points to address the mother of all
+                        diseases. This paves the way for targeted age-related therapeutics.
+                    </p>
+                </div>
+
+                <div class="interest-card bg-white rounded-lg shadow-lg p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-purple-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Automate Experiment</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        I enhance research through intelligent automation. My systems design optimized experiments that
+                        minimize costs while maximizing insights. By applying AI to laboratory workflows, we can
+                        accelerate discovery timelines and improve reproducibility in biological research.
+                    </p>
+                </div>
+
+                <div class="interest-card bg-white rounded-lg shadow-lg p-8 flex flex-col items-center text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-sliders-h text-green-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Control Biology</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        My mission is developing next-generation cell therapies. By applying control theory to biological
+                        systems, I create technologies for precisely engineering therapeutic cells. This approach
+                        enables predictable behavior in CAR-T cells and other living systems, transforming treatment
+                        possibilities.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background image for visual interest -->
+        <img src="img/bubbles.jpg" alt="Biology Background" class="absolute -right-64 top-1/2 transform -translate-y-1/2 opacity-10 h-full object-cover" data-aos="fade-left">
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row items-start gap-12">
+                <div class="md:w-1/3" data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 section-heading">Skills and Tools</h2>
+                    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                        I work in the field of synthetic biology, with the focus on engineering mammalian cells to create
+                        new therapeutics for chronic diseases.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+                        My technical expertise spans computational modeling, control systems, and machine learning—all applied to biological problems.
+                    </p>
+                </div>
+
+                <div class="md:w-2/3" data-aos="fade-left">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/python.png" alt="Python" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">Python</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/c.png" alt="C" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">C</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/c++.png" alt="C++" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">C++</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/jax.png" alt="JAX" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">JAX</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/pytorch.png" alt="PyTorch" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">PyTorch</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/matlab.png" alt="MATLAB" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">MATLAB</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/command.png" alt="Command Line" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">Command Line</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/vsc.png" alt="Visual Studio Code" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">VS Code</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/cython.png" alt="Cython" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">Cython</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/r.svg" alt="R" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">R</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/git.png" alt="Git" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">Git</span>
+                            </div>
+                            <div class="skill-icon tooltip flex flex-col items-center">
+                                <div class="p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                                    <img src="img/html5.png" alt="HTML5" class="w-12 h-12 object-contain">
+                                </div>
+                                <span class="tooltip-text">HTML5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="py-20 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-heading section-heading-center" data-aos="fade-up">My Core Values</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="value-card bg-white rounded-lg p-8 shadow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bullseye text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Focus</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Diving deep into specific problems to uncover solutions others miss.
+                        Complex challenges require concentrated attention and independent thinking.
+                    </p>
+                </div>
+
+                <div class="value-card bg-white rounded-lg p-8 shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-sync text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Self-Sustaining Systems</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Creating systems that generate value autonomously.
+                        True impact comes from solutions that outlast their creator.
+                    </p>
+                </div>
+
+                <div class="value-card bg-white rounded-lg p-8 shadow" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heart text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Empathy</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Pursuing excellence while remembering people come first.
+                        Impact matters, but so does how we treat each other along the way.
+                    </p>
+                </div>
+
+                <div class="value-card bg-white rounded-lg p-8 shadow" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-compass text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Purpose-Driven</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Serving humanity by solving real problems.
+                        Motivated by creating positive change that improves lives.
+                    </p>
+                </div>
+
+                <div class="value-card bg-white rounded-lg p-8 shadow" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-mountain text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Resilience</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Adapting to setbacks rather than being defeated.
+                        This powers the pursuit of ambitious goals despite obstacles.
+                    </p>
+                </div>
+
+                <div class="value-card bg-white rounded-lg p-8 shadow" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-globe text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Impacting Billions</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Focusing on bioengineering solutions with global reach.
+                        Purpose minimalism at its core.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-heading section-heading-center" data-aos="fade-up">Portfolio</h2>
+
+            <!-- Portfolio Filter -->
+            <div class="flex flex-wrap justify-center mb-12" data-aos="fade-up">
+                <button class="filter-btn active px-4 py-2 mx-2 mb-3 text-gray-700 hover:text-blue-600 focus:outline-none" data-filter="all">All</button>
+                <button class="filter-btn px-4 py-2 mx-2 mb-3 text-gray-700 hover:text-blue-600 focus:outline-none" data-filter="featured">Featured</button>
+                <button class="filter-btn px-4 py-2 mx-2 mb-3 text-gray-700 hover:text-blue-600 focus:outline-none" data-filter="articles">Articles</button>
+                <button class="filter-btn px-4 py-2 mx-2 mb-3 text-gray-700 hover:text-blue-600 focus:outline-none" data-filter="projects">Projects</button>
+                <button class="filter-btn px-4 py-2 mx-2 mb-3 text-gray-700 hover:text-blue-600 focus:outline-none" data-filter="companies">Companies</button>
+                <button class="filter-btn px-4 py-2 mx-2 mb-3 text-gray-700 hover:text-blue-600 focus:outline-none" data-filter="decks">Decks</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 portfolio-container">
+                <!-- Project 1 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-lg" data-category="projects featured" data-aos="fade-up" data-aos-delay="100">
+                    <img src="img/evolutionary.jpeg" alt="Evolutionary Cancer Dynamics" class="w-full h-64 object-cover">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-bold mb-2">Evolutionary Cancer Dynamics</h3>
+                        <p class="text-gray-600 mb-4">Exercises in Game Theory, selection, diffusion, cooperation and much more to model cancer dynamics.</p>
+                        <a href="https://github.com/guidoputignano/ethz-evolutionary-dynamics" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="portfolio-overlay text-center text-white">
+                        <h3 class="text-xl font-bold mb-3">Evolutionary Cancer Dynamics</h3>
+                        <p class="mb-4">Advanced modeling approaches for understanding cancer evolution using mathematical frameworks.</p>
+                        <a href="https://github.com/guidoputignano/ethz-evolutionary-dynamics" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full inline-block transition-colors duration-300">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-lg" data-category="projects featured" data-aos="fade-up" data-aos-delay="200">
+                    <img src="img/stat.jpeg" alt="Statistical Analysis" class="w-full h-64 object-cover">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-bold mb-2">Statistical Analysis for High-throughput Screening</h3>
+                        <p class="text-gray-600 mb-4">Several projects on ATACseq, RNAseq and statistical analysis.</p>
+                        <a href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="portfolio-overlay text-center text-white">
+                        <h3 class="text-xl font-bold mb-3">Statistical Analysis</h3>
+                        <p class="mb-4">Computational approaches for analyzing large-scale biological datasets.</p>
+                        <a href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full inline-block transition-colors duration-300">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-lg" data-category="projects featured" data-aos="fade-up" data-aos-delay="300">
+                    <img src="img/biomolecules.jpeg" alt="Biomolecular Systems" class="w-full h-64 object-cover">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-bold mb-2">Computational Simulation of Biomolecular Systems</h3>
+                        <p class="text-gray-600 mb-4">6 Projects to study and simulate biomolecules.</p>
+                        <a href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="portfolio-overlay text-center text-white">
+                        <h3 class="text-xl font-bold mb-3">Biomolecular Simulations</h3>
+                        <p class="mb-4">Computational methods for modeling and simulating biological molecules and their interactions.</p>
+                        <a href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full inline-block transition-colors duration-300">View Project</a>
+                    </div>
+                </div>
+
+                <!-- Company 1 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-lg" data-category="companies" data-aos="fade-up" data-aos-delay="400">
+                    <img src="img/bioergotech.png" alt="bioERGOtech" class="w-full h-64 object-cover">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-bold mb-2">bioERGOtech</h3>
+                        <p class="text-gray-600 mb-4">Making research smarter, not just faster, by creating digital scientists that transform how biological breakthroughs are discovered and developed.</p>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="portfolio-overlay text-center text-white">
+                        <h3 class="text-xl font-bold mb-3">bioERGOtech</h3>
+                        <p class="mb-4">AI-powered platform revolutionizing how biological research is conducted and analyzed.</p>
+                        <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full inline-block transition-colors duration-300">View Company</a>
+                    </div>
+                </div>
+
+                <!-- Company 2 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-lg" data-category="companies" data-aos="fade-up" data-aos-delay="500">
+                    <img src="img/safespro.jpg" alt="SafesPro" class="w-full h-64 object-cover">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-bold mb-2">SafesPro</h3>
+                        <p class="text-gray-600 mb-4">Empowering talent from disadvantaged backgrounds with cutting-edge skills and mentorship to become leaders in tomorrow's biotech revolution.</p>
+                        <a href="https://www.safespro.it/" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="portfolio-overlay text-center text-white">
+                        <h3 class="text-xl font-bold mb-3">SafesPro</h3>
+                        <p class="mb-4">Educational initiative creating pathways to biotech careers for underrepresented talent.</p>
+                        <a href="https://www.safespro.it/" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full inline-block transition-colors duration-300">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Article 1 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-lg" data-category="articles" data-aos="fade-up" data-aos-delay="600">
+                    <img src="img/visors.jpg" alt="AI Ethics" class="w-full h-64 object-cover">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-bold mb-2">AI Ethics for Children</h3>
+                        <p class="text-gray-600 mb-4">Digital natives on how to protect future generations in an increasingly AI-powered world.</p>
+                        <a href="https://www.weforum.org/stories/2022/04/ai-ethics-children-protect-future-generations/" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="portfolio-overlay text-center text-white">
+                        <h3 class="text-xl font-bold mb-3">AI Ethics for Children</h3>
+                        <p class="mb-4">World Economic Forum article examining the ethical implications of AI technologies for younger generations.</p>
+                        <a href="https://www.weforum.org/stories/2022/04/ai-ethics-children-protect-future-generations/" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full inline-block transition-colors duration-300">Read Article</a>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-lg" data-category="articles" data-aos="fade-up" data-aos-delay="700">
+                    <img src="img/aidrivenlongevity.jpg" alt="AI Longevity" class="w-full h-64 object-cover">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-bold mb-2">Towards AI-driven Longevity Research</h3>
+                        <p class="text-gray-600 mb-4">An overview of how AI is transforming aging research and therapeutic development.</p>
+                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="portfolio-overlay text-center text-white">
+                        <h3 class="text-xl font-bold mb-3">AI-driven Longevity Research</h3>
+                        <p class="mb-4">Academic overview of artificial intelligence applications in aging research and therapeutic discovery.</p>
+                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full inline-block transition-colors duration-300">Read Publication</a>
+                    </div>
+                </div>
+
+                <!-- Company 3 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-lg" data-category="companies" data-aos="fade-up" data-aos-delay="800">
+                    <img src="img/tarantobiotech.jpg" alt="Taranto Biotech Days" class="w-full h-64 object-cover">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-bold mb-2">Taranto Biotech Days</h3>
+                        <p class="text-gray-600 mb-4">Democratizing biotech innovation by building world-class research ecosystems in underserved regions, starting with Southern Italy.</p>
+                        <a href="https://tarantobiotechdays.com/" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="portfolio-overlay text-center text-white">
+                        <h3 class="text-xl font-bold mb-3">Taranto Biotech Days</h3>
+                        <p class="mb-4">Initiative to develop biotech innovation ecosystems in Southern Italy and other underserved regions.</p>
+                        <a href="https://tarantobiotechdays.com/" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full inline-block transition-colors duration-300">Visit Website</a>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-lg" data-category="articles" data-aos="fade-up" data-aos-delay="900">
+                    <img src="img/syntheticbiology.jpeg" alt="Synthetic Biology" class="w-full h-64 object-cover">
+                    <div class="p-6 bg-white">
+                        <h3 class="text-xl font-bold mb-2">Synthetic Biology for Entrepreneurs</h3>
+                        <p class="text-gray-600 mb-4">Innovations in the Healthcare Sector that are transforming medicine and biotechnology.</p>
+                        <a href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                            Read More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="portfolio-overlay text-center text-white">
+                        <h3 class="text-xl font-bold mb-3">Synthetic Biology for Entrepreneurs</h3>
+                        <p class="mb-4">Article exploring commercial opportunities in synthetic biology and healthcare innovation.</p>
+                        <a href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-full inline-block transition-colors duration-300">Read Article</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More Button -->
+            <div class="text-center mt-12">
+                <a href="#" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full inline-block transition-colors duration-300 shadow-md" data-aos="fade-up">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Section -->
+    <section id="awards" class="py-20 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-heading section-heading-center" data-aos="fade-up">Awards & Recognition</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="award-card bg-white rounded-lg shadow overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/premioitaliagiovane.jpg" alt="Premio Italia Giovane" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Premio Italia Giovane</h3>
+                        <p class="text-gray-600">Recognition for outstanding contributions and innovation by young Italian professionals.</p>
+                        <a href="https://premioitaliagiovane.it/" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center mt-4">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card bg-white rounded-lg shadow overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/clinton.jpeg" alt="Clinton Foundation Fellowship" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Clinton Foundation Fellowship</h3>
+                        <p class="text-gray-600">Selected for the Clinton Global Initiative University program for innovative social impact projects.</p>
+                        <a href="https://www.clintonfoundation.org/programs/leadership-public-service/clinton-global-initiative-university/" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center mt-4">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card bg-white rounded-lg shadow overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/foresight.jpg" alt="Foresight Fellowship" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Foresight Fellowship</h3>
+                        <p class="text-gray-600">Awarded to individuals advancing technologies that will benefit humanity and our world.</p>
+                        <a href="https://foresight.org/" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center mt-4">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card bg-white rounded-lg shadow overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/torrescalla.jpg" alt="Your Free Year Award" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Your Free Year Award</h3>
+                        <p class="text-gray-600">Recognition for academic excellence and leadership potential from Fondazione RUI.</p>
+                        <a href="https://www.fondazionerui.it/en/" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center mt-4">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="award-card bg-white rounded-lg shadow overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+                    <div class="h-48 overflow-hidden">
+                        <img src="img/mr.jpg" alt="Emergent Ventures" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Emergent Ventures</h3>
+                        <p class="text-gray-600">Selected for funding and support from Mercatus Center's program for high-potential individuals.</p>
+                        <a href="https://marginalrevolution.com/marginalrevolution/2023/03/new-emergent-ventures-winners-25th-cohort.html" target="_blank" class="text-blue-600 hover:text-blue-800 inline-flex items-center mt-4">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center section-heading section-heading-center" data-aos="fade-up">Services</h2>
+
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+                Leveraging expertise in AI, biotech, and automation to help researchers and organizations innovate and grow.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-lightbulb text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Consulting</h3>
+                    <p class="text-gray-600 mb-6">Tailored solutions for complex research & innovation challenges</p>
+                    <ul class="text-left space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Research Strategy</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Process Workflow Optimization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Custom Team Development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Business Roadmapping</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chalkboard-teacher text-purple-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Teaching</h3>
+                    <p class="text-gray-600 mb-6">Workshops & training to upskill teams in data, AI & innovation</p>
+                    <ul class="text-left space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Data Innovation Programs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>AI Integration Workshops</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Innovation Bootcamps</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Customized Learning Paths</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hands-helping text-green-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Advisorship</h3>
+                    <p class="text-gray-600 mb-6">Guidance for biotech startups and research initiatives</p>
+                    <ul class="text-left space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Startup Mentoring</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Technical Advisory</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Ongoing Strategic Guidance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Investment Strategy</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-heading section-heading-center" data-aos="fade-up">Contact Me</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <a href="https://www.linkedin.com/in/guido-putignano/" target="_blank" class="contact-icon block p-6 bg-white rounded-lg shadow text-center transition-all duration-300 hover:shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fab fa-linkedin text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">LinkedIn</h3>
+                    <p class="text-gray-600">Connect professionally</p>
+                </a>
+
+                <a href="https://twitter.com/guidoputignano" target="_blank" class="contact-icon block p-6 bg-white rounded-lg shadow text-center transition-all duration-300 hover:shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fab fa-twitter text-4xl text-blue-400 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">Twitter</h3>
+                    <p class="text-gray-600">Follow for updates</p>
+                </a>
+
+                <a href="https://www.instagram.com/guidoputignano/" target="_blank" class="contact-icon block p-6 bg-white rounded-lg shadow text-center transition-all duration-300 hover:shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fab fa-instagram text-4xl text-pink-600 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">Instagram</h3>
+                    <p class="text-gray-600">See my journey</p>
+                </a>
+
+                <a href="https://scholar.google.com/citations?user=ym2VggEAAAAJ&hl=en&oi=ao" target="_blank" class="contact-icon block p-6 bg-white rounded-lg shadow text-center transition-all duration-300 hover:shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-graduation-cap text-4xl text-blue-800 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">Google Scholar</h3>
+                    <p class="text-gray-600">Read my research</p>
+                </a>
+
+                <a href="mailto:guido.putignano@gmail.com" class="contact-icon block p-6 bg-white rounded-lg shadow text-center transition-all duration-300 hover:shadow-lg" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-envelope text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">Email</h3>
+                    <p class="text-gray-600">guido.putignano@gmail.com</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-gray-900 text-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">Guido Putignano</h2>
+                    <p class="text-gray-400">Engineering Biology Like Technology</p>
+                </div>
+
+                <div class="mt-6 md:mt-0">
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/guido-putignano/" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://twitter.com/guidoputignano" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/guidoputignano/" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=ym2VggEAAAAJ&hl=en&oi=ao" target="_blank" class="text-gray-400 hover:text-white transition-colors duration-300">
+                            <i class="fas fa-graduation-cap text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500">
+                <p>&copy; 2023 Guido Putignano. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <div id="scrollToTop" class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove no-animation class after page load
+            setTimeout(function() {
+                document.body.classList.remove('no-animation');
+            }, 300);
+
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when clicking elsewhere
+            document.addEventListener('click', function(event) {
+                if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-fixed');
+                    navbar.classList.remove('bg-transparent');
+                    const navLinks = navbar.querySelectorAll('a');
+                    navLinks.forEach(link => {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-gray-800');
+                    });
+                } else {
+                    navbar.classList.remove('navbar-fixed');
+                    navbar.classList.add('bg-transparent');
+                    const navLinks = navbar.querySelectorAll('a');
+                    navLinks.forEach(link => {
+                        link.classList.add('text-white');
+                        link.classList.remove('text-gray-800');
+                    });
+                }
+            });
+
+            // Portfolio filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    // Show/hide portfolio items based on filter
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all') {
+                            item.style.display = 'block';
+                        } else {
+                            const categories = item.getAttribute('data-category').split(' ');
+                            if (categories.includes(filter)) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Typing effect for hero section
+            const phrases = ['Control biology', 'Engineer cells', 'Automate research', 'Control biology'];
+            let currentPhraseIndex = 0;
+            let currentCharIndex = 0;
+            let isDeleting = false;
+            let typingElement = document.getElementById('typing-text');
+
+            function typeEffect() {
+                const currentPhrase = phrases[currentPhraseIndex];
+
+                if (isDeleting) {
+                    typingElement.textContent = currentPhrase.substring(0, currentCharIndex - 1);
+                    currentCharIndex--;
+                } else {
+                    typingElement.textContent = currentPhrase.substring(0, currentCharIndex + 1);
+                    currentCharIndex++;
+                }
+
+                // Remove typing animation during deletion
+                if (isDeleting) {
+                    typingElement.classList.remove('typing-animation');
+                } else {
+                    typingElement.classList.add('typing-animation');
+                }
+
+                let typingSpeed = isDeleting ? 50 : 150;
+
+                if (!isDeleting && currentCharIndex === currentPhrase.length) {
+                    // Pause at end of phrase
+                    typingSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && currentCharIndex === 0) {
+                    isDeleting = false;
+                    // Move to next phrase
+                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                    // Pause before typing next phrase
+                    typingSpeed = 500;
+                }
+
+                setTimeout(typeEffect, typingSpeed);
+            }
+
+            // Start the typing effect
+            setTimeout(typeEffect, 1000);
+
+            // Email button interaction
+            const emailButton = document.getElementById('emailButton');
+            const emailDisplay = document.getElementById('emailDisplay');
+            const copyBtn = document.getElementById('copyBtn');
+            const copyNotification = document.getElementById('copyNotification');
+            const emailText = document.getElementById('emailText');
+
+            emailButton.addEventListener('click', function() {
+                emailButton.classList.add('hidden');
+                emailDisplay.classList.remove('hidden');
+
+                // Hide after 10 seconds unless user is interacting
+                setTimeout(function() {
+                    if (!copyNotification.classList.contains('hidden')) return;
+                    emailButton.classList.remove('hidden');
+                    emailDisplay.classList.add('hidden');
+                }, 10000);
+            });
+
+            // Copy email functionality
+            copyBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navigator.clipboard.writeText('guido.putignano@gmail.com').then(function() {
+                    copyNotification.classList.remove('hidden');
+                    setTimeout(function() {
+                        copyNotification.classList.add('hidden');
+                    }, 2000);
+                });
+            });
+
+            // Scroll to top functionality
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 500) {
+                    scrollToTopBtn.classList.add('show-scroll');
+                } else {
+                    scrollToTopBtn.classList.remove('show-scroll');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+
+                    // Scroll to section
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
