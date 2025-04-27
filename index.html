@@ -1,163 +1,174 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Guido Putignano</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all">
-    <link href="css/socicon.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/flickity.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/stack-interface.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/theme.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-    <!-- Stylesheets & Fonts -->
-    <link href="css/plugins.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="icon" href="img/smalllogo.png" type="image/jpg">
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Guido Putignano - Engineer & Computational Biologist</title>
+  <meta name="description" content="Personal website of Guido Putignano, engineer, computational biologist and entrepreneur.">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="img/smalllogo.png" type="image/png">
+  <style>
+    body { font-family: 'Open Sans', Arial, sans-serif; }
+    /* Typed text */
+    .typed-cursor {
+      display: inline-block;
+      width: 3px;
+      background: #fff;
+      vertical-align: middle;
+      margin-left: 2px;
+      animation: blink 1s infinite;
+      height: 1.7em;
+      position: relative;
+      top: 2px;
+    }
+    @keyframes blink {
+      0%,100% { opacity:1; }
+      50% { opacity:0;}
+    }
+    /* Hero highlight underline */
+    .highlight-text {
+      position: relative;
+      display: inline-block;
+    }
+    .highlight-text::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 14px;
+      background-color: rgba(124,58,237,0.25);
+      z-index: -1;
+      transform: skew(-12deg);
+    }
+    /* Tooltip for skills */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+    .tooltip .tooltip-text {
+      visibility: hidden;
+      background: rgba(55,65,81,0.95);
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 4px 10px;
+      position: absolute;
+      z-index: 10;
+      bottom: -38px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: .88rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      width: max-content;
+      min-width: 60px;
+    }
+    .tooltip:hover .tooltip-text {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* Awards cards */
+    .portfolio-card {
+      transition: box-shadow .2s, transform .2s;
+    }
+    .portfolio-card:hover {
+      box-shadow: 0 10px 28px rgba(0,0,0,0.16), 0 2px 4px rgba(0,0,0,0.18);
+      transform: translateY(-3px) scale(1.03);
+    }
+  </style>
 </head>
+<body class="bg-gray-50 relative">
 
-<body data-smooth-scroll-offset="77">
-    <div class="nav-container">
-        <div>
-            <div id="bar-mobile" class="bar bar--sm visible-xs">
-                <div class="container">
-                    <div class="row">
-                        <div class=" col-3 col-md-2">
-                            <a href="index.html">
-                                <h4>GUIDO PUTIGNANO</h4>
-                            </a>
-                        </div>
-                        <div class="col-9 col-md-10 text-right">
-                            <a href="#" class="hamburger-toggle" data-toggle-class="#menu1; hidden-xs hidden-sm"> <span
-                                    class="lines"></span> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr class="separator center small slim">
-            <nav id="menu1" class="bar bar-1 hidden-xs bar--absolute bar--transparent">
-                <!-- container-fluid allows full-width elements -->
-                <div class="col-lg-11 container-fluid">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4 hidden-xs text-left">
-                            <div class="bar__module">
-                                <a href="index.html" class="text-nowrap pull-left">
-                                    <h1 class="text-nowrap">GUIDO PUTIGNANO</h1>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-8 text-right">
-                            <div class="bar__module pull-right">
-                                <ul class="menu-horizontal text-right">
-                                    <li>
-                                        <a href="https://it.linkedin.com/in/guido-putignano" target="_blank">
-                                            <i class="fab fa-linkedin fa-2x"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://twitter.com/guidoputignano" target="_blank">
-                                            <i class="fab fa-x-twitter fa-2x"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+<!-- Navigation Bar -->
+<header class="absolute w-full top-0 left-0 z-40 bg-gradient-to-b from-gray-900/60 to-transparent">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-6">
+    <a href="#" class="text-4xl font-bold text-white tracking-widest" style="letter-spacing:2px;">GUIDO PUTIGNANO</a>
+    <ul class="flex space-x-5 text-white text-2xl">
+      <li><a href="https://it.linkedin.com/in/guido-putignano" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+      <li><a href="https://twitter.com/guidoputignano" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Hero Section -->
+<!-- Hero Section -->
+<section class="relative h-screen w-full flex items-center" style="min-height:600px;">
+  <div class="absolute inset-0 z-0">
+    <div class="w-full h-full bg-black/60 absolute"></div>
+    <img src="img/guidotorre.jpg" alt="" class="w-full h-full object-cover object-center">
+  </div>
+  <div class="relative z-10 max-w-3xl px-4 mx-auto ml-10 md:ml-16 lg:ml-24">
+    <div class="bg-gray-800 bg-opacity-80 rounded-xl p-10 shadow-lg">
+      <h1 class="text-4xl md:text-5xl font-bold leading-tight text-white mb-6" style="min-height:110px">
+        <span id="typing-text" class="highlight-text"></span>
+        <span class="typed-cursor"></span>
+      </h1>
+      <p class="text-white text-2xl md:text-2xl mb-6 font-light">I'm Guido: an engineer, computational biologist, and entrepreneur.</p>
+      <div class="mt-5">
+        <div id="mailToHide" class="bg-white text-gray-800 font-semibold px-5 py-2 rounded shadow transition transform hover:-translate-y-1 hover:shadow-lg uppercase tracking-wide cursor-pointer text-sm inline-block" onclick="showMail()">
+          LET'S TALK
         </div>
-    </div>
-    <div class="main-container">
-        <section class="cover imagebg height-100 text-left" data-overlay="3">
-            <div class="background-image-holder">
-                <img alt="background" src="img/guidotorre.jpg">
-            </div>
-
-            <div class="container pos-vertical-center">
-                <div class="row">
-                    <div class="col-md-9 col-lg-8">
-
-                        <!-- Headline block with nice background and padding -->
-                        <div class="well">
-                            <h1>Control biology <br> like technology</h1>
-                            <p class="lead">I’m Guido: an engineer, computational biologist and entrepreneur</p>
-                        </div>
-
-                    </div>
-        <!-- Row for email button -->
-        <div class="row" style="margin-top: 30px;">
-            <div class="col-md-9 col-lg-8">
-                <div id="mailToHide" class="btn btn-light btn-lg" onclick="showMail()">
-                    Let's Talk
-                </div>
-                <div id="mailToShow" style="display: none; background-color: white !important;" class="btn btn-light btn-lg">
-                    <a href="mailto:guido.putignano@gmail.com"  class="customblue customhover" style="text-decoration: none; margin-right: 10px; text-transform: lowercase;">
-                        guido.putignano@gmail.com</a>
-                    <i id="copyBtn" class="fas fa-copy customblue customhover"></i>
-                    <span id="copyNotification" class="label label-default" style="display: none;">Copied!</span>
-                </div>
-            </div>
+        <div id="mailToShow" style="display: none;" class="mt-4">
+          <a href="mailto:guido.putignano@gmail.com" class="inline-flex items-center bg-white text-blue-600 font-medium px-4 py-2 rounded shadow hover:shadow-md">
+            guido.putignano@gmail.com
+            <i id="copyBtn" class="fas fa-copy ml-2 cursor-pointer hover:text-blue-800 transition"></i>
+          </a>
+          <span id="copyNotification" class="ml-3 text-green-600 font-semibold" style="display:none;">Copied!</span>
         </div>
+
         <script>
             // Show and hide email functions
             function showMail() {
                 document.getElementById("mailToShow").style.display = "";
                 document.getElementById("mailToHide").style.display = "none";
-                
+
                 // Add event listener to close when clicking elsewhere
                 setTimeout(function() {
                     document.addEventListener("click", hideMail);
                 }, 100);
             }
-            
+
             function hideMail(event) {
                 // Don't hide if clicking on the copy button or email element
-                if (event && (event.target.id === "mailToShow" || event.target.id === "copyBtn" || 
-                    event.target.classList.contains("fa-copy") || 
+                if (event && (event.target.id === "mailToShow" || event.target.id === "copyBtn" ||
+                    event.target.classList.contains("fa-copy") ||
                     event.target.closest("#copyBtn"))) {
                     return;
                 }
-                
+
                 document.getElementById("mailToHide").style.display = "";
                 document.getElementById("mailToShow").style.display = "none";
                 document.removeEventListener("click", hideMail);
             }
-            
+
             // Copy to clipboard functionality
             document.addEventListener("DOMContentLoaded", function() {
                 document.getElementById("copyBtn").addEventListener("click", function(e) {
                     e.stopPropagation(); // Prevent the click from closing the email
-                    
+
                     // Get the email text
                     var emailText = "guido.putignano@gmail.com";
-                    
+
                     // Create a temporary input element to copy from
                     var tempInput = document.createElement("input");
                     tempInput.value = emailText;
                     document.body.appendChild(tempInput);
-                    
+
                     // Select and copy the text
                     tempInput.select();
                     document.execCommand("copy");
-                    
+
                     // Remove the temporary element
                     document.body.removeChild(tempInput);
-                    
+
                     // Show confirmation message
                     var notification = document.getElementById("copyNotification");
                     notification.style.display = "inline";
-                    
+
                     // Hide notification after 2 seconds
                     setTimeout(function() {
                         notification.style.display = "none";
@@ -165,950 +176,949 @@
                 });
             });
         </script>
-            </div>
-
-            <div class="pos-absolute pos-bottom col-12">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <div class="text-block">
-                                <h5></h5> <span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      </div>
     </div>
+  </div>
+</section>
 
 
-    <section>
-        <div class="container">
-            <div class="slider slider--inline-arrows slider--arrows-hover text-center">
-                <ul class="slides">
-                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/worldeconomiclogo.jpg">
-                    </li>
-                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/clintonfoundationlogo.jpg">
-                    </li>
-                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/tedxlogo.jpg">
-                    </li>
-                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/tkslogo.jpg"> </li>
-                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/safespro.jpg">
-                    </li>
-                    <!-- <li class="col-md-3 col-6"> <img alt="Image" class="image--xs" src="img/yealthylogo.jpg">
-                            </li> -->
-                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xxs" src="img/nucleatelogo.jpg">
-                    </li>
-                    <li class="col-md-3 col-6"> <img alt="Image" class="image--xxs" src="img/foresightlogo.jpg">
-                    </li>
-                </ul>
-            </div>
+<!-- Infinite Logo Slider -->
+<section class="py-8 bg-gray-50">
+  <div class="container mx-auto px-2 flex justify-center">
+    <div class="overflow-hidden w-full" style="max-width:1200px;">
+      <div class="flex animate-marquee whitespace-nowrap gap-12" style="animation: marquee 36s linear infinite;">
+        <img src="img/worldeconomiclogo.jpg" alt="World Economic Forum" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/clintonfoundationlogo.jpg" alt="Clinton Foundation" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/tedxlogo.jpg" alt="TEDx" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/tkslogo.jpg" alt="TKS" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/safespro.jpg" alt="SafesPro" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/nucleatelogo.jpg" alt="Nucleate" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/foresightlogo.jpg" alt="Foresight" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <!-- Duplicate for infinite effect -->
+        <img src="img/worldeconomiclogo.jpg" alt="World Economic Forum" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/clintonfoundationlogo.jpg" alt="Clinton Foundation" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/tedxlogo.jpg" alt="TEDx" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/tkslogo.jpg" alt="TKS" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/safespro.jpg" alt="SafesPro" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/nucleatelogo.jpg" alt="Nucleate" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+        <img src="img/foresightlogo.jpg" alt="Foresight" class="h-20 mx-3 opacity-90 hover:opacity-100 transition">
+      </div>
+    </div>
+  </div>
+  <style>
+    @keyframes marquee {
+      100% { transform: translateX(-50%);}
+      0% { transform: translateX(0);}
+    }
+    .animate-marquee { width: 200%; }
+  </style>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center md:space-x-10 space-y-8 md:space-y-0">
+      <figure class="w-60 flex-shrink-0 rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+        <img src="img/profile_pic_low_res.png" alt="Guido Putignano" class="w-full h-full object-cover transform transition duration-300 hover:scale-105">
+      </figure>
+      <div class="md:flex-1">
+        <div class="flex items-center mb-3">
+          <span class="inline-block w-1 h-10 bg-blue-500 rounded mr-4"></span>
+          <h2 class="text-3xl font-extrabold text-gray-900">About Guido</h2>
         </div>
-    </section>
-
-    <section>
-        <hr class="separator center small slim">
-    </section>
-
-    <section id="about">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-lg-7 col-md-6">
-                    <h1 class="highlighted center">
-                        <div class="highlight"></div>About Guido
-                    </h1>
-                    <p>I'm Guido Putignano, a scientist and entrepreneur at the intersection of cell therapy, control
-                        theory and artificial intelligence. My mission is to revolutionize healthcare by developing
-                        novel therapeutic approaches that combine synthetic biology with advanced engineering
-                        principles.</br>
-                        I focus on addressing major challenges in chronic diseases including cancer, diabetes, and
-                        neurodegenerative conditions. Through my work in optimal control systems and cell biology, I aim
-                        to create scalable solutions that can impact millions of lives.</br>
-                        What drives me is the belief that breakthrough innovations come from bridging disciplines - from
-                        biomedical engineering to AI-powered predictions. I'm committed to both scientific excellence
-                        and building the communities and platforms that accelerate progress in biotech.</br>
-                        As the saying goes, 'The quality of your mind determines the quality of your life.' I'm
-                        dedicated to continuous learning and growth, both in scientific understanding and in building
-                        meaningful relationships that drive progress.
-                        </br>
-
-                </div>
-                <div class="col-lg-3 col-md-4"> <img alt="Image" class="box-shadow-wide"
-                        src="img/profile_pic_low_res.png"> </div>
-            </div>
+        <p class="text-lg mb-2 text-gray-800">
+          I'm Guido Putignano, a scientist and entrepreneur at the intersection of cell therapy, control theory and artificial intelligence. My mission is to revolutionize healthcare by developing novel therapeutic approaches that combine synthetic biology with advanced engineering principles.
+        </p>
+        <p class="mb-2">
+          I focus on addressing major challenges in chronic diseases including cancer, diabetes, and neurodegenerative conditions. Through my work in optimal control systems and cell biology, I aim to create scalable solutions that can impact millions of lives.
+        </p>
+        <p class="mb-3">
+          What drives me is the belief that breakthrough innovations come from bridging disciplines – from biomedical engineering to AI-powered predictions. I'm committed to both scientific excellence and building the communities and platforms that accelerate progress in biotech.
+        </p>
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded my-4 text-blue-900 italic text-base shadow-sm">
+          "The quality of your mind determines the quality of your life." I'm dedicated to continuous learning and growth, both in scientific understanding and in building meaningful relationships that drive progress.
         </div>
-    </section>
-
-    <section>
-        <hr class="separator center small slim">
-    </section>
-
-
-    <section id="interests">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-lg-7"> <img alt="Image" class="" src="img/bubbles.jpg"> </div>
-                <div class="col-lg-4 col-md-6">
-                    <h1 class="highlighted center">
-                        <div class="highlight"></div>My Interests
-                    </h1>
-                    <h4>Analyzing Biology</h4>
-                    <p>
-                        Let's reimagine aging as a treatable disease. My computational approaches decode biological
-                        processes at the molecular level, identifying intervention points to address the mother of all
-                        diseases. This paves the way for targeted age-related therapeutics.
-                    </p>
-                    <h4>Automate Experiment</h4>
-                    <p>I enhance research through intelligent automation. My systems design optimized experiments that
-                        minimize costs while maximizing insights. By applying AI to laboratory workflows, we can
-                        accelerate discovery timelines and improve reproducibility in biological research.</br>
-                    </p>
-                    <h4>Control Biology</h4>
-                    <p>My mission is developing next-generation cell therapies. By applying control theory to biological
-                        systems, I create technologies for precisely engineering therapeutic cells. This approach
-                        enables predictable behavior in CAR-T cells and other living systems, transforming treatment
-                        possibilities.
-                    </p>
-                </div>
-            </div>
+        <div class="flex flex-wrap space-x-3 pt-2">
+          <a href="#contact" class="btn btn-primary bg-blue-700 text-white py-2 px-5 rounded shadow hover:bg-blue-800 focus:bg-blue-800 transition">
+            <i class="fas fa-envelope mr-2"></i> Get in Touch
+          </a>
+          <a href="#portfolio" class="btn btn-outline-primary bg-white text-blue-700 py-2 px-5 rounded border border-blue-700 shadow hover:bg-blue-50 transition">
+            <i class="fas fa-briefcase mr-2"></i> View Portfolio
+          </a>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section>
-        <hr class="separator center small slim">
-    </section>
+<!-- My Interests Section -->
+<section id="interests" class="py-16 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col lg:flex-row justify-start gap-10 items-start">
 
-    <section id="skills">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-md-3">
-                    <h1 class="highlighted center">
-                        <div class="highlight"></div>Skills and tools
-                    </h1>
-                    <p>I work in the field of synthetic biology, with the focus on engineering mammalian cells to create
-                        new therapeutics for chronic diseases.</br>
-                        </br>
-                </div>
-                <div class="col-md-9">
-                    <div class="d-flex flex-wrap justify-content-center align-items-center p-4">
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/python.png" alt="Image 1" class="img-fluid"
-                                style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/c.png" alt="Image 2" class="img-fluid" style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/c++.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/jax.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/pytorch.png" alt="Image 3" class="img-fluid"
-                                style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/matlab.png" alt="Image 3" class="img-fluid"
-                                style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/command.png" alt="Image 3" class="img-fluid"
-                                style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/vsc.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/cython.png" alt="Image 3" class="img-fluid"
-                                style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/r.svg" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/git.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                        </div>
-                        <div class="image-container m-3 p-2 shadow border">
-                            <img src="img/html5.png" alt="Image 3" class="img-fluid" style="width: 64px; height: 64px;">
-                        </div>
-                        <!-- Add more icons here -->
-                    </div>
-                </div>
-            </div>
-    </section>
+      <div class="w-full lg:w-1/2">
+        <img src="img/bubbles.jpg" alt="Bubbles" class="rounded-xl w-full shadow-xl">
+      </div>
 
-
-    <section>
-        <hr class="separator center small slim">
-    </section>
-
-
-    <section id="values">
-        <div class="container">
-            <h1 class="highlighted center">
-                <div class="highlight"></div>My Core Values
-            </h1>
-            <div class="card-deck">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Focus</h4>
-                        <p class="card-text">Diving deep into specific problems to uncover solutions others miss.
-                            Complex challenges require concentrated attention and independent thinking.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Self-Sustaining Systems</h4>
-                        <p class="card-text">Creating systems that generate value autonomously.
-                            True impact comes from solutions that outlast their creator.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Empathy</h5>
-                            <p class="card-text">Pursuing excellence while remembering people come first.
-                                Impact matters, but so does how we treat each other along the way.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card-deck">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Purpose-Driven</h4>
-                        <p class="card-text">Serving humanity by solving real problems.
-                            Motivated by creating positive change that improves lives.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Resilience</h4>
-                        <p class="card-text">Adapting to setbacks rather than being defeated.
-                            This powers the pursuit of ambitious goals despite obstacles.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Impacting Billions</h4>
-                        <p class="card-text">Focusing on bioengineering solutions with global reach.
-                            Purpose minimalism at its core.</p>
-                    </div>
-                </div>
-            </div>
-    </section>
-
-    <section>
-        <hr class="separator center small slim">
-    </section>
-
-    <section id="portfolio">
-        <div class="container">
-            <div class="center">
-                <h1 class="highlighted">
-                    <div class="highlight"></div>Portfolio
-                </h1>
-                <!-- Portfolio Filter -->
-                <nav class="grid-filter gf-lines" data-layout="#blog">
-                    <ul>
-                        <li class="active"><a href="#" data-category=".bc-featured">Featured</a></li>
-                        <li><a href="#" data-category=".bc-articles">Articles</a></li>
-                        <li><a href="#" data-category=".bc-projects">Projects</a></li>
-                        <li><a href="#" data-category=".bc-decks">Decks</a></li>
-                        <li><a href="#" data-category=".bc-companies">Companies</a></li>
-                    </ul>
-                </nav>
-                <!-- end: Portfolio Filter -->
-            </div>
-            <!-- Blog -->
-            <div id="blog" class="grid-layout post-3-columns m-b-30" data-default-filter="bc-featured"
-                data-item="post-item">
-                <!-- Post item
-                                <div class="post-item border bc-events">
-                                    <div class="post-item-wrap">
-                                        <div class="post-image">
-                                            <a
-                                               href="#portfolio">
-                                                <img alt="" src="img/noevents.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="post-item-description">
-                                            <h2><a
-                                                   href="#portfolio">No upcoming events
-                                                </a></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-projects">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="https://github.com/Guido-at-ETHZ/Master-s-Thesis">
-                                <img alt="" src="">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a href="https://github.com/Guido-at-ETHZ/Master-s-Thesis">
-                                    Optimising Endothelialisation in VADs through Mechanoengineering and Predictive
-                                    Control
-                                </a></h2>
-                            <p>This repository contains the code and documentation for optimizing endothelialisation in
-                                Ventricular Assist Devices (VADs) using Model Predictive Control (MPC).
-                            </p>
-                            <a href="https://github.com/Guido-at-ETHZ/Master-s-Thesis" class="item-link">Read More <i
-                                    class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-articles">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="https://github.com/guidoputignano/Academic-Path">
-                                <img alt="" src="">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a href="https://github.com/guidoputignano/Academic-Path">
-                                    Academic Journey: From Biomedical Engineering to Computational Biology
-                                </a></h2>
-                            <p>Description of the courses I have taken and my comments on them
-                            </p>
-                            <a href="https://github.com/guidoputignano/Academic-Path" class="item-link">Read More <i
-                                    class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-articles">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                                href="https://www.weforum.org/stories/2022/04/ai-ethics-children-protect-future-generations/">
-                                <img alt="" src="img/visors.jpg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://www.weforum.org/stories/2022/04/ai-ethics-children-protect-future-generations/">
-                                    AI ethics for children: digital natives on how to protect future generations
-                                </a></h2>
-                            <p>Children and young people are growing up in an increasingly digital age, where technology
-                                pervades every aspect of their lives. From robotic toys and social media to the
-                                classroom and home, artificial intelligence (AI) is a ubiquitous part of daily life.
-                                It's vital therefore that ethical guidelines protect them and ensure they get the best
-                                from this emerging technology.
-                            </p>
-                            <a href="https://www.weforum.org/stories/2022/04/ai-ethics-children-protect-future-generations/"
-                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-companies">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="">
-                                <img alt="" src="img/bioergotech.png">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a href="">
-                                    bioERGOtech
-                                </a></h2>
-                            <p>Making research smarter, not just faster, by creating digital scientists that transform
-                                how biological breakthroughs are discovered and developed
-                            </p>
-                            <a href="" class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-companies">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="https://www.safespro.it/">
-                                <img alt="" src="img/safespro.jpg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a href="https://www.safespro.it/">
-                                    SafesPro
-                                </a></h2>
-                            <p>Empowering talent from disadvantaged backgrounds with cutting-edge skills and mentorship
-                                to become leaders in tomorrow's biotech revolution
-                            </p>
-                            <a href="https://www.safespro.it/" class="item-link">Read More <i
-                                    class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-companies">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="https://tarantobiotechdays.com/">
-                                <img alt="" src="img/tarantobiotech.jpg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a href="https://tarantobiotechdays.com/">
-                                    Taranto Biotech Days
-                                </a></h2>
-                            <p>Democratizing biotech innovation by building world-class research ecosystems in
-                                underserved regions, starting with Southern Italy
-                            </p>
-                            <a href="https://tarantobiotechdays.com/" class="item-link">Read More <i
-                                    class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-projects bc-featured">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="https://github.com/guidoputignano/ethz-evolutionary-dynamics">
-                                <img alt="" src="img/evolutionary.jpeg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a href="https://github.com/guidoputignano/ethz-evolutionary-dynamics">
-                                    Evolutionary Cancer Dynamics
-                                </a></h2>
-                            <p>Exercises in Game Theory, selection, diffusion, cooperation and much more to model cancer
-                                dynamics.
-                            </p>
-                            <a href="https://github.com/guidoputignano/ethz-evolutionary-dynamics"
-                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-projects bc-featured">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                                href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data">
-                                <img alt="" src="img/stat.jpeg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data">
-                                    Statistical Analysis for High-throughput Screening
-                                </a></h2>
-                            <p>Several projects on ATACseq, RNAseq and statistical analysis.
-                            </p>
-                            <a href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data"
-                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-projects bc-featured">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems">
-                                <img alt="" src="img/biomolecules.jpeg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems">
-                                    Computational Simulation of Biomolecular Systems
-                                </a></h2>
-                            <p>6 Projects to study and simulate biomolecules
-                            </p>
-                            <a href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems"
-                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-decks">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="https://drive.google.com/file/d/1gjWvI2ihabyndFnecdtHiFYO2UdghFWB/view">
-                                <img alt="" src="img/brain.jpeg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a href="https://drive.google.com/file/d/1gjWvI2ihabyndFnecdtHiFYO2UdghFWB/view">Understanding
-                                    human brain development and diseases:
-                                    Lamin morphodynamics in brain organoids
-                                </a></h2>
-                            <p>Organoids are three-dimensional
-                                tissues grown from stem cells that can
-                                self-organize and differentiate to form
-                                different cell types and tissue
-                                architectures similar to organs. Lamins
-                                are structural proteins of the cell
-                                nucleus that regulate and support
-                                protein complexes involved in gene
-                                expression, DNA replication,
-                                transcription and repair, nuclear
-                                positioning, and aging.
-                                The function of lamins in
-                                brain organoid
-                                development is unclear.
-                            </p>
-                            <a href="https://drive.google.com/file/d/1gjWvI2ihabyndFnecdtHiFYO2UdghFWB/view"
-                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-decks">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="https://drive.google.com/file/d/12TgqwFVs3-iYsYYWm4B3LIFMSGRh73mG/view">
-                                <img alt="" src="img/bioimage.jpeg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a href="https://drive.google.com/file/d/12TgqwFVs3-iYsYYWm4B3LIFMSGRh73mG/view">Bioimage
-                                    analysis for
-                                    stem cell research
-                                </a></h2>
-                            <p>A stem cell is a type of cell that has
-                                the unique ability to differentiate
-                                into various specialized cell types in
-                                the body.
-                                Stem cells are undifferentiated and
-                                unspecialized, which means they
-                                do not have a specific function or
-                                structure in the body like other
-                            </p>
-                            <a href="https://drive.google.com/file/d/12TgqwFVs3-iYsYYWm4B3LIFMSGRh73mG/view"
-                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-articles">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                                href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C">
-                                <img alt="" src="img/aidrivenlongevity.jpg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C">Towards
-                                    AI-driven longevity research: An overview
-                                </a></h2>
-                            <p>The process of aging is known to be dependent upon the interaction of different
-                                factors,such as the genome content of an individual, lifestyle factors, environmental
-                                interaction, and health facilities available to the individual (Newman and Murabito,
-                                2013; Partridge et al., 2018; Singh et al., 2019).
-                                Increased lifespan and age represent the exceptional survival, maintenance of good
-                                health as compared to peers, delayed onsets of age-dependent diseases, and extreme
-                                phenotype of individuals (Kaeberlein, 2018; Pignolo, 2019). Previous works have
-                                emphasized how modern Artificial Intelligence (AI)
-                                is already playing an important role in speeding up decision-making in medical sciences
-                                by means of advanced machine learning (ML) algorithms. For example, it is
-                                revolutionizing the drug discovery process, saving money and time (Kelemen et al.,
-                                2008), as it is already being used to create the structure
-                                of new drugs depending on the specific structure of the target diseasecausing compound
-                                [see (Santus et al., 2021) for an overview]. In life sciences, the generation of
-                                high-throughput data such as proteomics, genomics, chemoproteomics and phenomics</p>
-                            <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C"
-                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Post item-->
-                <div class="post-item border bc-articles">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                                href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24">
-                                <img alt="" src="img/syntheticbiology.jpeg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24">Synthetic
-                                    biology for Entrepreneurs: Innovations in the Healthcare Sector
-                                </a></h2>
-                            <p>Imagine if you can have a tree that can mine gold or be resistant to any kind of virus
-                                forever.</p>
-                            <a href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24"
-                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-articles">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                                href="https://guido-putignano.medium.com/stem-cells-what-they-are-how-to-use-them-and-their-future-implications-f6b3c859b112">
-                                <img alt="" src="img/stemcells.jpeg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://guido-putignano.medium.com/stem-cells-what-they-are-how-to-use-them-and-their-future-implications-f6b3c859b112">Stem
-                                    Cells, What they are, How to use them and their future implications
-                                </a></h2>
-                            <p>Imagine if you could cure many diseases such as AIDS, Diabetes, Stroke and Alzheimer with
-                                just one element, would you be astonished by that?</p>
-                            <a href="https://guido-putignano.medium.com/stem-cells-what-they-are-how-to-use-them-and-their-future-implications-f6b3c859b112"
-                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border bc-articles">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                                href="https://guido-putignano.medium.com/what-is-human-enhancement-and-why-is-it-good-for-our-society-e22fe4105b15">
-                                <img alt="" src="img/humanenhancment.jpeg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://guido-putignano.medium.com/what-is-human-enhancement-and-why-is-it-good-for-our-society-e22fe4105b15">What
-                                    is Human Enhancement, and why is it good for our society?
-                                </a></h2>
-                            <p>It was one day like others when the 20th October 1890 Walter Yeo was born. He was a young
-                                guy like others who used to spend his days with his older sisters Adelaide and Elsie.
-                            </p>
-                            <a href="https://guido-putignano.medium.com/what-is-human-enhancement-and-why-is-it-good-for-our-society-e22fe4105b15"
-                                class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-            </div>
+      <div class="w-full lg:w-1/2">
+        <div class="flex items-center mb-6">
+          <span class="inline-block w-1 h-10 bg-blue-500 rounded mr-4"></span>
+          <h2 class="text-3xl font-extrabold text-gray-900">My Interests</h2>
         </div>
-        <!-- end: post content -->
-    </section>
-
-
-    <section>
-        <hr class="separator center small slim">
-    </section>
-
-
-    <section id="awards">
-        <div class="container">
-            <h1 class="highlighted center">
-                <div class="highlight"></div>Awards
-            </h1>
-            <!-- Awards -->
-            <div style="background-color: rgba(0,0,0,0)" class="carousel" data-items="3" data-margin="5"
-                data-arrows="false" data-dots="false">
-                <!-- Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                                href="https://www.google.com/url?q=https://premioitaliagiovane.it/&sa=D&source=editors&ust=1638819525317000&usg=AOvVaw30ZdET2URrfIqMRhj8fENO">
-                                <img alt="" src="img/premioitaliagiovane.jpg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://www.google.com/url?q=https://premioitaliagiovane.it/&sa=D&source=editors&ust=1638819525317000&usg=AOvVaw30ZdET2URrfIqMRhj8fENO">Premio
-                                    Italia Giovane
-                                </a></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                                href="https://www.google.com/url?q=https://www.clintonfoundation.org/programs/leadership-public-service/clinton-global-initiative-university/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw0sgINFRlofuads0T44vqeE">
-                                <img alt="" src="img/clinton.jpeg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://www.google.com/url?q=https://www.clintonfoundation.org/programs/leadership-public-service/clinton-global-initiative-university/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw0sgINFRlofuads0T44vqeE">Clinton
-                                    Foundation Fellowship
-                                </a></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                                href="https://www.google.com/url?q=https://www.fondazionerui.it/en/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw2FXqVoOyjar_f4xFHa8BQd">
-                                <img alt="" src="img/torrescalla.jpg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://www.google.com/url?q=https://www.fondazionerui.it/en/&sa=D&source=editors&ust=1638819525337000&usg=AOvVaw2FXqVoOyjar_f4xFHa8BQd">Your
-                                    Free Year Award
-                                </a></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                               href="https://www.linkedin.com/posts/guido-putignano_prize-award-talent-activity-6987114843656830976-CQsl?utm_source=share&utm_medium=member_desktop">
-                                <img alt="" src="img/italianexcellenceaward.jfif">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                   href="https://www.linkedin.com/posts/guido-putignano_prize-award-talent-activity-6987114843656830976-CQsl?utm_source=share&utm_medium=member_desktop">Italian Excellence Award
-                                </a></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                               href="https://www.linkedin.com/posts/guido-putignano_biotech-lifescience-nova111-activity-6985535359145156608-MF1C?utm_source=share&utm_medium=member_desktop">
-                                <img alt="" src="img/nova111_cropped.jpg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                   href="https://www.linkedin.com/posts/guido-putignano_biotech-lifescience-nova111-activity-6985535359145156608-MF1C?utm_source=share&utm_medium=member_desktop">Nova 111 Student List
-                                </a></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a href="https://foresight.org/">
-                                <img alt="" src="img/foresight.jpg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a href="https://foresight.org/">Foresight Fellowship
-                                </a></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-                <!-- Post item-->
-                <div class="post-item border">
-                    <div class="post-item-wrap">
-                        <div class="post-image">
-                            <a
-                                href="https://marginalrevolution.com/marginalrevolution/2023/03/new-emergent-ventures-winners-25th-cohort.html">
-                                <img alt="" src="img/mr.jpg">
-                            </a>
-                        </div>
-                        <div class="post-item-description">
-                            <h2><a
-                                    href="https://marginalrevolution.com/marginalrevolution/2023/03/new-emergent-ventures-winners-25th-cohort.html">Emergent
-                                    Ventures
-                                </a></h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- end: Post item-->
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <hr class="separator center small slim">
-    </section>
-
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h1 class="highlighted center">
-                <div class="highlight"></div>Services
-            </h1>
-          <div class="text-center mb-5">
-            <p class="text-muted">
-              Leveraging expertise in AI, biotech, and automation to help researchers and organizations innovate and grow.
+        <div class="space-y-6">
+          <div>
+            <h4 class="text-xl font-bold mb-2 text-blue-700">Analyzing Biology</h4>
+            <p class="text-gray-700 leading-relaxed">
+              Let's reimagine aging as a treatable disease. My computational approaches decode biological processes at the molecular level, identifying intervention points to address the mother of all diseases. This paves the way for targeted age-related therapeutics.
             </p>
           </div>
-      
-          <div class="row g-4">
-            
-            <!-- Consulting -->
-            <div class="col-md-4">
-              <div class="p-4 bg-white shadow rounded h-100 text-center">
-                <i class="fas fa-lightbulb fa-5x customblue"></i> 
-                <h4 class="fw-bold mb-2">Consulting</h4>
-                <p class="text-muted mb-3">Tailored solutions for complex research & innovation challenges</p>
-                <ul class="text-start">
-                  <li><i class="fas fa-check customblue"></i> &nbsp Research Strategy</li>
-                  <li><i class="fas fa-check customblue"></i> &nbsp Process Workflow Optimization</li>
-                  <li><i class="fas fa-check customblue"></i> &nbsp Custom Team Development</li>
-                  <li><i class="fas fa-check customblue"></i> &nbsp Business Roadmapping</li>
-                </ul>
-              </div>
-            </div>
-      
-            <!-- Teaching -->
-            <div class="col-md-4">
-              <div class="p-4 bg-white shadow rounded h-100 text-center">
-                <i class="fas fa-chalkboard-teacher fa-5x customblue"></i>
-                <h4 class="fw-bold mb-2">Teaching</h4>
-                <p class="text-muted mb-3">Workshops & training to upskill teams in data, AI & innovation</p>
-                <ul class="text-start">
-                  <li><i class="fas fa-check customblue"></i> &nbsp Data Innovation Programs</li>
-                  <li><i class="fas fa-check customblue"></i> &nbsp AI Integration Workshops</li>
-                  <li><i class="fas fa-check customblue"></i> &nbsp Innovation Bootcamps</li>
-                </ul>
-              </div>
-            </div>
-      
-            <!-- Advisorship -->
-            <div class="col-md-4">
-              <div class="p-4 bg-white shadow rounded h-100 text-center">
-                <i class="fas fa-hands-helping fa-5x customblue"></i>
-                <h4 class="fw-bold mb-2">Advisorship</h4>
-                <p class="text-muted mb-3">Guidance for biotech startups and research initiatives</p>
-                <ul class="text-start">
-                    <li>
-                      <i class="fas fa-check customblue"></i> &nbsp Startup Mentoring
-                    </li>
-                    <li>
-                      <i class="fas fa-check customblue"></i> &nbsp Technical Advisory
-                    </li>
-                    <li>
-                      <i class="fas fa-check customblue"></i> &nbsp Ongoing Strategic Guidance
-                    </li>
-                </ul>
-              </div>
-            </div>
+          <div>
+            <h4 class="text-xl font-bold mb-2 text-green-700">Automate Experiment</h4>
+            <p class="text-gray-700 leading-relaxed">
+              I enhance research through intelligent automation. My systems design optimized experiments that minimize costs while maximizing insights. By applying AI to laboratory workflows, we can accelerate discovery timelines and improve reproducibility in biological research.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold mb-2 text-purple-700">Control Biology</h4>
+            <p class="text-gray-700 leading-relaxed">
+              My mission is developing next-generation cell therapies. By applying control theory to biological systems, I create technologies for precisely engineered treatments, aiming for cures rather than chronic management.
+            </p>
           </div>
         </div>
-      </section>
-      
-    <section>
-        <hr class="separator center small slim">
-    </section>
+      </div>
 
-    <section id="contact">
-        <div class="container">
-            <h1 class="highlighted center">
-                <div class="highlight"></div>Contact Me
-            </h1>
-            <div
-                class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 d-flex flex-wrap justify-content-center align-items-center">
-                <div class="col">
-                    <div class="card text-center border shadow-sm">
-                        <a href="https://www.linkedin.com/in/guido-putignano/">
-                            <div class="card-body">
-                                <i class="fab fa-linkedin fa-2x mb-2"></i>
-                                <h5 class="card-title">Message Me</h5>
-                                <p class="card-text">On Linkedin.</p>
-                            </div>
-                        </a>
+    </div>
+  </div>
+</section>
+
+  <!-- SKILLS & TOOLS SECTION -->
+  <section id="skills" class="py-16 bg-gray-100">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:space-x-10">
+      <div class="md:w-1/3 mb-8 md:mb-0">
+        <div class="flex items-center mb-3">
+          <span class="inline-block w-1 h-10 bg-blue-500 rounded mr-4"></span>
+          <h2 class="text-3xl font-bold">Skills and Tools</h2>
+        </div>
+        <p class="text-gray-800 mb-2">
+          I work in the field of synthetic biology, with the focus on engineering mammalian cells to create new therapeutics for chronic diseases.
+        </p>
+        <p class="text-gray-700">
+          My technical expertise spans computational modeling, control systems, and machine learning—all applied to biological problems.
+        </p>
+      </div>
+      <div class="md:w-2/3">
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-8 bg-gray-50 p-8 rounded-lg shadow">
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/python.png" alt="Python" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">Python</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/c.png" alt="C" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">C</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/c++.png" alt="C++" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">C++</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/jax.png" alt="JAX" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">JAX</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/pytorch.png" alt="PyTorch" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">PyTorch</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/matlab.png" alt="MATLAB" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">MATLAB</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/command.png" alt="Command Line" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">Command Line</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/vsc.png" alt="VS Code" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">VS Code</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/cython.png" alt="Cython" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">Cython</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/r.svg" alt="R" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">R</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/git.png" alt="Git" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">Git</span>
+          </div>
+          <div class="flex flex-col items-center tooltip group">
+            <img src="img/html5.png" alt="HTML5" class="w-12 h-12 object-contain mb-1 rounded shadow hover:scale-105 transition">
+            <span class="tooltip-text">HTML5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Values -->
+<section id="values" class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-12 text-center tracking-tight text-gray-900">My Core Values</h2>
+    <div class="w-24 h-1.5 bg-blue-600 mx-auto -mt-8 mb-12"></div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="bg-white rounded-lg p-8 shadow transition hover:shadow-xl flex flex-col items-center">
+        <div class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full mb-5">
+          <i class="fas fa-bullseye text-blue-600 text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Focus</h3>
+        <p class="text-gray-600 text-base text-center">Diving deep into specific problems to uncover solutions others miss. Complex challenges require concentrated attention and independent thinking.</p>
+      </div>
+      <div class="bg-white rounded-lg p-8 shadow transition hover:shadow-xl flex flex-col items-center">
+        <div class="w-16 h-16 flex items-center justify-center bg-green-100 rounded-full mb-5">
+          <i class="fas fa-sync text-green-600 text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Self-Sustaining Systems</h3>
+        <p class="text-gray-600 text-base text-center">Creating systems that generate value autonomously. True impact comes from solutions that outlast their creator.</p>
+      </div>
+      <div class="bg-white rounded-lg p-8 shadow transition hover:shadow-xl flex flex-col items-center">
+        <div class="w-16 h-16 flex items-center justify-center bg-red-100 rounded-full mb-5">
+          <i class="fas fa-heart text-red-600 text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Empathy</h3>
+        <p class="text-gray-600 text-base text-center">Pursuing excellence while remembering people come first. Impact matters, but so does how we treat each other along the way.</p>
+      </div>
+      <div class="bg-white rounded-lg p-8 shadow transition hover:shadow-xl flex flex-col items-center">
+        <div class="w-16 h-16 flex items-center justify-center bg-purple-100 rounded-full mb-5">
+          <i class="fas fa-compass text-purple-600 text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Purpose-Driven</h3>
+        <p class="text-gray-600 text-base text-center">Serving humanity by solving real problems. Motivated by creating positive change that improves lives.</p>
+      </div>
+      <div class="bg-white rounded-lg p-8 shadow transition hover:shadow-xl flex flex-col items-center">
+        <div class="w-16 h-16 flex items-center justify-center bg-yellow-100 rounded-full mb-5">
+          <i class="fas fa-mountain text-yellow-600 text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Resilience</h3>
+        <p class="text-gray-600 text-base text-center">Adapting to setbacks rather than being defeated. This powers the pursuit of ambitious goals despite obstacles.</p>
+      </div>
+      <div class="bg-white rounded-lg p-8 shadow transition hover:shadow-xl flex flex-col items-center">
+        <div class="w-16 h-16 flex items-center justify-center bg-indigo-100 rounded-full mb-5">
+          <i class="fas fa-globe text-indigo-600 text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4">Impacting Billions</h3>
+        <p class="text-gray-600 text-base text-center">Focusing on bioengineering solutions with global reach. Purpose minimalism at its core.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-16 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Portfolio</h2>
+            <div class="w-24 h-1.5 bg-blue-600 mx-auto mt-2 mb-12"></div>
+            <nav class="mt-4">
+                <ul class="flex justify-center space-x-4 text-gray-600">
+                    <li class="cursor-pointer font-medium text-blue-600" data-category="featured">Featured</li>
+                    <li class="cursor-pointer hover:text-blue-600" data-category="articles">Articles</li>
+                    <li class="cursor-pointer hover:text-blue-600" data-category="projects">Projects</li>
+                    <li class="cursor-pointer hover:text-blue-600" data-category="decks">Decks</li>
+                    <li class="cursor-pointer hover:text-blue-600" data-category="companies">Companies</li>
+                </ul>
+            </nav>
+        </div>
+
+        <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+
+
+         <!-- Article 1 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="articles" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="Academic Path Thumbnail" src="img/Academic_Journey.png" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://github.com/guidoputignano/Academic-Path" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Academic Journey: From Biomedical Engineering to Computational Biology</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                Description of the courses I have taken and my comments on them
+            </p>
+            <a href="https://github.com/guidoputignano/Academic-Path" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Article 2 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="articles" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="AI Ethics for Children" src="img/visors.jpg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://www.weforum.org/stories/2022/04/ai-ethics-children-protect-future-generations/" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">AI ethics for children: digital natives on how to protect future generations</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                Children and young people are growing up in an increasingly digital age, where technology pervades every aspect of their lives. From robotic toys and social media to the classroom and home, artificial intelligence (AI) is a ubiquitous part of daily life.
+            </p>
+            <a href="https://www.weforum.org/stories/2022/04/ai-ethics-children-protect-future-generations/" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Article 3 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="articles" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="AI-driven longevity research" src="img/aidrivenlongevity.jpg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Towards AI-driven longevity research: An overview</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                An overview of how modern Artificial Intelligence is revolutionizing longevity research and drug discovery, analyzing high-throughput data from proteomics, genomics, and phenomics.
+            </p>
+            <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=ym2VggEAAAAJ&citation_for_view=ym2VggEAAAAJ:u5HHmVD_uO8C" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Article 4 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="articles" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="Synthetic Biology" src="img/syntheticbiology.jpeg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Synthetic biology for Entrepreneurs: Innovations in the Healthcare Sector</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                Imagine if you can have a tree that can mine gold or be resistant to any kind of virus forever.
+            </p>
+            <a href="https://guido-putignano.medium.com/synthetic-biology-for-entrepreneurs-innovations-in-the-healthcare-sector-f6737c249f24" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Article 5 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="articles" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="Stem Cells" src="img/stemcells.jpeg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://guido-putignano.medium.com/stem-cells-what-they-are-how-to-use-them-and-their-future-implications-f6b3c859b112" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Stem Cells, What they are, How to use them and their future implications</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                Imagine if you could cure many diseases such as AIDS, Diabetes, Stroke and Alzheimer with just one element, would you be astonished by that?
+            </p>
+            <a href="https://guido-putignano.medium.com/stem-cells-what-they-are-how-to-use-them-and-their-future-implications-f6b3c859b112" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Article 6 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="articles" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="Human Enhancement" src="img/humanenhancment.jpeg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://guido-putignano.medium.com/what-is-human-enhancement-and-why-is-it-good-for-our-society-e22fe4105b15" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">What is Human Enhancement, and why is it good for our society?</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                It was one day like others when the 20th October 1890 Walter Yeo was born. He was a young guy like others who used to spend his days with his older sisters Adelaide and Elsie.
+            </p>
+            <a href="https://guido-putignano.medium.com/what-is-human-enhancement-and-why-is-it-good-for-our-society-e22fe4105b15" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Project 1 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="projects" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="VAD Optimization" src="img/VAD.png" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://github.com/Guido-at-ETHZ/Master-s-Thesis" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Optimising Endothelialisation in VADs through Mechanoengineering and Predictive Control</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                This repository contains the code and documentation for optimizing endothelialisation in Ventricular Assist Devices (VADs) using Model Predictive Control (MPC).
+            </p>
+            <a href="https://github.com/Guido-at-ETHZ/Master-s-Thesis" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Project 2 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="projects" data-featured="true">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="Evolutionary Cancer Dynamics" src="img/evolutionary.jpeg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://github.com/guidoputignano/ethz-evolutionary-dynamics" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Evolutionary Cancer Dynamics</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                Exercises in Game Theory, selection, diffusion, cooperation and much more to model cancer dynamics.
+            </p>
+            <a href="https://github.com/guidoputignano/ethz-evolutionary-dynamics" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Project 3 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="projects" data-featured="true">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="Statistical Analysis" src="img/stat.jpeg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Statistical Analysis for High-throughput Screening</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                Several projects on ATACseq, RNAseq and statistical analysis.
+            </p>
+            <a href="https://github.com/guidoputignano/Statistical-Analysis-of-High-Throughput-Genomic-and-Transcriptomic-Data" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Project 4 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="projects" data-featured="true">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="Computational Simulation" src="img/biomolecules.jpeg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Computational Simulation of Biomolecular Systems</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                6 Projects to study and simulate biomolecules
+            </p>
+            <a href="https://github.com/guidoputignano/ethz-classical-simulation-biomolecular-systems" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+            <!-- Deck 1 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="decks" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="Brain Development" src="img/brain.jpeg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://drive.google.com/file/d/1gjWvI2ihabyndFnecdtHiFYO2UdghFWB/view" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Understanding human brain development and diseases: Lamin morphodynamics in brain organoids</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                Organoids are three-dimensional tissues grown from stem cells that can self-organize and differentiate to form different cell types and tissue architectures similar to organs. Lamins are structural proteins of the cell nucleus that regulate and support protein complexes involved in gene expression, DNA replication, transcription and repair, nuclear positioning, and aging. The function of lamins in brain organoid development is unclear.
+            </p>
+            <a href="https://drive.google.com/file/d/1gjWvI2ihabyndFnecdtHiFYO2UdghFWB/view" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Deck 2 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="decks" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="Bioimage Analysis" src="img/bioimage.jpeg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://drive.google.com/file/d/12TgqwFVs3-iYsYYWm4B3LIFMSGRh73mG/view" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Bioimage analysis for stem cell research</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                A stem cell is a type of cell that has the unique ability to differentiate into various specialized cell types in the body. Stem cells are undifferentiated and unspecialized, which means they do not have a specific function or structure in the body like other cells.
+            </p>
+            <a href="https://drive.google.com/file/d/12TgqwFVs3-iYsYYWm4B3LIFMSGRh73mG/view" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+            <!-- Company 1 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="companies" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="bioERGOtech" src="img/bioergotechp.jpg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">bioERGOtech</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                Making research smarter, not just faster, by creating digital scientists that transform how biological breakthroughs are discovered and developed
+            </p>
+            <a href="" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Company 2 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="companies" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="SafesPro" src="img/safesprop.jpg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://www.safespro.it/" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">SafesPro</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                Empowering talent from disadvantaged backgrounds with cutting-edge skills and mentorship to become leaders in tomorrow's biotech revolution
+            </p>
+            <a href="https://www.safespro.it/" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Company 3 -->
+<div class="portfolio-item bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl" data-category="companies" data-featured="false">
+    <div class="post-item-wrap">
+        <div class="post-image bg-gray-200 flex items-center justify-center">
+            <img alt="Taranto Biotech Days" src="img/tarantobiotechdaysp.jpg" class="max-h-full max-w-full object-contain">
+        </div>
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2"><a href="https://tarantobiotechdays.com/" target="_blank" rel="noopener" class="text-gray-900 hover:text-blue-700">Taranto Biotech Days</a></h3>
+            <p class="text-gray-700 text-sm mb-4">
+                Democratizing biotech innovation by building world-class research ecosystems in underserved regions, starting with Southern Italy
+            </p>
+            <a href="https://tarantobiotechdays.com/" target="_blank" rel="noopener" class="text-blue-600 hover:underline text-sm font-medium">Read More <i class="fas fa-arrow-right ml-1"></i></a>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const filterLinks = document.querySelectorAll('#portfolio nav ul li');
+        const portfolioItems = document.querySelectorAll('#portfolio-grid .portfolio-item');
+
+        // Function to filter items
+        const filterItems = (category) => {
+          portfolioItems.forEach(item => {
+            if (category === 'featured') {
+              // For featured category, check the data-featured attribute
+              if (item.getAttribute('data-featured') === 'true') {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+              }
+            } else if (category === item.getAttribute('data-category')) {
+              // For other categories, match the category exactly
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        };
+
+        // Add click event to each filter link
+        filterLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            // Update active link style
+            filterLinks.forEach(l => l.classList.remove('text-blue-600', 'font-medium'));
+            link.classList.add('text-blue-600', 'font-medium');
+
+            const category = link.getAttribute('data-category');
+            filterItems(category);
+          });
+        });
+
+        // Initial filter - Featured items
+        filterItems('featured');
+      });
+    </script>
+</section>
+
+<!-- Awards -->
+<section id="awards" class="py-16 bg-white" aria-label="Awards">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-indigo-900 text-center mb-10">Awards</h2>
+      <div class="w-24 h-1.5 bg-blue-600 mx-auto -mt-8 mb-12"></div>
+    <div class="flex flex-wrap gap-8 justify-center">
+      <div class="portfolio-card rounded-2xl p-4 w-60 flex flex-col items-center border bg-white">
+        <img src="img/premioitaliagiovane.jpg" alt="Premio Italia Giovane" class="h-20 rounded-lg shadow mb-2 object-contain">
+        <a href="https://premioitaliagiovane.it/" target="_blank" rel="noopener" class="text-blue-900 font-bold text-lg text-center hover:underline">Premio Italia Giovane</a>
+      </div>
+      <div class="portfolio-card rounded-2xl p-4 w-60 flex flex-col items-center border bg-white">
+        <img src="img/clinton.jpeg" alt="Clinton Foundation Fellowship" class="h-20 rounded-lg shadow mb-2 object-contain">
+        <a href="https://www.clintonfoundation.org/programs/leadership-public-service/clinton-global-initiative-university/" target="_blank" rel="noopener" class="text-blue-900 font-bold text-lg text-center hover:underline">Clinton Foundation Fellowship</a>
+      </div>
+      <div class="portfolio-card rounded-2xl p-4 w-60 flex flex-col items-center border bg-white">
+        <img src="img/torrescalla.jpg" alt="Your Free Year Award" class="h-20 rounded-lg shadow mb-2 object-contain">
+        <a href="https://www.fondazionerui.it/en/" target="_blank" rel="noopener" class="text-blue-900 font-bold text-lg text-center hover:underline">Your Free Year Award</a>
+      </div>
+      <div class="portfolio-card rounded-2xl p-4 w-60 flex flex-col items-center border bg-white">
+        <img src="img/foresight.jpg" alt="Foresight Fellowship" class="h-20 rounded-lg shadow mb-2 object-contain">
+        <a href="https://foresight.org/" target="_blank" rel="noopener" class="text-blue-900 font-bold text-lg text-center hover:underline">Foresight Fellowship</a>
+      </div>
+      <div class="portfolio-card rounded-2xl p-4 w-60 flex flex-col items-center border bg-white">
+        <img src="img/mr.jpg" alt="Emergent Ventures" class="h-20 rounded-lg shadow mb-2 object-contain">
+        <a href="https://marginalrevolution.com/marginalrevolution/2023/03/new-emergent-ventures-winners-25th-cohort.html" target="_blank" rel="noopener" class="text-blue-900 font-bold text-lg text-center hover:underline">Emergent Ventures</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript for Hero Typing Animation and Email Copy -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Typing effect for hero section
+  const phrases = [
+    "Control biology.",
+    "Engineer cells.",
+    "Automate research."
+  ];
+  let currentPhraseIndex = 0;
+  let currentCharIndex = 0;
+  let isDeleting = false;
+  let typingTextElement = document.getElementById("typing-text");
+  let cursor = document.querySelector(".typed-cursor");
+  let typingSpeed = 60;
+  let erasingSpeed = 36;
+  let delayBetweenPhrases = 1200, delayAfterWord = 700;
+
+  function typeLoop() {
+    let currentPhrase = phrases[currentPhraseIndex];
+    if (isDeleting) {
+      if (currentCharIndex > 0) {
+        typingTextElement.textContent = currentPhrase.substring(0, currentCharIndex - 1);
+        currentCharIndex--;
+        setTimeout(typeLoop, erasingSpeed);
+      } else {
+        isDeleting = false;
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+        setTimeout(typeLoop, 550);
+      }
+    } else {
+      if (currentCharIndex < currentPhrase.length) {
+        typingTextElement.textContent = currentPhrase.substring(0, currentCharIndex + 1);
+        currentCharIndex++;
+        setTimeout(typeLoop, typingSpeed);
+      } else {
+        isDeleting = true;
+        setTimeout(typeLoop, delayBetweenPhrases);
+      }
+    }
+  }
+  setTimeout(typeLoop, delayAfterWord);
+
+  // Email reveal/copy
+  const letTalkBtn = document.getElementById("let-talk-btn");
+  const emailContainer = document.getElementById("email-container");
+  const copyIcon = document.getElementById("copy-icon");
+  const copiedNotification = document.getElementById("copied-notification");
+
+  letTalkBtn.addEventListener("click", function() {
+    if (emailContainer.style.display === "none" || emailContainer.style.display === "") {
+      emailContainer.style.display = "inline-block";
+    } else {
+      emailContainer.style.display = "none";
+    }
+  });
+  if(copyIcon) {
+    copyIcon.addEventListener("click", function(e) {
+      e.preventDefault();
+      const emailText = "guido.putignano@gmail.com";
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(emailText).then(() => {
+          showCopiedNotification();
+        }).catch(() => {
+          fallbackCopyTextToClipboard(emailText);
+        });
+      } else {
+        fallbackCopyTextToClipboard(emailText);
+      }
+    });
+  }
+  function fallbackCopyTextToClipboard(text) {
+    let tempInput = document.createElement("input");
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    showCopiedNotification();
+  }
+  function showCopiedNotification() {
+    if (!copiedNotification) return;
+    copiedNotification.style.display = "inline";
+    setTimeout(() => {
+      copiedNotification.style.display = "none";
+    }, 2000);
+  }
+});
+</script>
+
+
+<!-- Typed.js Script -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  // Typing effect for hero section
+  const phrases = [
+    "Control biology.",
+    "Engineer cells.",
+    "Automate research."
+  ];
+  let currentPhraseIndex = 0;
+  let currentCharIndex = 0;
+  let isDeleting = false;
+  let typingTextElement = document.getElementById("typing-text");
+  let cursor = document.querySelector(".typed-cursor");
+  let typingSpeed = 60;
+  let erasingSpeed = 36;
+  let delayBetweenPhrases = 1200, delayAfterWord = 700;
+
+  function typeLoop() {
+    let currentPhrase = phrases[currentPhraseIndex];
+    if (isDeleting) {
+      if (currentCharIndex > 0) {
+        typingTextElement.textContent = currentPhrase.substring(0, currentCharIndex - 1);
+        currentCharIndex--;
+        setTimeout(typeLoop, erasingSpeed);
+      } else {
+        isDeleting = false;
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+        setTimeout(typeLoop, 550);
+      }
+    } else {
+      if (currentCharIndex < currentPhrase.length) {
+        typingTextElement.textContent = currentPhrase.substring(0, currentCharIndex + 1);
+        currentCharIndex++;
+        setTimeout(typeLoop, typingSpeed);
+      } else {
+        isDeleting = true;
+        setTimeout(typeLoop, delayBetweenPhrases);
+      }
+    }
+  }
+  setTimeout(typeLoop, delayAfterWord);
+
+  // Email reveal/copy
+  const letTalkBtn = document.getElementById("let-talk-btn");
+  const emailContainer = document.getElementById("email-container");
+  const copyIcon = document.getElementById("copy-icon");
+  const copiedNotification = document.getElementById("copied-notification");
+
+  letTalkBtn.addEventListener("click", function() {
+    if (emailContainer.style.display === "none" || emailContainer.style.display === "") {
+      emailContainer.style.display = "inline-block";
+    } else {
+      emailContainer.style.display = "none";
+    }
+  });
+  if(copyIcon) {
+    copyIcon.addEventListener("click", function(e) {
+      e.preventDefault();
+      const emailText = "guido.putignano@gmail.com";
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(emailText).then(() => {
+          showCopiedNotification();
+        }).catch(() => {
+          fallbackCopyTextToClipboard(emailText);
+        });
+      } else {
+        fallbackCopyTextToClipboard(emailText);
+      }
+    });
+  }
+  function fallbackCopyTextToClipboard(text) {
+    let tempInput = document.createElement("input");
+    tempInput.value = text;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    showCopiedNotification();
+  }
+  function showCopiedNotification() {
+    if (!copiedNotification) return;
+    copiedNotification.style.display = "inline";
+    setTimeout(() => {
+      copiedNotification.style.display = "none";
+    }, 2000);
+  }
+</script>
+
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center section-heading section-heading-center" data-aos="fade-up">How I can help</h2>
+            <div class="w-24 h-1.5 bg-blue-600 mx-auto -mt-6 mb-12"></div>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+                Leveraging expertise in AI, biotech, and automation to help researchers and organizations innovate and grow.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-lightbulb text-blue-600 text-3xl"></i>
                     </div>
+                    <h3 class="text-2xl font-bold mb-4">Consulting</h3>
+                    <p class="text-gray-600 mb-6">Tailored solutions for complex research & innovation challenges</p>
+                    <ul class="text-left space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Research Strategy</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Process Workflow Optimization</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Custom Team Development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Business Roadmapping</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col">
-                    <div class="card text-center border shadow-sm">
-                        <a href="https://www.instagram.com/guidoputignano/?hl=en">
-                            <div class="card-body">
-                                <i class="fab fa-instagram fa-2x mb-2"></i>
-                                <h5 class="card-title">Find Me</h5>
-                                <p class="card-text">On Instagram.</p>
-                            </div>
-                        </a>
+
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chalkboard-teacher text-purple-600 text-3xl"></i>
                     </div>
+                    <h3 class="text-2xl font-bold mb-4">Teaching</h3>
+                    <p class="text-gray-600 mb-6">Workshops & training to upskill teams in data, AI & innovation</p>
+                    <ul class="text-left space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Data Innovation Programs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>AI Integration Workshops</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Innovation Bootcamps</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Customized Learning Paths</span>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col">
-                    <div class="card text-center border shadow-sm">
-                        <a href="https://twitter.com/guidoputignano">
-                            <div class="card-body">
-                                <i class="fab fa-twitter fa-2x mb-2"></i>
-                                <h5 class="card-title">Follow Me</h5>
-                                <p class="card-text">On Twitter.</p>
-                            </div>
-                        </a>
+
+                <div class="service-card bg-white rounded-lg shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hands-helping text-green-600 text-3xl"></i>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card text-center border shadow-sm">
-                        <a href="https://scholar.google.com/citations?user=ym2VggEAAAAJ&hl=en&oi=ao">
-                            <div class="card-body">
-                                <i class="fas fa-graduation-cap fa-2x mb-2"></i>
-                                <h5 class="card-title">Follow Me</h5>
-                                <p class="card-text">On Google Scholar.</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card text-center border shadow-sm">
-                        <a href="mailto: guido.putignano@gmail.com">
-                            <div class="card-body">
-                                <i class="fas fa-envelope fa-2x mb-2"></i>
-                                <h5 class="card-title">Mail Me</h5>
-                                <p class="card-text">guido.putignano@gmail.com</p>
-                            </div>
-                        </a>
-                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Advisorship</h3>
+                    <p class="text-gray-600 mb-6">Guidance for biotech startups and research initiatives</p>
+                    <ul class="text-left space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Startup Mentoring</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Technical Advisory</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Ongoing Strategic Guidance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span>Investment Strategy</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/flickity.min.js"></script>
-    <script src="js/parallax.js"></script>
-    <script src="js/isotope.min.js"></script>
-    <script src="js/smooth-scroll.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center section-heading section-heading-center" data-aos="fade-up">Contact Me</h2>
+            <div class="w-24 h-1.5 bg-blue-600 mx-auto -mt-8 mb-12"></div>
 
-</body>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <a href="https://www.linkedin.com/in/guido-putignano/" target="_blank" class="contact-icon block p-6 bg-white rounded-lg shadow text-center transition-all duration-300 hover:shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fab fa-linkedin text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">LinkedIn</h3>
+                    <p class="text-gray-600">Connect professionally</p>
+                </a>
+
+                <a href="https://twitter.com/guidoputignano" target="_blank" class="contact-icon block p-6 bg-white rounded-lg shadow text-center transition-all duration-300 hover:shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fab fa-twitter text-4xl text-blue-400 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">Twitter</h3>
+                    <p class="text-gray-600">Follow for updates</p>
+                </a>
+
+                <a href="https://www.instagram.com/guidoputignano/" target="_blank" class="contact-icon block p-6 bg-white rounded-lg shadow text-center transition-all duration-300 hover:shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fab fa-instagram text-4xl text-pink-600 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">Instagram</h3>
+                    <p class="text-gray-600">See my journey</p>
+                </a>
+
+                <a href="https://scholar.google.com/citations?user=ym2VggEAAAAJ&hl=en&oi=ao" target="_blank" class="contact-icon block p-6 bg-white rounded-lg shadow text-center transition-all duration-300 hover:shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-graduation-cap text-4xl text-blue-800 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">Google Scholar</h3>
+                    <p class="text-gray-600">Read my research</p>
+                </a>
+
+                <a href="mailto:guido.putignano@gmail.com" class="contact-icon block p-6 bg-white rounded-lg shadow text-center transition-all duration-300 hover:shadow-lg" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-envelope text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-lg font-bold mb-2">Email</h3>
+                    <p class="text-gray-600">guido.putignano@gmail.com</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
 
 <script>
-    'undefined' === typeof _trfq || (window._trfq = []);
-    'undefined' === typeof _trfd && (window._trfd = []), _trfd.push({
-        'tccl.baseHost': 'secureserver.net'
-    }), _trfd.push({
-        'ap': 'cpsh'
-    }, {
-        'server': 'a2plcpnl0277'
-    }) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.
-</script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterLinks = document.querySelectorAll('.grid-filter ul li a');
+    const portfolioItems = document.querySelectorAll('#blog .post-item');
 
-<!-- Scroll top -->
-<a id="scrollTop"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
-<!--Plugins-->
-<script src="js/jquery.js"></script>
-<script src="js/plugins.js"></script>
-<!--Template functions-->
-<script src="js/functions.js"></script>
+    // Function to filter items
+    const filterPortfolio = (category) => {
+      portfolioItems.forEach(item => {
+        // Remove the dot from the category for checking classes
+        const categoryClass = category.substring(1);
 
+        if (category === '*') {
+          // Show all items if category is '*'
+          item.style.display = 'block';
+        } else if (item.classList.contains(categoryClass)) {
+          // Show item if it has the matching class
+          item.style.display = 'block';
+        } else {
+          // Hide item if no match
+          item.style.display = 'none';
+        }
+      });
+    };
 
+    // Add click listeners to filter links
+    filterLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default link behavior
 
-<script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script>
+        // Update active link style
+        document.querySelectorAll('.grid-filter ul li').forEach(li => li.classList.remove('active'));
+        link.parentElement.classList.add('active');
 
+        // Get category and filter
+        const category = link.getAttribute('data-category');
+        filterPortfolio(category);
+      });
+    });
+
+    // Initial filter (show default filter category)
+    const defaultFilter = document.querySelector('#blog').getAttribute('data-default-filter');
+    if (defaultFilter) {
+      filterPortfolio('.' + defaultFilter);
+
+      // Ensure the default active link is styled correctly
+      const defaultLink = document.querySelector(`.grid-filter ul li a[data-category=".${defaultFilter}"]`);
+      if (defaultLink) {
+        document.querySelectorAll('.grid-filter ul li').forEach(li => li.classList.remove('active'));
+        defaultLink.parentElement.classList.add('active');
+      }
+    }
+  });
+  </script>
+
+</body>
 </html>
+
