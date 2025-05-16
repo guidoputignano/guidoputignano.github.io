@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endothelial Cell Shear Response Simulation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            outline: none;
+            transition: background 0.2s;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4F46E5;
+            cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #4F46E5;
+            cursor: pointer;
+        }
+        .cell-nucleus {
+            transition: transform 0.5s ease;
+        }
+        .cell {
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex justify-center items-center p-4">
+    <div class="w-full max-w-2xl p-6 space-y-6 bg-white rounded-xl shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">Endothelial Cell Shear Response</h2>
+
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Actin Density: <span id="actinDensityValue">50</span>%
+                </label>
+                <input
+                    type="range"
+                    id="actinDensity"
+                    min="0"
+                    max="100"
+                    value="50"
+                    class="bg-gray-200"
+                >
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-2">
+                    Shear Stress Level: <span id="shearStressLabel">Medium</span>
+                </label>
+                <input
+                    type="range"
+                    id="shearStress"
+                    min="0"
+                    max="2"
+                    value="1"
+                    step="1"
+                    class="bg-gray-200"
+                >
+            </div>
+        </div>
+
+        <div class="relative h-64 border rounded-lg overflow-hidden bg-gray-50">
+            <!-- Flow direction indicator -->
+            <div class="absolute top-4 left-4 flex items-center">
+                <span class="mr-2">Flow Direction</span>
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </div>
+
+            <!-- Cell visualization -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div id="cell" class="cell w-32 h-32 rounded-full bg-green-500 flex items-center justify-center relative">
+                    <div id="nucleus" class="cell-nucleus w-12 h-12 rounded-full bg-gray-700 absolute"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="alert" class="p-4 border rounded-md bg-blue-50 border-blue-200">
+            <p id="statusMessage" class="text-sm text-blue-800">
+                Cell stable - optimal actin density for Medium shear stress conditions
+            </p>
+        </div>
+
+        <div class="mt-4 text-sm">
+            <h3 class="font-medium mb-2">Cell Response Analysis:</h3>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>Shear stress level: <span id="analysisShearStress">Medium</span></li>
+                <li>Actin network density: <span id="analysisActinDensity">50</span>%</li>
+                <li>Cell status: <span id="analysisStatus">stable</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // State variables
+        let actinDensity = 50;
+        let shearStressLevel = 1; // 0-2 representing Low-High
+        let cellStability = 'stable';
+
+        // DOM elements
+        const actinDensitySlider = document.getElementById('actinDensity');
+        const actinDensityValue = document.getElementById('actinDensityValue');
+        const shearStressSlider = document.getElementById('shearStress');
+        const shearStressLabel = document.getElementById('shearStressLabel');
+        const cell = document.getElementById('cell');
+        const nucleus = document.getElementById('nucleus');
+        const statusMessage = document.getElementById('statusMessage');
+        const alert = document.getElementById('alert');
+        const analysisShearStress = document.getElementById('analysisShearStress');
+        const analysisActinDensity = document.getElementById('analysisActinDensity');
+        const analysisStatus = document.getElementById('analysisStatus');
+
+        // Functions
+        function getShearStressLabel(level) {
+            switch (parseInt(level)) {
+                case 0:
+                    return 'Low';
+                case 1:
+                    return 'Medium';
+                case 2:
+                    return 'High';
+                default:
+                    return 'Medium';
+            }
+        }
+
+        function updateCellStability() {
+            if (shearStressLevel == 2) {  // High shear stress
+                if (actinDensity < 30) {
+                    cellStability = 'rupture';
+                } else if (actinDensity > 70) {
+                    cellStability = 'rigid';
+                } else {
+                    cellStability = 'stable';
+                }
+            } else if (shearStressLevel == 0) {  // Low shear stress
+                if (actinDensity < 20) {
+                    cellStability = 'unstable';
+                } else if (actinDensity > 80) {
+                    cellStability = 'rigid';
+                } else {
+                    cellStability = 'stable';
+                }
+            } else {  // Medium shear stress
+                if (actinDensity < 25) {
+                    cellStability = 'unstable';
+                } else if (actinDensity > 75) {
+                    cellStability = 'rigid';
+                } else {
+                    cellStability = 'stable';
+                }
+            }
+        }
+
+        function getCellColor() {
+            switch (cellStability) {
+                case 'rupture':
+                    return 'bg-red-500';
+                case 'unstable':
+                    return 'bg-yellow-500';
+                case 'rigid':
+                    return 'bg-blue-500';
+                default:
+                    return 'bg-green-500';
+            }
+        }
+
+        function getStatusMessage() {
+            const stressLevel = getShearStressLabel(shearStressLevel);
+            switch (cellStability) {
+                case 'rupture':
+                    return `Warning: Cell at risk of detachment under ${stressLevel} shear stress conditions`;
+                case 'unstable':
+                    return 'Cell adhesion compromised - low actin density affecting structural integrity';
+                case 'rigid':
+                    return 'Excessive actin formation may impair cell adaptability';
+                default:
+                    return `Cell stable - optimal actin density for ${stressLevel} shear stress conditions`;
+            }
+        }
+
+        function getAlertClass() {
+            switch (cellStability) {
+                case 'rupture':
+                    return 'bg-red-50 border-red-200';
+                case 'unstable':
+                    return 'bg-yellow-50 border-yellow-200';
+                case 'rigid':
+                    return 'bg-blue-50 border-blue-200';
+                default:
+                    return 'bg-green-50 border-green-200';
+            }
+        }
+
+        function getStatusMessageClass() {
+            switch (cellStability) {
+                case 'rupture':
+                    return 'text-red-800';
+                case 'unstable':
+                    return 'text-yellow-800';
+                case 'rigid':
+                    return 'text-blue-800';
+                default:
+                    return 'text-green-800';
+            }
+        }
+
+        function updateUI() {
+            // Update cell stability based on current values
+            updateCellStability();
+
+            // Update cell color
+            cell.className = `cell w-32 h-32 rounded-full ${getCellColor()} flex items-center justify-center relative`;
+
+            // Update nucleus position based on shear stress
+            nucleus.style.transform = `translateX(${shearStressLevel * 10}px)`;
+
+            // Update status message
+            statusMessage.textContent = getStatusMessage();
+            statusMessage.className = `text-sm ${getStatusMessageClass()}`;
+
+            // Update alert background
+            alert.className = `p-4 border rounded-md ${getAlertClass()}`;
+
+            // Update analysis section
+            analysisShearStress.textContent = getShearStressLabel(shearStressLevel);
+            analysisActinDensity.textContent = actinDensity;
+            analysisStatus.textContent = cellStability;
+        }
+
+        // Event listeners
+        actinDensitySlider.addEventListener('input', function() {
+            actinDensity = parseInt(this.value);
+            actinDensityValue.textContent = actinDensity;
+            updateUI();
+        });
+
+        shearStressSlider.addEventListener('input', function() {
+            shearStressLevel = parseInt(this.value);
+            shearStressLabel.textContent = getShearStressLabel(shearStressLevel);
+            updateUI();
+        });
+
+        // Initialize UI
+        updateUI();
+    </script>
+</body>
+</html>
