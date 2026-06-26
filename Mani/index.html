@@ -860,9 +860,10 @@ const WHEEL = (() => {
   return {draw, spinTo, segs, indexOf:(label)=>segs.findIndex(s=>s.label.replace("\n"," ").startsWith(label))};
 })();
 
-// Predetermined outcomes per spin number (0-based): Kiss, Kiss, A surprise
-const RIGGED = ["A kiss","A kiss","A\nsurprise"];
+// Predetermined outcomes per spin number (0-based): Favorite takeout, Kiss, A surprise
+const RIGGED = ["Favorite\ntakeout","A kiss","A\nsurprise"];
 const RESULTS = {
+  "Favorite\ntakeout": {emoji:"🥡", title:"Favorite Takeout!", text:"Dinner's decided — your favorite takeout is on the way. 🥡 (Keep spinning, there's more.)"},
   "A kiss": {emoji:"💋", title:"A Kiss!", text:"The wheel demands it — pucker up. 😘 (Spin again, the night's young.)"},
   "A\nsurprise": {emoji:"🎁", title:"A Surprise!", text:"This one's not on the wheel by accident. Ask Guido what your surprise is… he's been waiting to tell you. 💝"},
 };
