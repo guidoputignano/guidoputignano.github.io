@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#2a1a3a" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<title>Mani's Heart Hunt</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  :root { --bg: #1b1426; }
+  html, body {
+    width: 100%; height: 100%; overflow: hidden;
+    background: var(--bg);
+    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    color: #fff; touch-action: none; user-select: none; -webkit-user-select: none;
+    overscroll-behavior: none;
+  }
+  #app {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background:
+      radial-gradient(120% 80% at 50% 0%, #3a2450 0%, #1b1426 60%, #120c1a 100%);
+  }
+
+  /* ---------- Game stage ---------- */
+  #stage {
+    position: relative;
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  #gameWrap {
+    position: relative;
+    width: min(100vw, calc(100vh * (480/352)));
+    max-width: 560px;
+    aspect-ratio: 480 / 352;
+    box-shadow: 0 12px 40px rgba(0,0,0,.55), 0 0 0 3px rgba(255,255,255,.06);
+    border-radius: 14px; overflow: hidden;
+    background: #20351f;
+  }
+  canvas#game {
+    display: block; width: 100%; height: 100%;
+    image-rendering: pixelated; image-rendering: crisp-edges;
+  }
+
+  /* ---------- HUD ---------- */
+  #hud {
+    position: absolute; top: 10px; left: 0; right: 0;
+    display: flex; justify-content: center; gap: 8px;
+    pointer-events: none; z-index: 5;
+  }
+  .hudHeart {
+    width: 30px; height: 30px;
+    filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+    transition: transform .25s cubic-bezier(.2,1.6,.4,1), opacity .25s;
+    opacity: .35; transform: scale(.85);
+  }
+  .hudHeart.got { opacity: 1; transform: scale(1.05); }
+  #hint {
+    position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; letter-spacing: .3px; color: #ffd9ec;
+    background: rgba(0,0,0,.35); padding: 4px 12px; border-radius: 20px;
+    pointer-events: none; z-index: 5; white-space: nowrap;
+    transition: opacity .4s; text-shadow: 0 1px 2px #000;
+  }
+
+  /* ---------- Controls ---------- */
+  #controls {
+    position: absolute; bottom: 14px; left: 14px;
+    width: 150px; height: 150px; z-index: 6;
+    touch-action: none;
+  }
+  .dpad { position: absolute; }
+  .dbtn {
+    position: absolute; width: 50px; height: 50px;
+    background: rgba(255,255,255,.10);
+    border: 2px solid rgba(255,255,255,.28);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 22px; line-height: 1;
+    backdrop-filter: blur(2px);
+    transition: background .08s, transform .08s;
+  }
+  .dbtn:active, .dbtn.pressed { background: rgba(255,110,170,.55); transform: scale(.92); }
+  #up    { top: 0;   left: 50px; }
+  #down  { top: 100px; left: 50px; }
+  #left  { top: 50px; left: 0; }
+  #right { top: 50px; left: 100px; }
+  #center {
+    top: 50px; left: 50px; width:50px; height:50px;
+    background: rgba(255,255,255,.05); border:2px solid rgba(255,255,255,.15);
+    border-radius: 12px;
+  }
+
+  /* ---------- Overlays ---------- */
+  .overlay {
+    position: fixed; inset: 0; z-index: 20;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 24px; overflow-y: auto;
+    background: radial-gradient(120% 90% at 50% 20%, rgba(58,36,80,.92), rgba(18,12,26,.97));
+    backdrop-filter: blur(3px);
+  }
+  .overlay.hidden { display: none; }
+  .title {
+    font-size: clamp(28px, 8vw, 46px); font-weight: 800; letter-spacing: 1px;
+    background: linear-gradient(90deg,#ff7eb3,#ff65a3,#ffd36e);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    text-shadow: 0 4px 18px rgba(255,101,163,.35); margin-bottom: 6px;
+  }
+  .subtitle { color: #e9d5ff; font-size: clamp(13px,3.6vw,16px); max-width: 320px; line-height: 1.5; margin-bottom: 22px; opacity:.92; }
+  .btn {
+    font: inherit; font-weight: 700; font-size: clamp(15px,4.4vw,18px);
+    color: #fff; cursor: pointer;
+    padding: 14px 30px; border: none; border-radius: 40px;
+    background: linear-gradient(135deg,#ff5fa2,#ff8f6b);
+    box-shadow: 0 8px 22px rgba(255,95,162,.5), inset 0 1px 0 rgba(255,255,255,.4);
+    transition: transform .12s;
+  }
+  .btn:active { transform: scale(.95); }
+  .btn.ghost { background: rgba(255,255,255,.12); box-shadow:none; border:2px solid rgba(255,255,255,.3); }
+  .miniLegend { display:flex; gap:16px; margin-top:22px; flex-wrap:wrap; justify-content:center; }
+  .legItem { display:flex; flex-direction:column; align-items:center; gap:4px; font-size:11px; color:#d9c6f0; }
+  .legItem canvas { background: rgba(0,0,0,.25); border-radius:8px; }
+
+  /* ---------- Prize wheel ---------- */
+  #wheelScreen .title { margin-bottom: 2px; }
+  #wheelStatus { color:#ffe3a0; font-size: clamp(13px,3.6vw,15px); margin-bottom: 14px; min-height: 20px; }
+  #wheelHolder { position: relative; width: min(70vw, 300px); aspect-ratio:1; margin: 4px 0 14px; }
+  #wheelCanvas { width:100%; height:100%; display:block; filter: drop-shadow(0 10px 28px rgba(0,0,0,.55)); }
+  #pointer {
+    position:absolute; top:-6px; left:50%; transform: translateX(-50%);
+    width:0;height:0; border-left:16px solid transparent; border-right:16px solid transparent;
+    border-top:26px solid #fff; z-index:3; filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+  #wheelHub {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:54px;height:54px;border-radius:50%;
+    background: radial-gradient(circle at 35% 30%,#fff,#ffd0e6 45%,#ff7eb3);
+    border:3px solid #fff; z-index:2; box-shadow:0 3px 10px rgba(0,0,0,.4);
+    display:flex;align-items:center;justify-content:center;font-size:24px;
+  }
+  #spinBtn { margin-top: 4px; }
+  #spinsLeft { font-size:13px; color:#cdb6e6; margin-top:10px; }
+
+  /* result modal */
+  #resultModal .resultCard {
+    background: linear-gradient(160deg, rgba(60,38,84,.96), rgba(30,18,46,.98));
+    border:2px solid rgba(255,255,255,.18); border-radius:22px;
+    padding: 28px 26px; max-width: 360px;
+    box-shadow: 0 16px 50px rgba(0,0,0,.6);
+  }
+  #resultEmoji { font-size: 58px; line-height:1; margin-bottom: 8px; }
+  #resultTitle { font-size: clamp(22px,6vw,30px); font-weight:800; margin-bottom:10px;
+    background: linear-gradient(90deg,#ff9ec7,#ffd36e); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  #resultText { color:#ecdcff; font-size: clamp(14px,3.8vw,16px); line-height:1.55; margin-bottom: 22px; }
+
+  .fadeIn { animation: fadeIn .5s ease both; }
+  @keyframes fadeIn { from{opacity:0; transform: translateY(8px) scale(.98);} to{opacity:1; transform:none;} }
+  .pulse { animation: pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.06);} }
+
+  #muteBtn {
+    position:absolute; top:10px; right:10px; z-index:8;
+    width:38px;height:38px;border-radius:10px;
+    background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.2);
+    color:#fff; font-size:18px; display:flex;align-items:center;justify-content:center;
+  }
+  canvas.confetti { position:fixed; inset:0; width:100vw; height:100vh; z-index:30; pointer-events:none; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <div id="gameWrap">
+      <canvas id="game" width="480" height="352"></canvas>
+
+      <!-- HUD -->
+      <div id="hud">
+        <img class="hudHeart" id="hh0" alt="">
+        <img class="hudHeart" id="hh1" alt="">
+        <img class="hudHeart" id="hh2" alt="">
+      </div>
+      <div id="hint">Find 3 hidden hearts — avoid the nasties!</div>
+      <button id="muteBtn" aria-label="mute">🔊</button>
+
+      <!-- D-pad -->
+      <div id="controls">
+        <div class="dpad">
+          <div class="dbtn" id="up"    data-dir="up">▲</div>
+          <div class="dbtn" id="left"  data-dir="left">◀</div>
+          <div class="dbtn" id="center"></div>
+          <div class="dbtn" id="right" data-dir="right">▶</div>
+          <div class="dbtn" id="down"  data-dir="down">▼</div>
+        </div>
+      </div>
+
+      <!-- Start overlay -->
+      <div class="overlay" id="startScreen">
+        <div class="title">Mani's<br>Heart Hunt</div>
+        <div class="subtitle">Guide Mani through the meadow and collect all <b>3 hidden hearts</b>.<br>Dodge the flip-flops, beetroots, dishes &amp; little monsters — touch one and you scoot back to start!</div>
+        <button class="btn pulse" id="startBtn">▶ Start the hunt</button>
+        <div class="miniLegend" id="legend"></div>
+        <div class="subtitle" style="margin-top:18px;font-size:11px;opacity:.7">Swipe anywhere, or use the on-screen pad. 🎧 Sound on for the full vibe.</div>
+      </div>
+
+      <!-- Hearts-found transition -->
+      <div class="overlay hidden" id="huntDone">
+        <div class="title">💖 All hearts found! 💖</div>
+        <div class="subtitle">You found every hidden heart, Mani.<br>Time for your reward… spin the wheel!</div>
+        <button class="btn pulse" id="toWheelBtn">🎡 Spin the Prize Wheel</button>
+      </div>
+
+      <!-- Wheel screen -->
+      <div class="overlay hidden" id="wheelScreen">
+        <div class="title" style="font-size:clamp(24px,7vw,38px)">Prize Wheel</div>
+        <div id="wheelStatus">3 spins, 3 chances. Good luck! 🍀</div>
+        <div id="wheelHolder">
+          <div id="pointer"></div>
+          <canvas id="wheelCanvas" width="600" height="600"></canvas>
+          <div id="wheelHub">🎀</div>
+        </div>
+        <button class="btn" id="spinBtn">Spin!</button>
+        <div id="spinsLeft">Spins left: 3</div>
+      </div>
+
+      <!-- Result modal -->
+      <div class="overlay hidden" id="resultModal">
+        <div class="resultCard fadeIn">
+          <div id="resultEmoji">💋</div>
+          <div id="resultTitle">A Kiss!</div>
+          <div id="resultText"></div>
+          <button class="btn" id="resultBtn">Continue</button>
+        </div>
+      </div>
+    </div>
+    <canvas class="confetti" id="confetti" width="480" height="352"></canvas>
+  </div>
+</div>
+
+<script>
+"use strict";
+/* =========================================================================
+   MANI'S HEART HUNT  —  single-file pixel adventure + rigged prize wheel
+   Everything (sprites, music, SFX) is generated at runtime. No assets.
+   ========================================================================= */
+
+// ----------------------------- constants ---------------------------------
+const TILE = 32;
+const COLS = 15, ROWS = 11;
+const VW = COLS * TILE; // 480
+const VH = ROWS * TILE; // 352
+
+// Skin tone ≈ Pantone 59-4 (warm medium), long black hair, red clothing.
+const SKIN = "#d8a06e", SKIN_SH = "#bb824f";
+const HAIR = "#1c1620", HAIR_HI = "#3a3040";
+const DRESS = "#d62839", DRESS_SH = "#a81e2c";
+
+// Map legend:
+//  # tree/wall   . grass   @ start
+//  M monster  S slider(flip-flop)  B beetroot  D dish
+//  1 2 3 hearts
+const MAP = [
+  "###############",
+  "#@..........B.#",
+  "#...M.....S...#",
+  "#.....2.......#",
+  "#..D......M...#",
+  "#......S......#",
+  "#...M.....B...#",
+  "#.......1.....#",
+  "#..B...D...S..#",
+  "#.....M......3#",
+  "###############",
+];
+
+// ----------------------------- canvas ------------------------------------
+const cv = document.getElementById("game");
+const ctx = cv.getContext("2d");
+ctx.imageSmoothingEnabled = false;
+
+// ----------------------------- audio engine ------------------------------
+const Audio = (() => {
+  let ac = null, master = null, musicGain = null, muted = false, musicTimer = null, step = 0;
+  function ensure() {
+    if (ac) return;
+    ac = new (window.AudioContext || window.webkitAudioContext)();
+    master = ac.createGain(); master.gain.value = 0.9; master.connect(ac.destination);
+    musicGain = ac.createGain(); musicGain.gain.value = 0.0; musicGain.connect(master);
+  }
+  function resume(){ if (ac && ac.state === "suspended") ac.resume(); }
+
+  // one voice with ADSR
+  function voice(freq, t, dur, type, peak, dest) {
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = type; o.frequency.setValueAtTime(freq, t);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(peak, t + 0.012);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(dest || master);
+    o.start(t); o.stop(t + dur + 0.02);
+  }
+
+  // ---- background music: curious, upbeat pentatonic-ish loop ----
+  // notes (Hz). A simple major/lydian feel exploration tune.
+  const N = {C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392.0,A4:440.0,B4:493.88,
+             C5:523.25,D5:587.33,E5:659.25,G5:783.99,A5:880.0,
+             C3:130.81,D3:146.83,E3:164.81,F3:174.61,G3:196.0,A3:220.0};
+  // 16-step melody, bass per 4 steps
+  const MEL = [N.E4,0,N.G4,N.A4, N.G4,0,N.E4,0, N.D4,0,N.E4,N.G4, N.A4,0,N.C5,0,
+               N.E5,0,N.D5,N.C5, N.A4,0,N.G4,0, N.E4,0,N.G4,N.A4, N.C5,0,N.B4,N.A4];
+  const BASS= [N.C3,N.G3,N.A3,N.F3, N.C3,N.G3,N.E3,N.G3];
+  const ARP = [N.C5,N.E5,N.G5,N.E5];
+  const stepDur = 0.16; // ~ moderate tempo
+  let nextTime = 0;
+
+  function scheduler() {
+    if (!ac) return;
+    const ahead = ac.currentTime + 0.25;
+    while (nextTime < ahead) {
+      const s = step % MEL.length;
+      // melody (square-ish, soft)
+      if (MEL[s]) voice(MEL[s], nextTime, stepDur*1.6, "triangle", 0.16, musicGain);
+      // bass every 2 steps
+      if (s % 2 === 0) {
+        const b = BASS[(s/2) % BASS.length];
+        voice(b, nextTime, stepDur*1.9, "sine", 0.22, musicGain);
+      }
+      // sparkly arpeggio every 4 steps for "adventure" shimmer
+      voice(ARP[s % ARP.length] * 2, nextTime, stepDur*0.6, "triangle", 0.04, musicGain);
+      step++;
+      nextTime += stepDur;
+    }
+  }
+  function startMusic() {
+    ensure(); resume();
+    if (musicTimer) return;
+    nextTime = ac.currentTime + 0.1; step = 0;
+    musicGain.gain.cancelScheduledValues(ac.currentTime);
+    musicGain.gain.setValueAtTime(muted?0:0.0001, ac.currentTime);
+    if (!muted) musicGain.gain.exponentialRampToValueAtTime(0.5, ac.currentTime + 1.2);
+    musicTimer = setInterval(scheduler, 60);
+  }
+  function setMusicLevel(v){ if(ac) musicGain.gain.linearRampToValueAtTime(muted?0:v, ac.currentTime+0.4); }
+
+  // ---- SFX ----
+  function heartPickup() {
+    ensure(); resume(); if (muted) return;
+    const t = ac.currentTime;
+    [N.C5,N.E5,N.G5,N.C5*2].forEach((f,i)=>voice(f, t+i*0.07, 0.22, "triangle", 0.3));
+  }
+  function hit() {
+    ensure(); resume(); if (muted) return;
+    const t = ac.currentTime;
+    const o=ac.createOscillator(), g=ac.createGain();
+    o.type="sawtooth"; o.frequency.setValueAtTime(330,t);
+    o.frequency.exponentialRampToValueAtTime(70,t+0.3);
+    g.gain.setValueAtTime(0.25,t); g.gain.exponentialRampToValueAtTime(0.0001,t+0.32);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t+0.34);
+  }
+  function win() {
+    ensure(); resume(); if (muted) return;
+    const t = ac.currentTime;
+    const seq=[N.C5,N.E5,N.G5,N.C5*2,N.G5,N.C5*2];
+    seq.forEach((f,i)=>voice(f, t+i*0.12, 0.5, "triangle", 0.3));
+    // chord pad
+    [N.C4,N.E4,N.G4].forEach(f=>voice(f,t,1.4,"sine",0.14));
+  }
+  function tick(){ ensure(); if(muted||!ac) return;
+    const t=ac.currentTime; const o=ac.createOscillator(),g=ac.createGain();
+    o.type="square"; o.frequency.setValueAtTime(1200,t);
+    g.gain.setValueAtTime(0.05,t); g.gain.exponentialRampToValueAtTime(0.0001,t+0.05);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t+0.06);
+  }
+  function fanfare(){
+    ensure(); resume(); if(muted) return;
+    const t=ac.currentTime;
+    const seq=[N.G4,N.C5,N.E5,N.G5,N.E5,N.G5,N.C5*2];
+    seq.forEach((f,i)=>voice(f,t+i*0.13,0.6,"triangle",0.3));
+    [N.C4,N.E4,N.G4,N.C5].forEach(f=>voice(f,t,1.8,"sine",0.12));
+  }
+  function toggleMute(){ muted=!muted; ensure();
+    if(ac) musicGain.gain.linearRampToValueAtTime(muted?0:0.5, ac.currentTime+0.2);
+    return muted; }
+  return {startMusic, setMusicLevel, heartPickup, hit, win, tick, fanfare, toggleMute, ensure, resume,
+          get muted(){return muted;}};
+})();
+
+// ----------------------------- sprite drawing ----------------------------
+// pixel helper drawing on a tile-sized cell
+function px(c, x, y, w, h, col){ c.fillStyle=col; c.fillRect(x,y,w,h); }
+
+// Mani sprite. dir: 0 down,1 up,2 left,3 right. frame: 0/1 walk, idle uses 0.
+function drawMani(c, ox, oy, dir, frame, blink) {
+  c.save();
+  c.translate(ox, oy);
+  const bob = frame===1 ? 1 : 0;
+  // shadow
+  c.fillStyle="rgba(0,0,0,.22)"; c.beginPath();
+  c.ellipse(16, 30, 9, 3.2, 0, 0, Math.PI*2); c.fill();
+
+  // legs (animate)
+  const lx = frame===1 ? 1 : 0;
+  px(c, 10-lx, 26-bob, 4, 5, DRESS_SH);
+  px(c, 18+lx, 26-bob, 4, 5, DRESS_SH);
+  px(c, 10-lx, 30-bob, 4, 2, "#5a3a28"); // shoes
+  px(c, 18+lx, 30-bob, 4, 2, "#5a3a28");
+
+  // body / red dress
+  px(c, 8, 16-bob, 16, 11, DRESS);
+  px(c, 8, 23-bob, 16, 3, DRESS_SH);
+  px(c, 7, 18-bob, 2, 7, DRESS_SH);  // arms shading sides
+  px(c, 23, 18-bob, 2, 7, DRESS_SH);
+  // arms
+  px(c, 6, 18-bob, 3, 6, SKIN);
+  px(c, 23, 18-bob, 3, 6, SKIN);
+
+  // long black hair (behind head, flowing down)
+  px(c, 7, 6-bob, 18, 16, HAIR);
+  px(c, 6, 9-bob, 3, 12, HAIR);    // long strands sides
+  px(c, 23, 9-bob, 3, 12, HAIR);
+
+  // head / face depending on dir
+  if (dir === 1) {
+    // facing up — back of head, mostly hair
+    px(c, 9, 5-bob, 14, 13, HAIR);
+    px(c, 11, 6-bob, 10, 4, HAIR_HI);
+  } else {
+    // face
+    px(c, 10, 7-bob, 12, 11, SKIN);
+    px(c, 10, 15-bob, 12, 2, SKIN_SH); // jaw shade
+    // hair fringe on top
+    px(c, 9, 5-bob, 14, 4, HAIR);
+    px(c, 9, 7-bob, 3, 5, HAIR);
+    px(c, 20, 7-bob, 3, 5, HAIR);
+    // eyes
+    if (dir === 2) { // left
+      if(!blink){ px(c, 11, 10-bob, 2, 3, "#27121a"); }
+      else px(c,11,11-bob,2,1,"#27121a");
+      px(c, 12, 14-bob, 4, 1, "#b5615f"); // mouth/blush hint
+    } else if (dir === 3) { // right
+      if(!blink){ px(c, 19, 10-bob, 2, 3, "#27121a"); }
+      else px(c,19,11-bob,2,1,"#27121a");
+      px(c, 16, 14-bob, 4, 1, "#b5615f");
+    } else { // down
+      if(!blink){ px(c, 12, 10-bob, 2, 3, "#27121a"); px(c, 18, 10-bob, 2, 3, "#27121a"); }
+      else { px(c,12,11-bob,2,1,"#27121a"); px(c,18,11-bob,2,1,"#27121a"); }
+      px(c, 14, 14-bob, 4, 1, "#c25b62"); // smile
+      px(c, 11, 13-bob, 2, 1, "rgba(255,150,160,.5)"); // blush
+      px(c, 19, 13-bob, 2, 1, "rgba(255,150,160,.5)");
+    }
+  }
+  c.restore();
+}
+
+// ---- obstacle sprites (drawn at tile origin, 32x32) ----
+function drawMonster(c,ox,oy,t){
+  c.save(); c.translate(ox,oy);
+  const wob = Math.sin(t/250)*1.5;
+  c.fillStyle="rgba(0,0,0,.2)"; c.beginPath(); c.ellipse(16,29,9,3,0,0,7); c.fill();
+  px(c,7,8+wob,18,16,"#7b3fb0");
+  // wavy bottom
+  c.fillStyle="#7b3fb0";
+  for(let i=0;i<3;i++){ c.beginPath(); c.arc(11+i*6,24+wob,3,0,Math.PI); c.fill(); }
+  px(c,7,8+wob,18,5,"#9a5fd0");
+  // eyes (angry)
+  px(c,11,13+wob,4,4,"#fff"); px(c,18,13+wob,4,4,"#fff");
+  px(c,12,15+wob,2,2,"#c0152a"); px(c,19,15+wob,2,2,"#c0152a");
+  px(c,11,12+wob,4,1,"#3a1860"); px(c,18,12+wob,4,1,"#3a1860"); // brows
+  px(c,13,20+wob,6,1,"#3a1860"); // frown
+  c.restore();
+}
+function drawSlider(c,ox,oy){ // flip-flop
+  c.save(); c.translate(ox,oy);
+  c.fillStyle="rgba(0,0,0,.18)"; c.beginPath(); c.ellipse(16,27,10,3,0,0,7); c.fill();
+  c.fillStyle="#16a0b8"; c.beginPath();
+  c.ellipse(16,18,9,12,0,0,Math.PI*2); c.fill();
+  c.fillStyle="#0c7d92"; c.beginPath(); c.ellipse(16,18,9,12,0,0,Math.PI*2);
+  c.fill();
+  c.fillStyle="#19b6d0"; c.beginPath(); c.ellipse(16,17,7,10,0,0,Math.PI*2); c.fill();
+  // straps (V)
+  c.strokeStyle="#ffd23f"; c.lineWidth=2.4; c.beginPath();
+  c.moveTo(16,12); c.lineTo(11,20); c.moveTo(16,12); c.lineTo(21,20); c.stroke();
+  px(c,15,10,2,3,"#ffd23f");
+  c.restore();
+}
+function drawBeet(c,ox,oy){ // beetroot
+  c.save(); c.translate(ox,oy);
+  c.fillStyle="rgba(0,0,0,.18)"; c.beginPath(); c.ellipse(16,28,8,3,0,0,7); c.fill();
+  // leaves
+  c.fillStyle="#3fae4a";
+  c.beginPath(); c.ellipse(13,9,3,5,-0.4,0,7); c.fill();
+  c.beginPath(); c.ellipse(19,9,3,5,0.4,0,7); c.fill();
+  c.beginPath(); c.ellipse(16,7,3,6,0,0,7); c.fill();
+  // bulb
+  c.fillStyle="#8e1b5e"; c.beginPath();
+  c.moveTo(16,12); c.bezierCurveTo(26,13,25,28,16,29);
+  c.bezierCurveTo(7,28,6,13,16,12); c.fill();
+  c.fillStyle="#b8267d"; c.beginPath(); c.ellipse(13,18,3,5,0,0,7); c.fill();
+  // root tail
+  c.strokeStyle="#8e1b5e"; c.lineWidth=2; c.beginPath(); c.moveTo(16,28); c.lineTo(16,31); c.stroke();
+  c.restore();
+}
+function drawDish(c,ox,oy){ // stacked dishes
+  c.save(); c.translate(ox,oy);
+  c.fillStyle="rgba(0,0,0,.18)"; c.beginPath(); c.ellipse(16,27,11,3,0,0,7); c.fill();
+  function plate(yy,col,col2){ c.fillStyle=col2; c.beginPath(); c.ellipse(16,yy+2,11,3.5,0,0,7); c.fill();
+    c.fillStyle=col; c.beginPath(); c.ellipse(16,yy,11,3.5,0,0,7); c.fill();
+    c.fillStyle="rgba(255,255,255,.5)"; c.beginPath(); c.ellipse(16,yy,5,1.6,0,0,7); c.fill(); }
+  plate(24,"#e8eef2","#b9c4cc");
+  plate(19,"#d7e7ff","#9fb6d6");
+  plate(14,"#ffe1ec","#e0a8c2");
+  c.restore();
+}
+function drawTree(c,ox,oy){
+  c.save(); c.translate(ox,oy);
+  px(c,14,18,4,12,"#6b4424");
+  c.fillStyle="#2e7d32"; c.beginPath(); c.arc(16,14,12,0,7); c.fill();
+  c.fillStyle="#388e3c"; c.beginPath(); c.arc(11,12,7,0,7); c.fill();
+  c.beginPath(); c.arc(21,13,7,0,7); c.fill();
+  c.fillStyle="#43a047"; c.beginPath(); c.arc(16,10,7,0,7); c.fill();
+  c.fillStyle="rgba(255,255,255,.10)"; c.beginPath(); c.arc(13,9,3,0,7); c.fill();
+  c.restore();
+}
+function drawHeart(c,cx,cy,s,col,glow){
+  c.save(); c.translate(cx,cy); c.scale(s,s);
+  if(glow){ c.shadowColor="rgba(255,90,150,.9)"; c.shadowBlur=16; }
+  c.fillStyle=col||"#ff3e7f"; c.beginPath();
+  c.moveTo(0,4);
+  c.bezierCurveTo(-7,-4,-7,-11,0,-6);
+  c.bezierCurveTo(7,-11,7,-4,0,4);
+  c.fill();
+  c.shadowBlur=0;
+  c.fillStyle="rgba(255,255,255,.55)"; c.beginPath(); c.ellipse(-2.5,-4,1.6,2.4,-0.4,0,7); c.fill();
+  c.restore();
+}
+
+// pre-render grass tile texture into pattern canvas
+const grassPat = (() => {
+  const t=document.createElement("canvas"); t.width=TILE; t.height=TILE; const g=t.getContext("2d");
+  g.fillStyle="#3f8a3a"; g.fillRect(0,0,TILE,TILE);
+  g.fillStyle="#46983f"; for(let i=0;i<10;i++){ g.fillRect((i*53)%TILE,(i*29)%TILE,3,3); }
+  g.fillStyle="#368031"; for(let i=0;i<8;i++){ g.fillRect((i*37+11)%TILE,(i*47+7)%TILE,2,2); }
+  // tiny flowers
+  g.fillStyle="#ffe14d"; g.fillRect(7,22,2,2); g.fillStyle="#ff8fc8"; g.fillRect(23,9,2,2);
+  return g.getImageData(0,0,TILE,TILE);
+})();
+const grassCanvas = (() => {
+  const t=document.createElement("canvas"); t.width=TILE; t.height=TILE;
+  t.getContext("2d").putImageData(grassPat,0,0); return t;
+})();
+
+// build heart HUD icon as data URL
+(function makeHudHearts(){
+  const t=document.createElement("canvas"); t.width=30;t.height=30;
+  const g=t.getContext("2d"); drawHeart(g,15,16,2.0,"#ff5a9c");
+  const url=t.toDataURL();
+  ["hh0","hh1","hh2"].forEach(id=>document.getElementById(id).src=url);
+})();
+
+// fill start-screen legend with mini sprites
+(function legend(){
+  const items=[["Monster",drawMonster],["Flip-flop",drawSlider],["Beetroot",drawBeet],["Dishes",drawDish]];
+  const box=document.getElementById("legend");
+  items.forEach(([name,fn])=>{
+    const d=document.createElement("div"); d.className="legItem";
+    const cc=document.createElement("canvas"); cc.width=36;cc.height=36;
+    const g=cc.getContext("2d"); g.translate(2,2); fn(g,0,0,0);
+    d.appendChild(cc); const s=document.createElement("span"); s.textContent=name; d.appendChild(s);
+    box.appendChild(d);
+  });
+})();
+
+// ----------------------------- world setup -------------------------------
+const obstacles=[]; // {x,y,type}
+const hearts=[];    // {x,y,got}
+let startTile={x:1,y:1};
+(function parseMap(){
+  for(let r=0;r<ROWS;r++){
+    for(let cI=0;cI<COLS;cI++){
+      const ch=MAP[r][cI];
+      const x=cI*TILE, y=r*TILE;
+      if(ch==='@'){ startTile={x,y}; }
+      else if(ch==='M') obstacles.push({x,y,type:'M'});
+      else if(ch==='S') obstacles.push({x,y,type:'S'});
+      else if(ch==='B') obstacles.push({x,y,type:'B'});
+      else if(ch==='D') obstacles.push({x,y,type:'D'});
+      else if(ch==='1'||ch==='2'||ch==='3') hearts.push({x,y,got:false});
+    }
+  }
+})();
+function isWall(col,row){ return MAP[row] && MAP[row][col]==='#'; }
+
+// player
+const player = {
+  x: startTile.x+6, y: startTile.y+4, w: 18, h: 18,
+  dir: 0, moving:false, animT:0, frame:0, blink:0, invuln:0
+};
+function resetPlayer(){ player.x=startTile.x+6; player.y=startTile.y+4; player.dir=0; player.invuln=80; }
+
+// input: persistent heading from swipe; momentary from dpad
+let heldDir=null;      // from dpad (overrides while held)
+let swipeDir=null;     // persistent until changed / blocked
+const SPEED=2.0;
+
+// ----------------------------- game state --------------------------------
+const STATE={START:0,PLAY:1,DONE:2,WHEEL:3};
+let state=STATE.START;
+let foundCount=0;
+let particles=[]; // pickup sparkles
+let shake=0, hintTimer=0;
+
+// ----------------------------- collision ---------------------------------
+function rectsOverlap(ax,ay,aw,ah,bx,by,bw,bh){
+  return ax<bx+bw && ax+aw>bx && ay<by+bh && ay+ah>by;
+}
+function blockedAt(nx,ny){
+  // walls (tile based) — sample the four corners of hitbox
+  const pts=[[nx,ny],[nx+player.w,ny],[nx,ny+player.h],[nx+player.w,ny+player.h]];
+  for(const [px_,py_] of pts){
+    const c=Math.floor(px_/TILE), r=Math.floor(py_/TILE);
+    if(isWall(c,r)) return true;
+    if(px_<0||py_<0||px_>VW||py_>VH) return true;
+  }
+  return false;
+}
+
+// ----------------------------- main update -------------------------------
+let last=performance.now();
+function loop(now){
+  const dt=Math.min(40, now-last); last=now;
+  if(state===STATE.PLAY) update(now, dt);
+  render(now);
+  requestAnimationFrame(loop);
+}
+
+function currentHeading(){ return heldDir || swipeDir; }
+
+function update(now, dt){
+  const dir=currentHeading();
+  player.moving=false;
+  if(dir && player.invuln<=0){
+    let dx=0,dy=0;
+    if(dir==='up')dy=-SPEED; else if(dir==='down')dy=SPEED;
+    else if(dir==='left')dx=-SPEED; else if(dir==='right')dx=SPEED;
+    // attempt move per-axis so we slide along walls
+    if(dx!==0 && !blockedAt(player.x+dx,player.y)){ player.x+=dx; player.moving=true; }
+    else if(dx!==0 && swipeDir===dir) swipeDir=null; // swipe stops at wall
+    if(dy!==0 && !blockedAt(player.x,player.y+dy)){ player.y+=dy; player.moving=true; }
+    else if(dy!==0 && swipeDir===dir) swipeDir=null;
+    player.dir = dir==='down'?0:dir==='up'?1:dir==='left'?2:3;
+  }
+  // animation
+  if(player.moving){ player.animT+=dt; if(player.animT>140){player.animT=0; player.frame^=1;} }
+  else player.frame=0;
+  // blink
+  player.blink=(Math.floor(now/180)%18===0)?1:0;
+  if(player.invuln>0) player.invuln-=dt;
+
+  // heart pickup
+  for(const h of hearts){
+    if(h.got) continue;
+    if(rectsOverlap(player.x,player.y,player.w,player.h, h.x+8,h.y+8,16,16)){
+      h.got=true; foundCount++;
+      Audio.heartPickup();
+      spawnSparkles(h.x+16,h.y+16);
+      document.getElementById("hh"+(foundCount-1)).classList.add("got");
+      showHint(foundCount<3 ? `Heart found! ${foundCount}/3 💖` : "");
+      if(foundCount>=3) finishHunt();
+    }
+  }
+
+  // obstacle collision
+  if(player.invuln<=0){
+    for(const o of obstacles){
+      if(rectsOverlap(player.x,player.y,player.w,player.h, o.x+7,o.y+8,18,18)){
+        Audio.hit(); shake=10;
+        resetPlayer();
+        showHint("Oops! Back to start — try again 🙈");
+        break;
+      }
+    }
+  }
+
+  // particles
+  particles=particles.filter(p=>p.life>0);
+  for(const p of particles){ p.x+=p.vx; p.y+=p.vy; p.vy+=0.12; p.life-=dt; }
+  if(shake>0) shake-=0.6;
+
+  // proximity music swell (nearest uncollected heart)
+  let nd=1e9;
+  for(const h of hearts){ if(!h.got){ const d=Math.hypot(player.x-h.x,player.y-h.y); if(d<nd)nd=d; } }
+  if(nd<1e9){ const lvl=0.5 + 0.18*Math.max(0,1-nd/160); Audio.setMusicLevel(lvl); }
+}
+
+function spawnSparkles(x,y){
+  for(let i=0;i<16;i++){
+    const a=Math.random()*Math.PI*2, sp=1+Math.random()*2.5;
+    particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-1,life:500+Math.random()*300,
+      col:["#ff5a9c","#ffd36e","#fff","#ff8fc8"][i%4]});
+  }
+}
+
+// ----------------------------- render ------------------------------------
+function render(now){
+  ctx.save();
+  if(shake>0){ ctx.translate((Math.random()-.5)*shake,(Math.random()-.5)*shake); }
+
+  // ground
+  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+    if(isWall(c,r)){
+      ctx.fillStyle="#2c5e2a"; ctx.fillRect(c*TILE,r*TILE,TILE,TILE);
+    } else {
+      ctx.drawImage(grassCanvas,c*TILE,r*TILE);
+    }
+  }
+  // subtle path lattice already in grass; draw walls (trees) on top
+  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+    if(isWall(c,r)) drawTree(ctx,c*TILE,r*TILE);
+  }
+
+  // hearts (with gentle float + glow)
+  for(const h of hearts){
+    if(h.got) continue;
+    const fl=Math.sin(now/300 + h.x)*2;
+    drawHeart(ctx,h.x+16,h.y+15+fl,1.5,"#ff3e7f",true);
+  }
+
+  // obstacles
+  for(const o of obstacles){
+    if(o.type==='M') drawMonster(ctx,o.x,o.y,now);
+    else if(o.type==='S') drawSlider(ctx,o.x,o.y);
+    else if(o.type==='B') drawBeet(ctx,o.x,o.y);
+    else if(o.type==='D') drawDish(ctx,o.x,o.y);
+  }
+
+  // particles
+  for(const p of particles){
+    ctx.globalAlpha=Math.max(0,p.life/700); ctx.fillStyle=p.col;
+    ctx.fillRect(p.x,p.y,3,3);
+  }
+  ctx.globalAlpha=1;
+
+  // player (flash when invulnerable)
+  if(!(player.invuln>0 && Math.floor(now/80)%2===0)){
+    drawMani(ctx, player.x-7, player.y-12, player.dir, player.moving?player.frame:0, player.blink);
+  }
+
+  // vignette
+  const vg=ctx.createRadialGradient(VW/2,VH/2,VH*0.35,VW/2,VH/2,VH*0.75);
+  vg.addColorStop(0,"rgba(0,0,0,0)"); vg.addColorStop(1,"rgba(0,0,0,.28)");
+  ctx.fillStyle=vg; ctx.fillRect(0,0,VW,VH);
+
+  ctx.restore();
+}
+
+// ----------------------------- HUD / hints -------------------------------
+function showHint(text){
+  const el=document.getElementById("hint");
+  if(!text){ el.style.opacity="0"; return; }
+  el.textContent=text; el.style.opacity="1"; hintTimer=now=>{};
+  clearTimeout(showHint._t);
+  showHint._t=setTimeout(()=>{ el.style.opacity="0"; }, 2200);
+}
+
+// ----------------------------- flow: start/hunt/wheel --------------------
+function startGame(){
+  Audio.startMusic();
+  document.getElementById("startScreen").classList.add("hidden");
+  state=STATE.PLAY;
+  showHint("Find 3 hidden hearts — avoid the nasties!");
+}
+function finishHunt(){
+  state=STATE.DONE;
+  Audio.win();
+  fireConfetti(1600);
+  setTimeout(()=>{
+    document.getElementById("huntDone").classList.remove("hidden");
+  }, 700);
+}
+
+// -------------------- PRIZE WHEEL (rigged but looks random) --------------
+const WHEEL = (() => {
+  const segs = [
+    {label:"Movie night",   emoji:"🎬", color:"#5e35b1", weight:1},
+    {label:"$1,000,000",    emoji:"💰", color:"#ffb300", weight:2.4}, // largest segment
+    {label:"Favorite\ntakeout", emoji:"🥡", color:"#26a69a", weight:1},
+    {label:"Massage",       emoji:"💆", color:"#ec407a", weight:1},
+    {label:"A\nsurprise",  emoji:"🎁", color:"#7e57c2", weight:1},
+    {label:"A kiss",        emoji:"💋", color:"#e53935", weight:1},
+    {label:"A compliment",  emoji:"💌", color:"#43a047", weight:1},
+  ];
+  const total = segs.reduce((s,x)=>s+x.weight,0);
+  // compute angular spans (radians), starting at -PI/2 (top), going clockwise
+  let acc = -Math.PI/2;
+  segs.forEach(s=>{ s.a0=acc; s.span=(s.weight/total)*Math.PI*2; s.a1=acc+s.span; s.mid=acc+s.span/2; acc=s.a1; });
+
+  const wc=document.getElementById("wheelCanvas"); const g=wc.getContext("2d");
+  const R=300; // canvas is 600
+  let rotation=0;
+
+  function draw(){
+    g.clearRect(0,0,600,600);
+    g.save(); g.translate(300,300); g.rotate(rotation);
+    segs.forEach(s=>{
+      g.beginPath(); g.moveTo(0,0); g.arc(0,0,R-8,s.a0,s.a1); g.closePath();
+      g.fillStyle=s.color; g.fill();
+      g.strokeStyle="rgba(255,255,255,.5)"; g.lineWidth=3; g.stroke();
+      // label
+      g.save(); g.rotate(s.mid); g.translate(R*0.58,0);
+      g.rotate(Math.PI/2);
+      g.fillStyle="#fff"; g.textAlign="center"; g.textBaseline="middle";
+      const big = s.label.startsWith("$");
+      g.font=`700 ${big?38:26}px "Trebuchet MS",sans-serif`;
+      g.shadowColor="rgba(0,0,0,.45)"; g.shadowBlur=4;
+      g.font=`${big?40:34}px sans-serif`; g.fillText(s.emoji,0,-26);
+      g.font=`700 ${big?30:21}px "Trebuchet MS",sans-serif`;
+      const lines=s.label.split("\n");
+      lines.forEach((ln,i)=>g.fillText(ln,0,8+i*22));
+      g.restore();
+    });
+    g.restore();
+    // outer ring
+    g.beginPath(); g.arc(300,300,R-6,0,7); g.lineWidth=8; g.strokeStyle="#fff"; g.stroke();
+    g.beginPath(); g.arc(300,300,R-2,0,7); g.lineWidth=4; g.strokeStyle="#ff8fc8"; g.stroke();
+  }
+
+  // Land the wheel on segment index `target`, with a genuinely-random-feeling spin.
+  function spinTo(targetIdx, onDone){
+    const s=segs[targetIdx];
+    // pointer is at top = screen angle -PI/2. We need s.mid + rotation ≡ -PI/2 (mod 2π).
+    // small random jitter inside the segment so it doesn't always stop dead-center.
+    const jitter=(Math.random()-0.5)*s.span*0.5;
+    const targetMid=s.mid+jitter;
+    const turns=4+Math.floor(Math.random()*4);          // 4–7 full spins (varies!)
+    // current rotation mod 2π
+    const base=rotation;
+    // desired final rotation so that (targetMid + finalRot) === -PI/2 + 2π*turns
+    let finalRot = (-Math.PI/2 - targetMid) + Math.PI*2*turns;
+    // ensure we always spin forward a healthy amount past current
+    while(finalRot < base + Math.PI*2*3) finalRot += Math.PI*2;
+    const startRot=rotation;
+    const delta=finalRot-startRot;
+    const dur=3200 + Math.random()*1600;                // 3.2–4.8s, varies each spin
+    const t0=performance.now();
+    let lastTick=-1;
+    function ease(t){ return 1-Math.pow(1-t,3); }        // easeOutCubic
+    function anim(now){
+      const t=Math.min(1,(now-t0)/dur);
+      rotation=startRot+delta*ease(t);
+      draw();
+      // tick sound as a segment boundary passes the pointer
+      const passed=Math.floor((rotation+Math.PI/2)/ (Math.PI*2/segs.length));
+      if(passed!==lastTick){ lastTick=passed; Audio.tick(); }
+      if(t<1) requestAnimationFrame(anim);
+      else { rotation%= (Math.PI*2); onDone&&onDone(); }
+    }
+    requestAnimationFrame(anim);
+  }
+  return {draw, spinTo, segs, indexOf:(label)=>segs.findIndex(s=>s.label.replace("\n"," ").startsWith(label))};
+})();
+
+// Predetermined outcomes per spin number (0-based): Kiss, Kiss, A surprise
+const RIGGED = ["A kiss","A kiss","A\nsurprise"];
+const RESULTS = {
+  "A kiss": {emoji:"💋", title:"A Kiss!", text:"The wheel demands it — pucker up. 😘 (Spin again, the night's young.)"},
+  "A\nsurprise": {emoji:"🎁", title:"A Surprise!", text:"This one's not on the wheel by accident. Ask Guido what your surprise is… he's been waiting to tell you. 💝"},
+};
+let spinNo=0, spinning=false;
+
+function openWheel(){
+  document.getElementById("huntDone").classList.add("hidden");
+  document.getElementById("wheelScreen").classList.remove("hidden");
+  state=STATE.WHEEL;
+  WHEEL.draw();
+  Audio.setMusicLevel(0.32);
+}
+function doSpin(){
+  if(spinning || spinNo>=3) return;
+  spinning=true;
+  document.getElementById("spinBtn").disabled=true;
+  document.getElementById("spinBtn").style.opacity=".5";
+  document.getElementById("wheelStatus").textContent="Spinning… 🌀";
+  const targetLabel=RIGGED[spinNo];
+  const idx=WHEEL.segs.findIndex(s=>s.label.startsWith(targetLabel));
+  WHEEL.spinTo(idx, ()=>{
+    spinning=false; spinNo++;
+    document.getElementById("spinsLeft").textContent="Spins left: "+(3-spinNo);
+    const key=targetLabel;
+    const res=RESULTS[key];
+    Audio.fanfare(); fireConfetti(spinNo>=3?2600:1400);
+    showResult(res, spinNo>=3);
+  });
+}
+function showResult(res, finalSpin){
+  document.getElementById("resultEmoji").textContent=res.emoji;
+  document.getElementById("resultTitle").textContent=res.title;
+  document.getElementById("resultText").textContent=res.text;
+  const btn=document.getElementById("resultBtn");
+  btn.textContent = finalSpin ? "💖 The End 💖" : "Spin again →";
+  const card=document.querySelector("#resultModal .resultCard");
+  card.classList.remove("fadeIn"); void card.offsetWidth; card.classList.add("fadeIn");
+  document.getElementById("resultModal").classList.remove("hidden");
+  showResult._final=finalSpin;
+}
+document.getElementById("resultBtn").addEventListener("click", ()=>{
+  document.getElementById("resultModal").classList.add("hidden");
+  if(showResult._final){
+    document.getElementById("wheelStatus").innerHTML="That's a wrap. 🎀 Made for you with love.";
+    document.getElementById("spinBtn").style.display="none";
+  } else {
+    document.getElementById("spinBtn").disabled=false;
+    document.getElementById("spinBtn").style.opacity="1";
+    document.getElementById("wheelStatus").textContent="One more spin awaits… ✨";
+  }
+});
+
+// ----------------------------- confetti ----------------------------------
+const confCv=document.getElementById("confetti"); const confCtx=confCv.getContext("2d");
+function sizeConfetti(){ confCv.width=window.innerWidth; confCv.height=window.innerHeight; }
+sizeConfetti(); addEventListener("resize", sizeConfetti);
+let confetti=[], confettiUntil=0;
+function fireConfetti(ms){
+  confettiUntil=performance.now()+ms;
+  const W=confCv.width, H=confCv.height;
+  for(let i=0;i<120;i++){
+    confetti.push({x:Math.random()*W,y:-10-Math.random()*H*0.4,
+      vx:(Math.random()-.5)*2.5, vy:1.5+Math.random()*3.5,
+      s:5+Math.random()*7, rot:Math.random()*7, vr:(Math.random()-.5)*0.3,
+      col:["#ff5a9c","#ffd36e","#7e57c2","#26a69a","#fff","#ff8f6b"][i%6]});
+  }
+}
+function confettiLoop(now){
+  const W=confCv.width, H=confCv.height;
+  confCtx.clearRect(0,0,W,H);
+  if(now<confettiUntil || confetti.length){
+    confetti=confetti.filter(p=>p.y<H+20);
+    for(const p of confetti){
+      p.x+=p.vx; p.y+=p.vy; p.vy+=0.04; p.rot+=p.vr;
+      confCtx.save(); confCtx.translate(p.x,p.y); confCtx.rotate(p.rot);
+      confCtx.fillStyle=p.col; confCtx.fillRect(-p.s/2,-p.s/2,p.s,p.s*0.6); confCtx.restore();
+    }
+  }
+  requestAnimationFrame(confettiLoop);
+}
+requestAnimationFrame(confettiLoop);
+
+// ----------------------------- input handlers ----------------------------
+// keyboard (desktop testing)
+const keyMap={ArrowUp:"up",ArrowDown:"down",ArrowLeft:"left",ArrowRight:"right",
+  w:"up",s:"down",a:"left",d:"right"};
+addEventListener("keydown",e=>{ const dir=keyMap[e.key]; if(dir){ heldDir=dir; swipeDir=null; e.preventDefault(); }});
+addEventListener("keyup",e=>{ const dir=keyMap[e.key]; if(dir && heldDir===dir) heldDir=null; });
+
+// d-pad (press & hold)
+document.querySelectorAll(".dbtn[data-dir]").forEach(btn=>{
+  const dir=btn.dataset.dir;
+  const press=e=>{ e.preventDefault(); heldDir=dir; swipeDir=null; btn.classList.add("pressed"); };
+  const release=e=>{ e&&e.preventDefault(); if(heldDir===dir) heldDir=null; btn.classList.remove("pressed"); };
+  btn.addEventListener("touchstart",press,{passive:false});
+  btn.addEventListener("touchend",release,{passive:false});
+  btn.addEventListener("touchcancel",release,{passive:false});
+  btn.addEventListener("mousedown",press);
+  btn.addEventListener("mouseup",release);
+  btn.addEventListener("mouseleave",release);
+});
+
+// swipe anywhere on the game area sets a persistent heading
+let touchStart=null;
+const gw=document.getElementById("gameWrap");
+gw.addEventListener("touchstart",e=>{
+  if(e.target.closest("#controls")||e.target.closest(".overlay")||e.target.closest("#muteBtn")) return;
+  const t=e.touches[0]; touchStart={x:t.clientX,y:t.clientY,t:performance.now()};
+},{passive:true});
+gw.addEventListener("touchmove",e=>{
+  if(!touchStart) return;
+  const t=e.touches[0]; const dx=t.clientX-touchStart.x, dy=t.clientY-touchStart.y;
+  if(Math.hypot(dx,dy)>22){
+    if(Math.abs(dx)>Math.abs(dy)) swipeDir=dx>0?"right":"left";
+    else swipeDir=dy>0?"down":"up";
+    heldDir=null;
+    touchStart={x:t.clientX,y:t.clientY,t:performance.now()};
+  }
+},{passive:true});
+gw.addEventListener("touchend",e=>{
+  // a quick tap (no swipe) = stop
+  if(touchStart && performance.now()-touchStart.t<200) { /* keep heading; tap-to-stop optional */ }
+  touchStart=null;
+},{passive:true});
+
+// buttons
+document.getElementById("startBtn").addEventListener("click",()=>{ Audio.ensure(); Audio.resume(); startGame(); });
+document.getElementById("toWheelBtn").addEventListener("click", openWheel);
+document.getElementById("spinBtn").addEventListener("click", doSpin);
+document.getElementById("muteBtn").addEventListener("click",()=>{
+  const m=Audio.toggleMute(); document.getElementById("muteBtn").textContent=m?"🔇":"🔊";
+});
+
+// kick off
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
