@@ -182,6 +182,9 @@
               border-top:1px dashed #e6cbb8; margin-top:12px; padding-top:11px; }
   .pass-grid span{ display:block; font-size:9.5px; letter-spacing:.6px; text-transform:uppercase; color:#b48; opacity:.75; }
   .pass-grid b{ font-size:13px; color:var(--ink); }
+  .pass-perk{ margin-top:11px; font-size:12px; font-weight:bold; color:#b0407a;
+    background:linear-gradient(90deg,#fff0f4,#fef0e6); border:1px dashed #e6b7c4;
+    border-radius:10px; padding:7px 10px; text-align:center; }
 
   .pass-stub{ flex:0 0 76px; position:relative; color:#fff;
     background:linear-gradient(160deg,var(--coral),#c94b86);
@@ -252,7 +255,7 @@
         <div class="pass-air">
           <span class="pass-logo">✈</span>
           <span>Amore Airlines</span>
-          <span class="pass-cls">First Class</span>
+          <span class="pass-cls">Solo noi ❤</span>
         </div>
         <div class="pass-route">
           <div class="pt">
@@ -273,6 +276,7 @@
           <div><span>Data</span><b>Anniversario 💞</b></div>
           <div><span>Posto</span><b>2 · vicini 🫶</b></div>
         </div>
+        <div class="pass-perk">🏠 Airbnb inclusi nel viaggio</div>
       </div>
       <div class="pass-stub">
         <div class="stub-rot">
@@ -333,9 +337,8 @@ const QUESTIONS = [
   {
     q:"Chi vuole arrivare in aeroporto un minuto prima?",
     options:[
-      {t:"Guido",             ok:true, msg:"Guido, con ore di anticipo minimo ⏰ (biglietti già stampati)"},
-      {t:"Manila",            ok:true, msg:"Manila, sempre sul pezzo 😌"},
-      {t:"Mani",              ok:true, msg:"Anche Mani vuole il posto vicino al finestrino 🐉"},
+      {t:"Manila",            ok:true, msg:"Manila, sempre sul pezzo 😌 Prima al gate, come sempre!"},
+      {t:"Mani",              ok:true, msg:"Anche Mani vuole essere lì in anticipo 🐉"},
       {t:"Manila di Giovanni",ok:true, msg:"Quando è ufficiale è Manila Di Giovanni… e si parte in orario 😄"},
     ]
   },
