@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#2a1a3a" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<title>Capitolo 3 · L'ultima sorpresa</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  :root{ --coral:#ff6f91; --gold:#ffd36e; --teal:#2ec4b6; --plum:#2a1a3a; --ink:#2a1a3a; }
+  html,body{
+    width:100%; min-height:100%; background:var(--plum); color:#fff;
+    font-family:"Trebuchet MS","Segoe UI",system-ui,-apple-system,sans-serif;
+    -webkit-user-select:none; user-select:none; overscroll-behavior:none; overflow:hidden;
+  }
+  body{
+    min-height:100dvh;
+    background:radial-gradient(130% 90% at 50% -8%, #ff8f6b 0%, #e0567f 34%, #7a3f9a 66%, #2a1a3a 100%);
+    background-attachment:fixed; display:flex; flex-direction:column;
+  }
+  #app{ position:relative; z-index:1; flex:1; display:flex; flex-direction:column;
+        width:100%; max-width:560px; margin:0 auto; padding:20px 20px calc(24px + env(safe-area-inset-bottom,0px)); }
+  #chapter{ font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#ffe9d6; opacity:.9; font-weight:bold; }
+
+  .screen{ flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;
+           text-align:center; gap:16px; animation:fadeUp .6s ease both; }
+  .screen[hidden]{ display:none; }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;} }
+
+  .badge{ font-size:54px; line-height:1; filter:drop-shadow(0 6px 14px rgba(0,0,0,.35));
+          animation:pop .7s cubic-bezier(.2,1.6,.4,1) both; }
+  @keyframes pop{ from{transform:scale(.4); opacity:0;} to{transform:scale(1); opacity:1;} }
+  h1{ font-size:28px; line-height:1.18; text-shadow:0 3px 12px rgba(0,0,0,.35); }
+  p{ font-size:17px; line-height:1.55; color:#ffe9d6; max-width:32ch; }
+  .cta{
+    display:inline-block; border:none; cursor:pointer;
+    background:linear-gradient(180deg,#fff,#ffe6ee); color:var(--coral);
+    font-weight:bold; font-size:19px; letter-spacing:.4px; padding:16px 34px; border-radius:40px;
+    box-shadow:0 10px 24px rgba(0,0,0,.28), inset 0 -3px 0 rgba(0,0,0,.06); transition:transform .12s;
+  }
+  .cta:active{ transform:translateY(2px) scale(.98); }
+
+  /* ---------- build-up ---------- */
+  #build .line{ font-size:20px; line-height:1.5; color:#fff; opacity:0; max-width:26ch;
+                text-shadow:0 2px 10px rgba(0,0,0,.35); transition:opacity .8s ease; }
+  #build .line.on{ opacity:1; }
+  .bheart{ font-size:44px; animation:beat 1s ease-in-out infinite; }
+  @keyframes beat{ 0%,100%{transform:scale(1);} 15%{transform:scale(1.25);} 30%{transform:scale(1);} 45%{transform:scale(1.18);} }
+  .bar{ width:min(280px,80%); height:12px; border-radius:20px; background:rgba(255,255,255,.22);
+        overflow:hidden; margin-top:4px; }
+  .bar > i{ display:block; height:100%; width:0; border-radius:20px;
+            background:linear-gradient(90deg,var(--gold),var(--coral)); }
+
+  /* ---------- jumpscare ---------- */
+  #scare{ position:fixed; inset:0; z-index:80; background:#000;
+          display:none; align-items:center; justify-content:center; }
+  #scare.on{ display:flex; animation:flash .12s steps(2) 4, shake .09s linear 16; }
+  @keyframes flash{ 0%{background:#000;} 50%{background:#b00000;} 100%{background:#000;} }
+  @keyframes shake{
+    0%{transform:translate(0,0) scale(1.02);} 25%{transform:translate(-9px,6px) scale(1.05);}
+    50%{transform:translate(8px,-7px) scale(1.03);} 75%{transform:translate(-6px,-5px) scale(1.06);}
+    100%{transform:translate(5px,7px) scale(1.02);}
+  }
+  #scareFace{ width:min(96vw,96vh); height:auto; filter:drop-shadow(0 0 30px rgba(255,0,0,.5)); }
+
+  /* ---------- gotcha ---------- */
+  #gotcha .big{ font-size:40px; line-height:1.05; text-shadow:0 4px 16px rgba(0,0,0,.45);
+                animation:pop .6s cubic-bezier(.2,1.6,.4,1) both; }
+  #gotcha .sub{ font-size:18px; color:#ffe9d6; line-height:1.5; max-width:28ch; }
+  #confetti{ position:fixed; inset:0; z-index:30; pointer-events:none; }
+
+  @media (max-height:640px){ h1{font-size:24px;} .badge{font-size:44px;} #gotcha .big{font-size:32px;} }
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+
+<div id="app">
+  <div id="chapter">Cap. 3</div>
+
+  <!-- INTRO -->
+  <section class="screen" id="intro">
+    <div class="badge">🎁</div>
+    <h1>Un'ultima cosa…</h1>
+    <p>Adesso arriva il regalo ancora più grande. L'ho preparato da diversi mesi… ❤️</p>
+    <button class="cta" id="openBtn">Aprilo 🎀</button>
+  </section>
+
+  <!-- BUILD-UP -->
+  <section class="screen" id="build" hidden>
+    <div class="bheart">💗</div>
+    <div class="line" id="l1">Volevo dirti una cosa che tengo dentro da tanto…</div>
+    <div class="line" id="l2">Sei la sorpresa più bella che mi sia capitata.</div>
+    <div class="line" id="l3">E questo regalo… lo aspettavo da mesi.</div>
+    <div class="line" id="l4">Sto scartando l'ultima sorpresa per te…</div>
+    <div class="bar"><i id="barFill"></i></div>
+  </section>
+
+  <!-- GOTCHA -->
+  <section class="screen" id="gotcha" hidden>
+    <div class="big">SCHERZOOO 😱😂</div>
+    <div class="sub">Scusa amore 🤭 …ma dovevi vedere la tua faccia adesso!</div>
+    <div class="sub">Il viaggio, però, è vero davvero ❤️✈️</div>
+    <button class="cta" id="againBtn">Ahah ti odio 😤❤️</button>
+  </section>
+</div>
+
+<!-- SCARE OVERLAY -->
+<div id="scare">
+  <svg id="scareFace" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="skin" cx="50%" cy="42%" r="60%">
+        <stop offset="0%" stop-color="#e9e2d6"/>
+        <stop offset="70%" stop-color="#b9ad9a"/>
+        <stop offset="100%" stop-color="#6d6152"/>
+      </radialGradient>
+      <radialGradient id="eye" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#3a0000"/>
+        <stop offset="55%" stop-color="#160000"/>
+        <stop offset="100%" stop-color="#000"/>
+      </radialGradient>
+    </defs>
+    <!-- face -->
+    <path d="M200 18 C300 18 356 96 356 196 C356 300 288 384 200 384 C112 384 44 300 44 196 C44 96 100 18 200 18 Z" fill="url(#skin)"/>
+    <!-- dark hollows -->
+    <ellipse cx="132" cy="168" rx="52" ry="60" fill="#241a12" opacity=".55"/>
+    <ellipse cx="268" cy="168" rx="52" ry="60" fill="#241a12" opacity=".55"/>
+    <!-- eyes -->
+    <ellipse cx="132" cy="170" rx="40" ry="48" fill="url(#eye)"/>
+    <ellipse cx="268" cy="170" rx="40" ry="48" fill="url(#eye)"/>
+    <circle cx="140" cy="160" r="8" fill="#ff2a2a"/>
+    <circle cx="260" cy="160" r="8" fill="#ff2a2a"/>
+    <!-- veins -->
+    <path d="M96 170 q20 8 34 -2 M300 168 q-18 10 -34 0" stroke="#7a1010" stroke-width="2.5" fill="none" opacity=".7"/>
+    <!-- brows -->
+    <path d="M92 118 L182 150 M308 118 L218 150" stroke="#1c130c" stroke-width="10" stroke-linecap="round"/>
+    <!-- grin -->
+    <path d="M112 262 Q200 372 288 262 Q200 300 112 262 Z" fill="#160000"/>
+    <!-- teeth -->
+    <g fill="#efe7d2">
+      <path d="M126 268 l16 30 l14 -30 Z"/>
+      <path d="M156 272 l16 34 l14 -34 Z"/>
+      <path d="M186 274 l16 36 l14 -36 Z"/>
+      <path d="M216 272 l16 34 l14 -34 Z"/>
+      <path d="M246 268 l16 30 l14 -30 Z"/>
+    </g>
+  </svg>
+</div>
+
+<script>
+/* ---------------- audio (scream generated at runtime) ---------------- */
+const A=(()=>{
+  let ctx=null, dest=null;
+  function ensure(){
+    if(ctx) return;
+    try{ ctx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return; }
+    // soft distortion for harshness
+    const ws=ctx.createWaveShaper(); const n=256, c=new Float32Array(n);
+    for(let i=0;i<n;i++){ const x=i/n*2-1; c[i]=(1.6*x)/(1+1.4*Math.abs(x)); }
+    ws.curve=c; ws.oversample="2x";
+    const master=ctx.createGain(); master.gain.value=0.9;
+    ws.connect(master).connect(ctx.destination);
+    dest=ws;
+  }
+  function resume(){ if(ctx && ctx.state==="suspended") ctx.resume(); }
+  return {
+    unlock(){ ensure(); resume(); },
+    scream(){
+      ensure(); resume(); if(!ctx) return;
+      const t=ctx.currentTime, dur=1.5;
+      // harsh noise burst
+      const buf=ctx.createBuffer(1, Math.floor(ctx.sampleRate*dur), ctx.sampleRate);
+      const d=buf.getChannelData(0);
+      for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
+      const noise=ctx.createBufferSource(); noise.buffer=buf;
+      const nf=ctx.createBiquadFilter(); nf.type="bandpass"; nf.frequency.value=1400; nf.Q.value=0.6;
+      const ng=ctx.createGain();
+      ng.gain.setValueAtTime(0.0001,t); ng.gain.exponentialRampToValueAtTime(0.9,t+0.02);
+      ng.gain.exponentialRampToValueAtTime(0.001,t+dur);
+      noise.connect(nf).connect(ng).connect(dest); noise.start(t); noise.stop(t+dur);
+      // dissonant screech cluster with downward sweep
+      [520,551,740,233].forEach(f=>{
+        const o=ctx.createOscillator(); o.type="sawtooth";
+        o.frequency.setValueAtTime(f*2.1,t); o.frequency.exponentialRampToValueAtTime(f*0.55,t+dur);
+        const g=ctx.createGain();
+        g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(0.3,t+0.03);
+        g.gain.exponentialRampToValueAtTime(0.001,t+dur);
+        o.connect(g).connect(dest); o.start(t); o.stop(t+dur);
+      });
+      // low rumble
+      const lo=ctx.createOscillator(); lo.type="square"; lo.frequency.value=48;
+      const lg=ctx.createGain(); lg.gain.setValueAtTime(0.5,t); lg.gain.exponentialRampToValueAtTime(0.001,t+dur);
+      lo.connect(lg).connect(dest); lo.start(t); lo.stop(t+dur);
+    },
+    chime(){
+      ensure(); resume(); if(!ctx) return;
+      const t=ctx.currentTime;
+      [523,659,784,1047].forEach((f,i)=>{
+        const o=ctx.createOscillator(); o.type="sine"; o.frequency.value=f;
+        const g=ctx.createGain(); g.gain.setValueAtTime(0.0001,t+i*0.1);
+        g.gain.exponentialRampToValueAtTime(0.16,t+i*0.1+0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001,t+i*0.1+0.4);
+        o.connect(g).connect(ctx.destination); o.start(t+i*0.1); o.stop(t+i*0.1+0.42);
+      });
+    }
+  };
+})();
+
+const $=id=>document.getElementById(id);
+
+/* ---------------- flow ---------------- */
+$("openBtn").addEventListener("click",()=>{
+  A.unlock();                    // gesture unlocks audio
+  $("intro").hidden=true;
+  $("build").hidden=false;
+  runBuildup();
+});
+
+function runBuildup(){
+  const lines=["l1","l2","l3","l4"];
+  lines.forEach((id,i)=> setTimeout(()=> $(id).classList.add("on"), 400 + i*1500));
+  // fake progress bar that lulls, then triggers the scare
+  const fill=$("barFill"); let w=0;
+  const iv=setInterval(()=>{
+    w += (w<80? 1.3 : 0.5);
+    if(w>=99){ w=99; }
+    fill.style.width=w+"%";
+  },70);
+  const total = 400 + lines.length*1500 + 1400; // after last line settles
+  setTimeout(()=>{ clearInterval(iv); fill.style.width="100%"; jumpscare(); }, total);
+}
+
+function jumpscare(){
+  const s=$("scare");
+  s.classList.add("on");
+  A.scream();
+  if(navigator.vibrate) navigator.vibrate([120,40,120,40,200]);
+  // hold the scare, then go to the laugh
+  setTimeout(()=>{
+    s.classList.remove("on"); s.style.display="none";
+    $("build").hidden=true;
+    $("gotcha").hidden=false;
+    A.chime();
+    fireConfetti(2600); heartsBurst();
+  }, 1500);
+}
+
+$("againBtn").addEventListener("click",()=>{ fireConfetti(1600); heartsBurst(); A.chime(); });
+
+/* ---------------- confetti + hearts ---------------- */
+const cv=$("confetti"), cx=cv.getContext("2d");
+function sizeCv(){ cv.width=innerWidth; cv.height=innerHeight; }
+sizeCv(); addEventListener("resize",sizeCv);
+let parts=[]; const COLORS=["#ff6f91","#ffd36e","#2ec4b6","#ff8f6b","#ffffff","#c77dff"];
+function fireConfetti(ms){
+  const W=cv.width;
+  for(let i=0;i<130;i++){
+    parts.push({x:Math.random()*W,y:-10-Math.random()*cv.height*0.4,
+      vx:(Math.random()-.5)*2.6, vy:1.6+Math.random()*3.6,
+      s:5+Math.random()*7, rot:Math.random()*7, vr:(Math.random()-.5)*0.32,
+      col:COLORS[i%COLORS.length]});
+  }
+}
+function heartsBurst(){
+  const W=cv.width;
+  for(let i=0;i<16;i++){
+    parts.push({heart:true, x:Math.random()*W, y:cv.height+20,
+      vx:(Math.random()-.5)*1.2, vy:-(1.4+Math.random()*2.2), s:16+Math.random()*18});
+  }
+}
+function loop(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  parts=parts.filter(p=>p.heart ? p.y>-40 : p.y<cv.height+30);
+  for(const p of parts){
+    if(p.heart){
+      p.x+=p.vx; p.y+=p.vy; p.vy*=0.995;
+      cx.save(); cx.globalAlpha=Math.max(0,Math.min(1,p.y/cv.height));
+      cx.font=p.s+"px serif"; cx.fillText("❤️",p.x,p.y); cx.restore();
+    } else {
+      p.x+=p.vx; p.y+=p.vy; p.vy+=0.045; p.rot+=p.vr;
+      cx.save(); cx.translate(p.x,p.y); cx.rotate(p.rot);
+      cx.fillStyle=p.col; cx.fillRect(-p.s/2,-p.s/2,p.s,p.s*0.6); cx.restore();
+    }
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
